@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+body{
+    background: radial-gradient(#ebebeb, #c5c5c5, #a0a0a0);
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.main-container{
+	background-color: white;
+	width: 80%;
+	margin-top: 16px;
+	margin-bottom: 16px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px 30px 20px 30px;
+}
+
+#logo {
+    float: left;
+} 
+
+#title{
+    float: left;
+} 
+
+#slogan {
+    float: right;
+}
+
+#global_search_form {
+    clear: left;
+    float: right;
+}
+
+#global_help {
+    margin-left: 10px;
+    clear: left;
+    float: right;
+    height: 25;
+    width: 25;
+    cursor: pointer;
+}
+
+.navbar-general {
+    clear: both;
+}
+
+.navbar-general-item {
+    
+}
+
+.navbar-specific {
+    clear: both;
+}
+
+.navbar-specific-item {
+    
+}
