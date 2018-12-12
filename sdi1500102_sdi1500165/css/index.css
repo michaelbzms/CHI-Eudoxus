@@ -18,23 +18,28 @@ body{
 
 #logo {
     float: left;
+    max-height: 250px;
+    max-width: 208px;
+    margin-right: 20px;
 } 
 
 #title{
+    margin-top: 10px;
     float: left;
-} 
+    word-wrap: break-word;  /* <-- Doesn't work? TODO: make responsive */
+}
 
 #slogan {
     float: right;
 }
 
 #global_search_form {
-    clear: left;
     float: right;
+    margin-bottom: 10px;
 }
 
 #global_help {
-    margin-left: 10px;
+    margin: 5px 0px 0px 10px;
     clear: left;
     float: right;
     height: 25;
@@ -42,18 +47,83 @@ body{
     cursor: pointer;
 }
 
-.navbar-general {
+.general_navbar {
     clear: both;
 }
 
-.navbar-general-item {
-    
-}
-
-.navbar-specific {
+.specific_navbar {
     clear: both;
+    margin: 20px 0px 20px 0px;
+    display: table;
+    border-style: solid;
+    border-width: 2px;
+    height: 50vh;
+    width: 100%;
 }
 
 .navbar-specific-item {
-    
+    display: table-cell;
+    height: 50vh;
+    text-align: center;
+    vertical-align: middle;
+    color: whitesmoke;
+    font-size: 200%;
+    line-height: 110%;
+    text-shadow:
+   	    -1px -1px 0 #008ed3,
+  	    1px -1px 0 #008ed3,
+   	    -1px 1px 0 #008ed3,
+   	    1px 1px 0 #008ed3;
+    width: 16%; /* 1/6 */
+}
+
+#student:hover, #publisher:hover, #secretary:hover, #distribution_point:hover, #other:hover {
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(231, 150, 0);
+}
+
+#student {
+    height: 50vh;
+    background-image: url("/sdi1500102_sdi1500165/images/student.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+#publisher {
+    height: 50vh;
+    background-image: url("/sdi1500102_sdi1500165/images/publisher.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+#secretary {
+    height: 50vh;
+    background-image: url("/sdi1500102_sdi1500165/images/secretary.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+#distribution_point {
+    height: 50vh;
+    background-image: url("/sdi1500102_sdi1500165/images/distribution_point.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+#other {
+    height: 50vh;
+    background-image: url("/sdi1500102_sdi1500165/images/other.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
 }
