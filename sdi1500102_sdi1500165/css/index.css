@@ -8,7 +8,7 @@ body{
 
 .main-container{
 	background-color: white;
-	width: 80%;
+	width: 85%;
 	margin-top: 16px;
 	margin-bottom: 16px;
 	margin-left: auto;
@@ -57,6 +57,7 @@ body{
     display: table;
     border-style: solid;
     border-width: 2px;
+    border-color: #343a40;
     height: 50vh;
     width: 100%;
 }
