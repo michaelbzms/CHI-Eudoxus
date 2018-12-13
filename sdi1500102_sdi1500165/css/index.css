@@ -11,12 +11,17 @@
     width: 100%;
 }
 
+#options{
+    width: 100%;
+    height: 50vh;
+}
+
 .navbar-specific-item {
     display: table-cell;
     height: 50vh;
     width: 16%; /* 1/6 */
     text-align: center;
-    vertical-align: bottom; /* <-- does not work as intended! */
+    vertical-align: bottom;
     color: whitesmoke;
     font-size: 200%;
     line-height: 110%;
@@ -62,4 +67,73 @@
 
 .icon_title {
     margin-bottom: 2vh;
+}
+
+#student_options, #publisher_options, #secretary_options, #distribution_point_options, #other_options {
+    display: none;  /* hidden at start */
+    padding: 20px;
+}
+
+.specific_navbar h3 {
+    color: rgb(231, 150, 0);
+    font-weight: bold;
+}
+
+.specific_navbar h4 {
+    color: rgb(231, 150, 0);
+}
+
+.option-item {
+    display: inline-block;
+    margin: 20px;
+    width: 280px;
+    height: 160px;
+    background-image: url("/sdi1500102_sdi1500165/images/generic_option_icon.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    font-size: auto;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: bottom;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #343a40;
+}
+
+.option-item:hover {
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+}
+
+.option-title {
+    vertical-align: bottom;
+    color: whitesmoke;
+    font-size: 125%;
+    text-shadow:
+   	    -1px -1px 0 #008ed3,
+  	    1px -1px 0 #008ed3,
+   	    -1px 1px 0 #008ed3,
+           1px 1px 0 #008ed3;
+    cursor: pointer;
+}
+
+#back_button {
+    display: inline-block;  /* hidden at start */
+    margin: 20px;
+    color: whitesmoke;
+    font-size: 200%;
+    line-height: 110%;
+    text-shadow:
+   	    -1px -1px 0 #008ed3,
+  	    1px -1px 0 #008ed3,
+   	    -1px 1px 0 #008ed3,
+           1px 1px 0 #008ed3;
+    cursor: pointer;
+}
+
+#back_button:hover {
+    color: white;
 }
