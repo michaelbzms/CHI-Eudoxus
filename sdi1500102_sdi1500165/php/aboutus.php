@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <title>Eudoxus</title>
     <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/index.css"/>
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/navbar.css"/>
 	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap-grid.min.css"/>
 	<!-- JS -->
 	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
 	<script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
@@ -16,9 +16,7 @@
 <body>
     <div class="main-container">
         <?php include("headlines.php") ?>
-        <!-- common navbar for all without login -->
         <?php include("general_navbar.php"); ?>
-        <!-- specific navbar for each category -->
         <div class="m-5">
             <h3>Τι είναι ο Εύδοξος;</h3>
             <p> 
