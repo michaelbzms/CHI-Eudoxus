@@ -71,7 +71,7 @@
             <div id="secretary_options">
                 <h3>...Υπάλληλος Γραμματίας Τμήματος</h3>
                 <a class="option-item" href="php/secretary_register.php">
-                    <div class="option-title">Εγγραφή</div>
+                    <div class="option-title">Εγγραφή Γραμματείας</div>
                 </a>
                 <a class="option-item" href="php/secretary_app.php">
                     <div class="option-title">Διαχείριση Μαθημάτων/Συγγραμμάτων</div>
@@ -80,7 +80,7 @@
             <div id="distribution_point_options">
                 <h3>...Υπάλληλος Σημείου Διανομής</h3>
                 <a class="option-item" href="php/notimplemented.php">
-                    <div class="option-title">Εγγραφή</div>
+                    <div class="option-title">Εγγραφή Σημείου Διανομής</div>
                 </a>
                 <a class="option-item" href="php/notimplemented.php">
                     <div class="option-title">Παράδοση Συγγραμμάτων</div>
@@ -90,13 +90,13 @@
                 <h3>...Άλλο</h3>
                 <div class="option-list">
                     <h4>Βιβλιοθήκες</h4>
-                    <a href="php/notimplemented.php">Εγγραφή</a><br>
+                    <a href="php/notimplemented.php">Εγγραφή Βιβλιοθήκης</a><br>
                     <a href="php/notimplemented.php">Εφαρμογή Βιβλιοθηκών</a>
                 </div>
                 <br>
                 <div class="option-list">
                     <h4>Διαθέτες Δωρεάν Ηλεκτρονικών Βοηθημάτων & Σημειώσεων</h4>
-                    <a href="php/notimplemented.php">Εγγραφή</a><br>
+                    <a href="php/notimplemented.php">Εγγραφή Διαθέτη</a><br>
                     <a href="php/notimplemented.php">Εφαρμογή Διαθετών</a>
                 </div>
             </div>
