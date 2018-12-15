@@ -40,61 +40,70 @@
             </div>
             <div id="student_options">
                 <h3>...Φοιτητής</h3>
-                <a class="option-item" href="php/book_decleration.php">
-                    <div class="option-title">Δήλωση Συγγραμμάτων</div>
-                </a>
-                <a class="option-item" href="php/notimplemented.php">
-                    <div class="option-title">Ανταλλαγή Συγγραμμάτων</div>
-                </a>
-                <a class="option-item" href="php/notimplemented.php">
-                    <div class="option-title">Προηγούμενες Δηλώσεις</div>
-                </a>
-                <a class="option-item" href="php/student_info.php">
-                    <div class="option-title">Επισκόπιση Στοιχείων Φοιτητή</div>
-                </a>
+                <div class="option-list">
+                    <a id="book_declaration" class="option-item" href="php/book_decleration.php">
+                        <div class="option-title">Δήλωση Συγγραμμάτων</div>
+                    </a>
+                    <a id="book_exchange" class="option-item" href="php/notimplemented.php">
+                        <div class="option-title">Ανταλλαγή Συγγραμμάτων</div>
+                    </a>
+                    <a id="previous_declarations" class="option-item" href="php/notimplemented.php">
+                        <div class="option-title">Προηγούμενες Δηλώσεις</div>
+                    </a>
+                    <a id="student_info" class="option-item" href="php/student_info.php">
+                        <div class="option-title">Επισκόπιση Στοιχείων Φοιτητή</div>
+                    </a>
+                </div>
             </div>
             <div id="publisher_options">
                 <h3>...Εκδότης</h3>
-                <a class="option-item" href="php/notimpkemented.php">
-                    <div class="option-title">Εγγραφή Αυτοεκδότη</div>
-                </a>
-                <a class="option-item" href="php/notimplemented.php">
-                    <div class="option-title">Εγγραφή Εκδοτικού Οίκου</div>
-                </a>
-                <a class="option-item" href="php/notimplemented.php">
-                    <div class="option-title">Διαχείριση Συγγραμμάτων</div>
-                </a>
-                <a class="option-item" href="php/notimpkemented.php">
-                    <div class="option-title">Κοστολόγιση</div>
-                </a>
+                <div class="option-list">
+                    <a class="option-item" href="php/notimpkemented.php">
+                        <div class="option-title">Εγγραφή Αυτοεκδότη</div>
+                    </a>
+                    <a class="option-item" href="php/notimplemented.php">
+                        <div class="option-title">Εγγραφή Εκδοτικού Οίκου</div>
+                    </a>
+                    <a class="option-item" href="php/notimplemented.php">
+                        <div class="option-title">Διαχείριση Συγγραμμάτων</div>
+                    </a>
+                    <a class="option-item" href="php/notimpkemented.php">
+                        <div class="option-title">Κοστολόγιση</div>
+                    </a>
+                </div>
             </div>
             <div id="secretary_options">
                 <h3>...Υπάλληλος Γραμματίας Τμήματος</h3>
-                <a class="option-item" href="php/secretary_register.php">
-                    <div class="option-title">Εγγραφή Γραμματείας</div>
-                </a>
-                <a class="option-item" href="php/secretary_app.php">
-                    <div class="option-title">Διαχείριση Μαθημάτων/Συγγραμμάτων</div>
-                </a>
+                <div class="option-list">
+                    <a class="option-item" href="php/secretary_register.php">
+                        <div class="option-title">Εγγραφή Γραμματείας</div>
+                    </a>
+                    <a class="option-item" href="php/secretary_app.php">
+                        <div class="option-title">Διαχείριση Μαθημάτων/Συγγραμμάτων</div>
+                    </a>
+                </div>
             </div>
             <div id="distribution_point_options">
                 <h3>...Υπάλληλος Σημείου Διανομής</h3>
-                <a class="option-item" href="php/notimplemented.php">
-                    <div class="option-title">Εγγραφή Σημείου Διανομής</div>
-                </a>
-                <a class="option-item" href="php/notimplemented.php">
-                    <div class="option-title">Παράδοση Συγγραμμάτων</div>
-                </a>
+                <div class="option-list">
+                    <a class="option-item" href="php/notimplemented.php">
+                        <div class="option-title">Εγγραφή Σημείου Διανομής</div>
+                    </a>
+                    <a class="option-item" href="php/notimplemented.php">
+                        <div class="option-title">Παράδοση Συγγραμμάτων</div>
+                    </a>
+                </div>
             </div>
             <div id="other_options">
                 <h3>...Άλλο</h3>
-                <div class="option-list">
+                <br>
+                <div>
                     <h4>Βιβλιοθήκες</h4>
                     <a href="php/notimplemented.php">Εγγραφή Βιβλιοθήκης</a><br>
                     <a href="php/notimplemented.php">Εφαρμογή Βιβλιοθηκών</a>
                 </div>
                 <br>
-                <div class="option-list">
+                <div>
                     <h4>Διαθέτες Δωρεάν Ηλεκτρονικών Βοηθημάτων & Σημειώσεων</h4>
                     <a href="php/notimplemented.php">Εγγραφή Διαθέτη</a><br>
                     <a href="php/notimplemented.php">Εφαρμογή Διαθετών</a>

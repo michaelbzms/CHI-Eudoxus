@@ -22,6 +22,7 @@
     width: 16%; /* 1/6 */
     text-align: center;
     vertical-align: bottom;
+    /* Text-style */
     color: whitesmoke;
     font-size: 200%;
     line-height: 110%;
@@ -70,7 +71,7 @@
 }
 
 #student_options, #publisher_options, #secretary_options, #distribution_point_options, #other_options {
-    display: none;  /* hidden at start */
+    display: none;   /* hidden at start */
     padding: 20px;
 }
 
@@ -83,12 +84,18 @@
     color: rgb(231, 150, 0);
 }
 
+.option-list {
+    display: table;
+    margin: 5vh 0vh 5vh 0vh;
+    border-collapse: separate;
+    border-spacing: 30px;
+}
+
 .option-item {
-    display: inline-block;
-    margin: 20px;
+    display: table-cell;
     width: 280px;
     height: 160px;
-    background-image: url("/sdi1500102_sdi1500165/images/generic_option_icon.jpg");
+    background-image: url("/sdi1500102_sdi1500165/images/generic_option_icon.jpg");  /* default */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -100,16 +107,16 @@
     border-style: solid;
     border-width: 1px;
     border-color: #343a40;
+    box-shadow: 0px 0px 3px #343a40;
 }
 
 .option-item:hover {
     text-decoration: none;
     color:white;
-    font-weight: bold;
+    box-shadow: 0px 0px 3px 2px #008ed3;
 }
 
 .option-title {
-    vertical-align: bottom;
     color: whitesmoke;
     font-size: 125%;
     text-shadow:
@@ -118,6 +125,23 @@
    	    -1px 1px 0 #008ed3,
            1px 1px 0 #008ed3;
     cursor: pointer;
+    margin-bottom: 2vh;
+}
+
+#book_declaration {
+    background-image: url("/sdi1500102_sdi1500165/images/blue_book_stack.jpg");
+}
+
+#book_exchange {
+    background-image: url("/sdi1500102_sdi1500165/images/exchange.jpeg");
+}
+
+#previous_declarations {
+    background-image: url("/sdi1500102_sdi1500165/images/previous.jpg");
+}
+
+#student_info {
+    background-image: url("/sdi1500102_sdi1500165/images/user_info.jpg");
 }
 
 #back_button {
