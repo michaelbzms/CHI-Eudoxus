@@ -17,7 +17,13 @@
     <div class="main-container">
         <?php include("headlines.php") ?>
         <?php include("general_navbar.php"); ?>
-        <div class="m-5">
+        <nav class="my_breadcrump">
+            <a class="breadcrump_item" href="/sdi1500102_sdi1500165/index.php">Αρχική Σελίδα</a> > 
+            <p class="breadcrump_item">Πληροφορίες</p> > 
+            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/aboutus.php">About Us</a>
+        </nav>
+        <div class="m-2 text_div">
+            <h2>About Us</h2>
             <h3>Τι είναι ο Εύδοξος;</h3>
             <p> 
                 Πρόκειται για μία πρωτοποριακή υπηρεσία για την άμεση και ολοκληρωμένη παροχή των Συγγραμμάτων των προπτυχιακών φοιτητών των Πανεπιστημίων, των Τεχνολογικών Εκπαιδευτικών Ιδρυμάτων (Τ.Ε.Ι.) και των Ανώτατων Εκκλησιαστικών Ακαδημιών (Α.Ε.Α.) της επικράτειας καθώς και του Ελληνικού Ανοιχτού Πανεπιστημίου (Ε.Α.Π.). <br>
