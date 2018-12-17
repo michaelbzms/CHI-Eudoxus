@@ -53,10 +53,11 @@ body{
 .my_breadcrump {
     margin: 20px 0px 20px 0px;
     font-size: 115%;
+    font-weight: 600;
 }
 
 a.breadcrump_item, p.breadcrump_item {
-    color: rgb(54, 54, 54);
+    color: #343a40;
 }
 
 a.breadcrump_item {
@@ -87,7 +88,11 @@ a:hover.breadcrump_item {
 }
 
 /* general */
-.text_div h2 {
+.image_button {
+    cursor: pointer;
+}
+
+.text_div h2, h2.orange_header {
     color: rgb(231, 150, 0);
     font-weight: 720;
     font-size: 250%;
@@ -104,4 +109,20 @@ a:hover.breadcrump_item {
 .text_div h3 {
     color: #cd7400;
     font-weight: 500;
+}
+
+/* TODO: change? */
+.centered_bordered_field {
+    width: 50vw;
+    align-self: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #343a40;
+    margin: 20px 17vw 20px 17vw;  /* for main_container width 85% and this 50vw it needs 17.5vw margin left-right to be centered */
+}
+
+.centered_bordered_field > label {
+    font-weight: 600;
+    margin-left: 2vw;
+    width: 23vw;
 }
