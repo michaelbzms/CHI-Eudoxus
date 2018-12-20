@@ -31,8 +31,8 @@ function addClassIfActive($active_page, $page){
                 Εκδότες
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Εγγραφή Αυτοεκδότη</a>
-                <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Εγγραφή Εκδοτικού Οίκου</a>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "PublisherRegister"); ?>" href="/sdi1500102_sdi1500165/php/register_page.php">Εγγραφή Αυτοεκδότη</a>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "PublisherRegister"); ?>" href="/sdi1500102_sdi1500165/php/register_page.php">Εγγραφή Εκδοτικού Οίκου</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Διαχείριση Συγγραμμάτων</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Κοστολόγιση</a>
             </div>
@@ -42,7 +42,7 @@ function addClassIfActive($active_page, $page){
                 Γραμματείες
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item <?php addClassIfActive($active_page, "SecretaryRegister"); ?>" href="/sdi1500102_sdi1500165/php/secretary_register.php">Εγγραφή Γραμματείας</a>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "SecretaryRegister"); ?>" href="/sdi1500102_sdi1500165/php/register_page.php">Εγγραφή Γραμματείας</a>
                 <a class="dropdown-item <?php addClassIfActive($active_page, "SecretaryApp"); ?>" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων</a>
             </div>
         </li>
@@ -51,7 +51,7 @@ function addClassIfActive($active_page, $page){
                 Σημεία Διανομής
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Εγγραφή Σημείου Διανομής</a>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "DistPointRegister"); ?>" href="/sdi1500102_sdi1500165/php/register_page.php">Εγγραφή Σημείου Διανομής</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Παράδοση Συγγραμμάτων</a>
             </div>
         </li>

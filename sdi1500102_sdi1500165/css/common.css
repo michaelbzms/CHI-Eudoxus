@@ -25,14 +25,20 @@ body{
     margin-right: 20px;
 } 
 
-#title{
+#title {
     margin-top: 10px;
     float: left;
     word-wrap: break-word;  /* <-- Doesn't work? TODO: make responsive */
 }
 
 #slogan {
+    float: left;
+}
+
+#login_register_div {
     float: right;
+    margin: 10px;
+    font-size: 125%;
 }
 
 #global_search_form {

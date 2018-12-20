@@ -140,6 +140,27 @@
     background-image: url("/sdi1500102_sdi1500165/images/user_info.jpg");
 }
 
+#register_secr {
+    background-image: url("/sdi1500102_sdi1500165/images/signupLightBlue.jpg");
+}
+
+/* TODO: Different pic? */
+#register_publ_one, #register_publ_many {
+    background-image: url("/sdi1500102_sdi1500165/images/signupOrange.jpg");
+}
+
+#register_dist {
+    background-image: url("/sdi1500102_sdi1500165/images/signupBlue.jpg");
+}
+
+#price {
+    background-image: url("/sdi1500102_sdi1500165/images/price.jpg");
+}
+
+#book_delivery {
+    background-image: url("/sdi1500102_sdi1500165/images/bluebook.jpg");
+}
+
 #back_button {
     display: inline-block;  /* hidden at start */
     margin: 20px;

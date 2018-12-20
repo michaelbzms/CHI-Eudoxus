@@ -55,16 +55,16 @@
             <div id="publisher_options">
                 <h3>...Εκδότης</h3>
                 <div class="option-list">
-                    <a class="option-item" href="php/notimpkemented.php">
+                    <a id="register_publ_one" class="option-item" href="php/register_page.php">
                         <div class="option-title">Εγγραφή Αυτοεκδότη</div>
                     </a>
-                    <a class="option-item" href="php/notimplemented.php">
+                    <a id="register_publ_many" class="option-item register_background" href="php/register_page.php">
                         <div class="option-title">Εγγραφή Εκδοτικού Οίκου</div>
                     </a>
                     <a class="option-item" href="php/notimplemented.php">
                         <div class="option-title">Διαχείριση Συγγραμμάτων</div>
                     </a>
-                    <a class="option-item" href="php/notimpkemented.php">
+                    <a id="price"class="option-item" href="php/notimpkemented.php">
                         <div class="option-title">Κοστολόγιση</div>
                     </a>
                 </div>
@@ -72,7 +72,7 @@
             <div id="secretary_options">
                 <h3>...Υπάλληλος Γραμματίας Τμήματος</h3>
                 <div class="option-list">
-                    <a class="option-item" href="php/secretary_register.php">
+                    <a id="register_secr" class="option-item" href="php/register_page.php">
                         <div class="option-title">Εγγραφή Γραμματείας</div>
                     </a>
                     <a class="option-item" href="php/secretary_app.php">
@@ -83,10 +83,10 @@
             <div id="distribution_point_options">
                 <h3>...Υπάλληλος Σημείου Διανομής</h3>
                 <div class="option-list">
-                    <a class="option-item" href="php/notimplemented.php">
+                    <a id="register_dist" class="option-item" href="php/register_page.php">
                         <div class="option-title">Εγγραφή Σημείου Διανομής</div>
                     </a>
-                    <a class="option-item" href="php/notimplemented.php">
+                    <a id="book_delivery" class="option-item" href="php/notimplemented.php">
                         <div class="option-title">Παράδοση Συγγραμμάτων</div>
                     </a>
                 </div>
