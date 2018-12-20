@@ -31,18 +31,11 @@ $("#distribution_point").on("click", function(){
     $("#back_button").show();
 });
 
-$("#other").on("click", function(){
-    hideOptions();
-    $("#other_options").show();
-    $("#back_button").show();
-});
-
 $("#back_button").on("click", function(){
     $("#student_options").hide();
     $("#publisher_options").hide();
     $("#secretary_options").hide();
     $("#distribution_point_options").hide();
-    $("#other_options").hide();
     $(this).hide();
     showOptions();
 });

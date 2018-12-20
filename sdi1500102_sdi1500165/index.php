@@ -35,9 +35,6 @@
             <div id="distribution_point" class="navbar-specific-item">
                 <div class="icon_title">Υπάλληλος<br>Σημείου<br>Διανομής</div>
             </div>
-            <div id="other" class="navbar-specific-item">
-                <div class="icon_title">Άλλο</div>
-            </div>
             <div id="student_options">
                 <h3>...Φοιτητής</h3>
                 <div class="option-list">
@@ -92,21 +89,6 @@
                     <a class="option-item" href="php/notimplemented.php">
                         <div class="option-title">Παράδοση Συγγραμμάτων</div>
                     </a>
-                </div>
-            </div>
-            <div id="other_options">
-                <h3>...Άλλο</h3>
-                <br>
-                <div>
-                    <h4>Βιβλιοθήκες</h4>
-                    <a href="php/notimplemented.php">Εγγραφή Βιβλιοθήκης</a><br>
-                    <a href="php/notimplemented.php">Εφαρμογή Βιβλιοθηκών</a>
-                </div>
-                <br>
-                <div>
-                    <h4>Διαθέτες Δωρεάν Ηλεκτρονικών Βοηθημάτων & Σημειώσεων</h4>
-                    <a href="php/notimplemented.php">Εγγραφή Διαθέτη</a><br>
-                    <a href="php/notimplemented.php">Εφαρμογή Διαθετών</a>
                 </div>
             </div>
             <div id="back_button" style="display: none">◄ Πίσω</div> <!-- style override important -->

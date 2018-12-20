@@ -57,18 +57,6 @@ function addClassIfActive($active_page, $page){
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Άλλοι Χρήστες
-            </a>
-            <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Εγγραφή Βιβλιοθήκης</a>
-                <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Εφαρμογή Βιβλιοθηκών</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Εγγραφή Διαθέτη Ηλ. Σημειώσεων & Βοηθημάτων</a>
-                <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Εφαρμογή Διαθετών</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Αναζήτηση Συγγραμμάτων
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
