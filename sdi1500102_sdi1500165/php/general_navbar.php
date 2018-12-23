@@ -70,7 +70,7 @@ function addClassIfActive($active_page, $page){
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item <?php addClassIfActive($active_page, "FAQ"); ?>" href="/sdi1500102_sdi1500165/php/faq.php">FAQ</a>
-                <a class="dropdown-item <?php addClassIfActive($active_page, "Communication"); ?>" href="/sdi1500102_sdi1500165/php/communication.php">Επικοινωνία</a>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "Contact"); ?>" href="/sdi1500102_sdi1500165/php/contact.php">Επικοινωνία</a>
                 <a class="dropdown-item <?php addClassIfActive($active_page, "AboutUs"); ?>" href="/sdi1500102_sdi1500165/php/aboutus.php">About Us</a>
             </div>
         </li>
