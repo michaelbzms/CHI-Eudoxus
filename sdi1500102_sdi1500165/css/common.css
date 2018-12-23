@@ -112,6 +112,11 @@ a:hover.breadcrump_item {
     cursor: pointer;
 }
 
+.text_div {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 .text_div h2, h2.orange_header {
     color: rgb(231, 150, 0);
     font-weight: 720;
