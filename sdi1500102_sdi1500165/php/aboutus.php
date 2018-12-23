@@ -6,7 +6,6 @@
     <title>Eudoxus</title>
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/index.css"/>
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/navbar.css"/>
 	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
 	<!-- JS -->

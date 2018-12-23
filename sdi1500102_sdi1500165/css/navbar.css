@@ -4,7 +4,7 @@
     clear: both;
 }
 
-.nav-link {
+.navbar .nav-link {
     display: inline-block;
     color: whitesmoke;
 }
@@ -13,7 +13,7 @@
     color: #6fafe3;
 }
 
-.nav-link:hover {
+.navbar .nav-link:hover {
     color: rgb(231, 150, 0);
 }
 
