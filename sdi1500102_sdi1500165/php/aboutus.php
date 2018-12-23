@@ -56,7 +56,8 @@
             </p>
         </div>
         <br>
-        <div style="text-align: center">Follow us on twitter: <a id="twitter" href="http://www.twitter.com/eudoxusgr" target="_blank"><img class="ml-2" src="/sdi1500102_sdi1500165/images/twitter.png" alt="Follow eudoxusgr on Twitter"></a></div>
+        <div class="text-center">Follow us on twitter: <a id="twitter" href="http://www.twitter.com/eudoxusgr" target="_blank"><img class="ml-2" src="/sdi1500102_sdi1500165/images/twitter.png" alt="Follow eudoxusgr on Twitter"></a></div>
+        <br>
         <?php include("../footer.html"); ?>
     </div>
 </body>

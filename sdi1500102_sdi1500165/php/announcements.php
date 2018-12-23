@@ -52,6 +52,7 @@
                 </table>
             </div>
         </div>
+        <br>
         <?php include("../footer.html"); ?>
     </div>
 </body>

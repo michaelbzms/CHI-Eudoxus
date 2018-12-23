@@ -1,20 +1,34 @@
 @charset "UTF-8";
 
 /* basic layout style */
-body{
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
     background: radial-gradient(#ebebeb, #c5c5c5, #a0a0a0);
 	background-size: cover;
 	background-attachment: fixed;
 }
 
-.main-container{
+.main-container {
 	background-color: white;
 	width: 85%;
+    min-height: 96.6vh;
 	margin-top: 16px;
 	margin-bottom: 16px;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 20px 30px 20px 30px;
+	padding: 20px 30px 96px 30px;
+}
+
+#footer {
+    position: absolute;
+    right: 0;
+    left: 0;
+    text-align: center;
+    bottom: 28px;
 }
 
 /* headlines.php style */
