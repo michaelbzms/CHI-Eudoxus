@@ -9,7 +9,7 @@
     color: whitesmoke;
 }
 
-.my_active {
+.navbar .nav-link.my_active {
     color: #6fafe3;
 }
 
