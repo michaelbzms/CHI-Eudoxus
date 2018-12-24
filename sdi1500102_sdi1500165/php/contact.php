@@ -19,7 +19,7 @@
         <nav class="my_breadcrump">
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/index.php">Αρχική Σελίδα</a> > 
             <p class="breadcrump_item">Πληροφορίες</p> > 
-            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/aboutus.php">Επικοινωνία</a>
+            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/contact.php">Επικοινωνία</a>
         </nav>
         <div class="row justify-content-center">
             <div class="col-6 m-2 text_div">

@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.book-modal-dialog {
+    max-width: none!important;
+    margin: 0 20%!important;
+}
+
+.book_table th {
+    min-width: 200px;
+}
