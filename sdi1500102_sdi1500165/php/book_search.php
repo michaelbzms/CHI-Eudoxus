@@ -28,7 +28,10 @@
                 <?php include("bookModal.php") ?>
                 <?php
                     $Books = [ ["eudoxusID", "title", "authors", "version", "versionYear", "keywords", "ISBN", "Publisher", "Tie", "dimensions", "pageNum", "website", "contents", "excerpt", "frontpage", "backpage"], [13909, "ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ: ΜΙΑ ΣΥΓΧΡΟΝΗ ΠΡΟΣΕΓΓΙΣΗ", "STUART RUSSELL, PETER NORVIG", "2η", "2005", "ΕΜΠΕΙΡΑ ΣΥΣΤΗΜΑΤΑ, ΕΥΦΥΗ ΣΥΣΤΗΜΑΤΑ, ΘΕΩΡΙΑ ΛΗΨΗΣ ΑΠΟΦΑΣΕΩΝ, ΛΟΓΙΚΟΣ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ, ΜΗΧΑΝΙΚΗ ΓΝΩΣΗΣ, ΠΡΑΚΤΟΡΕΣ, ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ", "960-209-873-2", "ΕΚΔΟΣΕΙΣ ΚΛΕΙΔΑΡΙΘΜΟΣ ΕΠΕ", "Σκληρό Εξώφυλλο", "[21 x 29]", "1200", "https://www.klidarithmos.gr/texnhth-nohmosynh-2h-ekdosh", "https://static.eudoxus.gr/books/09/toc-13909.pdf", "https://static.eudoxus.gr/books/09/chapter-13909.pdf", "https://static.eudoxus.gr/books/preview/09/cover-13909.jpg", "https://static.eudoxus.gr/books/preview/09/backcover-13909.jpg"] ];
-                    foreach ( $Books as $bookRow ) {
+                    foreach ($Books as $bookRow) {
+                        echo "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#book$bookRow[0]\">
+                            $bookRow[1]
+                        </button>";
                         bookModal($bookRow);
                     }
                 ?>

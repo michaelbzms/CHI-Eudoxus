@@ -8,3 +8,14 @@
 .book_table th {
     min-width: 200px;
 }
+
+.bookModalSpan {
+	cursor: pointer;
+	color: #007bff;
+	text-decoration: underline;
+}
+
+.bookModalSpan:hover {
+    color: #0056b3;
+    text-decoration: none;
+}

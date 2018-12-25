@@ -2,9 +2,6 @@
 function bookModal($bookRow) {
     // [eudoxusID, title, authors, version, versionYear, keywords, ISBN, Publisher, Tie, dimensions, pageNum, website, contents, excerpt, frontpage, backpage]
     echo <<<EOT
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#book$bookRow[0]">
-        $bookRow[1]
-    </button>
     <div class="modal fade" id="book$bookRow[0]" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered book-modal-dialog" role="document">
             <div class="modal-content">

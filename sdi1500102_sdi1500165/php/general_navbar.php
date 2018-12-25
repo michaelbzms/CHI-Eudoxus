@@ -20,7 +20,7 @@ function addClassIfActive($active_page, $page){
                 Φοιτητές
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item <?php addClassIfActive($active_page, "BookDeclaration"); ?>" href="/sdi1500102_sdi1500165/php/book_decleration.php">Δήλωση Συγγραμμάτων</a>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "BookDeclaration"); ?>" href="/sdi1500102_sdi1500165/php/book_declaration1.php">Δήλωση Συγγραμμάτων</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Ανταλλαγή Συγγραμμάτων</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Προηγούμενες Δηλώσεις</a>
                 <a class="dropdown-item <?php addClassIfActive($active_page, "StudentInfo"); ?>" href="/sdi1500102_sdi1500165/php/student_info.php">Επισκόπιση Στοιχείων Φοιτητή</a>
