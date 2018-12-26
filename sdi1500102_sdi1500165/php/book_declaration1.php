@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Συνέχεια</button>
+                <button type="submit" class="btn btn-dark hover_orange">Συνέχεια</button>
             </div>         
         </form>
         <?php include("../footer.html"); ?>

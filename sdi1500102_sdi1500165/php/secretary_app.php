@@ -62,6 +62,7 @@
                 </a>
             </div>
         <?php } ?>
+        <br>
         <?php include("../footer.html"); ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/secretary.js"></script>

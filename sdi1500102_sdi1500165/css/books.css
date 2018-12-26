@@ -19,3 +19,22 @@
     color: #0056b3;
     text-decoration: none;
 }
+
+.frontpage:hover {
+	cursor: pointer;
+}
+
+.frontpage-mini {
+	display: block;
+	max-height: 200px;
+	max-width: 180px;
+	height: auto;
+	width: auto;
+}
+
+.greenCheck {
+	height: 32px;
+	position: absolute;
+	bottom: 0;
+	margin: 20px 5px;
+}

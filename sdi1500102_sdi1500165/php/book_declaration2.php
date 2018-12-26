@@ -50,7 +50,7 @@
         ?>
         <div class="text-center">
             <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
-            <button type="submit" class="btn btn-primary d-inline-block ml-3 mr-5" onClick="window.location='book_declaration3.php';">Συνέχεια</button>
+            <button type="submit" class="btn btn-dark hover_orange d-inline-block ml-3 mr-5" onClick="window.location='book_declaration3.php';">Συνέχεια</button>
         </div>  
         <br>
         <?php include("../footer.html"); ?>
