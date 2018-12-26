@@ -29,6 +29,7 @@ body {
     left: 0;
     text-align: center;
     bottom: 28px;
+    margin-top: 20px;
 }
 
 /* headlines.php style */
@@ -120,7 +121,7 @@ a:hover.breadcrump_item {
 .text_div h2, h2.orange_header {
     color: rgb(231, 150, 0);
     font-weight: 720;
-    font-size: 250%;
+    font-size: 200%;
     text-align: center;
     /*
     text-shadow:
@@ -150,4 +151,8 @@ a:hover.breadcrump_item {
     font-weight: 600;
     margin-left: 2vw;
     width: 23vw;
+}
+
+.hover_orange:hover {
+    color: rgb(231, 150, 0) !important;
 }
