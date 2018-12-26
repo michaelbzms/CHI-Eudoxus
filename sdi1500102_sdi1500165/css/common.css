@@ -14,7 +14,7 @@ body {
 
 .main-container {
 	background-color: white;
-	width: 85%;
+	width: 85%;   /* If changed then other margins have to change as well (!) : currently: 85% */
     min-height: 96.6vh;
 	margin-top: 16px;
 	margin-bottom: 16px;

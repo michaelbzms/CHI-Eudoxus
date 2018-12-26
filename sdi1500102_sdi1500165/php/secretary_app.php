@@ -22,14 +22,14 @@
             <p class="breadcrump_item">Γραμματείες</p> > 
             <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων</a>
         </nav>
-        <h2 class="orange_header mb-4">Υποβολή Προγράμματος Σπουδών</h2>
+        <h2 class="orange_header mb-4">Διαχείριση Μαθημάτων/Συγγραμμάτων</h2>
         <?php 
             $alreadyUploadedPS = False;  // TODO: check in with db
             if  ( $alreadyUploadedPS ) { 
         ?>
             <div class="text-center">
                 <p>
-                    Έχετε ήδη κάνει μία υποβολή για το νέο Πρόγραμμα Σπουδών για το τρέχον ακαδημαϊκό έτος.
+                    Έχετε ήδη κάνει μία υποβολή για το νέο Πρόγραμμα Σπουδών του τρέχοντος ακαδημαϊκού έτους.
                     Θέλετε να τροποποιήσετε αυτήν ή να υποβάλετε νέα;
                 </p>
                 <div class="mt-4">
