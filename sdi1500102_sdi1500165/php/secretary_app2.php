@@ -21,7 +21,7 @@
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/index.php">Αρχική Σελίδα</a> > 
             <p class="breadcrump_item">Γραμματείες</p> > 
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων</a> >
-            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app2.php">Υποβολή Μαθημάτων Προγράμματος Σπουδών</a>
+            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app2.php">Υποβολή Μαθημάτων ΠΣ</a>
         </nav>
         <h2 class="orange_header mb-4">Υποβολή Μαθημάτων Προγράμματος Σπουδών</h2>
         <?php 
@@ -56,33 +56,42 @@
                     <li> <!-- AJAX form to add new classes -->
                         <div class="container">
                             <div class="row">
-                                <div class="col-3" style="vertical-align: top">
+                                <div class="col-2" style="vertical-align: top">
                                     <img id="plus_img" src="/sdi1500102_sdi1500165/images/add_green_plus.png"/>
                                 </div>
-                                <div class="col-9">
-                                    <form id="add_class_form">
-                                        <label>Τίτλος Μαθήματος:</label>
-                                        <input type="text" name="title" id="title_param" required/>
-                                        <br>
-                                        <label>Κωδικός Μαθήματος:</label>
-                                        <input type="text" name="id" id="id_param" required/>
-                                        <br>
-                                        <label>Διδάσκοντας/ες:</label>
-                                        <input type="text" name="professors" id="prof_param" required/>
-                                        <br>
-                                        <label>Εξάμηνο:</label>
-                                        <select name="semester" form="add_class_form" id="semester_param">
-                                            <?php $maxSemesters = 8; // TODO: get from db
-                                                for ( $i = 1 ; $i <= 8 ; $i++ ) { ?>
-                                                    <option value="<?php echo $i ?>"><?php echo $i ?>ο</option>
-                                            <?php } ?>
-                                        </select>
-                                        <br>
-                                        <label>Σχόλια</label>
-                                        <textarea name="comments" id="comment_param"></textarea>
-                                        <br>
-                                        <label></label>
-                                        <button type="submit" class="btn btn-success">Προσθήκη</button>
+                                <div class="col-10">
+                                    <form id="add_class_form" class="container">
+                                        <div class="row mb-2">
+                                            <div class="col-5">Τίτλος Μαθήματος:</div>
+                                            <div class="col-7"><input class="form-control" type="text" name="title" id="title_param" required/></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-5">Κωδικός Μαθήματος:</div>
+                                            <div class="col-7"><input class="form-control" type="text" name="id" id="id_param" required/></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-5">Διδάσκοντας/ες:</div>
+                                            <div class="col-7"><input class="form-control" type="text" name="professors" id="prof_param" required/></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-5">Εξάμηνο:</div>
+                                            <div class="col-7">
+                                                <select class="form-control" name="semester" form="add_class_form" id="semester_param">
+                                                    <?php $maxSemesters = 8; // TODO: get from db
+                                                        for ( $i = 1 ; $i <= 8 ; $i++ ) { ?>
+                                                            <option value="<?php echo $i ?>"><?php echo $i ?>ο</option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-5">Σχόλια</div>
+                                            <div class="col-7"><textarea class="form-control" name="comments" id="comment_param"></textarea></div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-5"></div>
+                                            <div class="col-7"><button type="submit" class="btn btn-success">Προσθήκη</button></div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
