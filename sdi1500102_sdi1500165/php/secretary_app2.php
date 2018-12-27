@@ -20,8 +20,8 @@
         <nav class="my_breadcrump">
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/index.php">Αρχική Σελίδα</a> > 
             <p class="breadcrump_item">Γραμματείες</p> > 
-            <a class="breadcrump_item" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων</a> >
-            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app2.php">Υποβολή Μαθημάτων ΠΣ</a>
+            <a class="breadcrump_item" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων</a> > 
+            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app2.php">Υποβολή Μαθημάτων</a>
         </nav>
         <h2 class="orange_header mb-4">Υποβολή Μαθημάτων Προγράμματος Σπουδών</h2>
         <?php 
@@ -47,7 +47,7 @@
                         $classes = [[12101, "Γραμμική Άλγεβρα", "E.Ράπτης", 1, ""], 
                                     [12102, "Πιθανότητες Ι", "Ν.Παπαδάτος", 1, ""] ];
                         foreach ($classes as $class) {
-                            echo "<li><span class=\"id_span\">[" . $class[0] . "]</span><h2>" . $class[1] . "</h2><br><span class=\"field_span\">Καθηγητής/ές: " . $class[2] . "</span><span class=\"field_span\">Εξάμηνο: " . $class[3] . "o</span><br>Σχόλια: " . $class[4] . "</li>\n";
+                            echo "<li><span class=\"id_span\">[" . $class[0] . "]</span><h2>" . $class[1] . "</h2><br><span class=\"field_span\"><label>Καθηγητής/ές: </label>" . $class[2] . "</span><span class=\"field_span\"><label>Εξάμηνο: </label>" . $class[3] . "o</span><br><label>Σχόλια: </label>" . $class[4] . "</li>\n";
                         }
                     ?>
                     <div id="ajax_target_div">
@@ -99,7 +99,7 @@
                     </li>
                 </ol>
                 <div class="text-center">
-                    <button id="submit_PS" class="btn btn-dark hover_orange m-4">Υποβολή Μαθημάτων ΠΣ</button>
+                    <button id="submit_PS" class="btn btn-dark hover_orange m-4"><img src="/sdi1500102_sdi1500165/images/checkGreen.png" style="width:20px; height:20px; margin-right: 10px"/>Υποβολή Μαθημάτων ΠΣ</button>
                 </div>
             </div>
         <?php } ?>

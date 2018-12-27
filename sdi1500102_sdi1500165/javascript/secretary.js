@@ -8,7 +8,7 @@ $("#submit_new").on("click", function(){
     // send ajax (AND WAIT FOR IT TO FINISH) to delete current submission
     //TODO
     // redirect user to submit page
-    window.location.replace("/sdi1500102_sdi1500165/php/secretary_app.php");  // TODO: implement?
+    window.location.replace("/sdi1500102_sdi1500165/php/secretary_app.php");
 });
 
 function checkValid(str){
@@ -48,4 +48,8 @@ $("#add_class_form").on("submit", function(e){
         if (!checkValid(formdata["professors"])) remaining += "- Διδάσκοντας/ες\n";
         alert("Παρακαλώ συμπληρώστε ορθά τα ακόλουθα πεδία:\n" + remaining);
     }
+});
+
+$("#submit_PS").on("click", function(){
+    window.location.href = "/sdi1500102_sdi1500165/php/secretary_app3.php";
 });

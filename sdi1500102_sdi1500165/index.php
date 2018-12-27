@@ -38,7 +38,7 @@
             <div id="student_options">
                 <h3>...Φοιτητής</h3>
                 <div class="option-list">
-                    <a id="book_declaration" class="option-item" href="php/book_decleration.php">
+                    <a id="book_declaration" class="option-item" href="php/book_declaration1.php">
                         <div class="option-title">Δήλωση Συγγραμμάτων</div>
                     </a>
                     <a id="book_exchange" class="option-item" href="php/notimplemented.php">
