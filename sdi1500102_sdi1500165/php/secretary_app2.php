@@ -47,37 +47,46 @@
                         $classes = [[12101, "Γραμμική Άλγεβρα", "E.Ράπτης", 1, ""], 
                                     [12102, "Πιθανότητες Ι", "Ν.Παπαδάτος", 1, ""] ];
                         foreach ($classes as $class) {
-                            echo "<li>[" . $class[0] . "]<h2>" . $class[1] . "</h2><br>Καθηγητής/ές: " . $class[2] . " Εξάμηνο: " . $class[3] . "o Σχόλια: " . $class[4] . "</li>\n";
+                            echo "<li><span class=\"id_span\">[" . $class[0] . "]</span><h2>" . $class[1] . "</h2><br><span class=\"field_span\">Καθηγητής/ές: " . $class[2] . "</span><span class=\"field_span\">Εξάμηνο: " . $class[3] . "o</span><br>Σχόλια: " . $class[4] . "</li>\n";
                         }
                     ?>
                     <div id="ajax_target_div">
                         
                     </div>
                     <li> <!-- AJAX form to add new classes -->
-                        <form id="add_class_form">
-                            <label>Τίτλος Μαθήματος:</label>
-                            <input type="text" name="title" id="title_param"/>
-                            <br>
-                            <label>Κωδικός Μαθήματος:</label>
-                            <input type="text" name="id" id="id_param"/>
-                            <br>
-                            <label>Διδάσκοντες:</label>
-                            <input type="text" name="professors" id="prof_param"/>
-                            <br>
-                            <label>Εξάμηνο:</label>
-                            <select name="semester" form="add_class_form" id="semester_param">
-                                <?php $maxSemesters = 8; // TODO: get from db
-                                      for ( $i = 1 ; $i <= 8 ; $i++ ) { ?>
-                                        <option value="sem<?php echo $i ?>"><?php echo $i ?>ο</option>
-                                <?php } ?>
-                            </select>
-                            <br>
-                            <label>Σχόλια</label>
-                            <textarea name="comments" id="comment_param"></textarea>
-                            <br>
-                            <label></label>
-                            <button type="submit" class="btn btn-success">Προσθήκη</button>
-                        </form>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3" style="vertical-align: top">
+                                    <img id="plus_img" src="/sdi1500102_sdi1500165/images/add_green_plus.png"/>
+                                </div>
+                                <div class="col-9">
+                                    <form id="add_class_form">
+                                        <label>Τίτλος Μαθήματος:</label>
+                                        <input type="text" name="title" id="title_param" required/>
+                                        <br>
+                                        <label>Κωδικός Μαθήματος:</label>
+                                        <input type="text" name="id" id="id_param" required/>
+                                        <br>
+                                        <label>Διδάσκοντας/ες:</label>
+                                        <input type="text" name="professors" id="prof_param" required/>
+                                        <br>
+                                        <label>Εξάμηνο:</label>
+                                        <select name="semester" form="add_class_form" id="semester_param">
+                                            <?php $maxSemesters = 8; // TODO: get from db
+                                                for ( $i = 1 ; $i <= 8 ; $i++ ) { ?>
+                                                    <option value="<?php echo $i ?>"><?php echo $i ?>ο</option>
+                                            <?php } ?>
+                                        </select>
+                                        <br>
+                                        <label>Σχόλια</label>
+                                        <textarea name="comments" id="comment_param"></textarea>
+                                        <br>
+                                        <label></label>
+                                        <button type="submit" class="btn btn-success">Προσθήκη</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ol>
                 <div class="text-center">
