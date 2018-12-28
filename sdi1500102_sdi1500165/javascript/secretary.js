@@ -26,7 +26,7 @@ $("#add_class_form").on("submit", function(e){
     };
     if (checkValid(formdata["id"]) && checkValid(formdata["title"]) && checkValid(formdata["professors"]) ){
         $.ajax({
-            url: "/sdi1500102_sdi1500165/php/control/secretary_add_class.php",
+            url: "/sdi1500102_sdi1500165/php/control/secretary_add_class.php?removePrevious=false",
             type: "post",
             data: formdata,
             success: function(response){
@@ -50,6 +50,54 @@ $("#add_class_form").on("submit", function(e){
     }
 });
 
+$(document).on('submit','.edit_class_form', function(e){
+    e.preventDefault();
+    var item = $(this).closest("li");
+    var formdata = { 
+        title : item.find(".title_param").val(),
+        id : item.find(".id_param").val(),
+        professors : item.find(".prof_param").val(),
+        semester : item.find(".semester_param").val(),
+        comments : item.find(".comment_param").val()
+    };
+    if (checkValid(formdata["id"]) && checkValid(formdata["title"]) && checkValid(formdata["professors"]) ){
+        $.ajax({
+            url: "/sdi1500102_sdi1500165/php/control/secretary_add_class.php?removePrevious=true",
+            type: "post",
+            data: formdata,
+            success: function(response){
+                if (response !== "" && response !== "FAIL") {
+                    item.html(response);
+                }
+            }
+        });
+    } else {
+        var remaining = "";
+        if (!checkValid(formdata["title"])) remaining += "- Τίτλος Μαθήματος\n";
+        if (!checkValid(formdata["id"])) remaining += "- Κωδικός Μαθήματος\n";
+        if (!checkValid(formdata["professors"])) remaining += "- Διδάσκοντας/ες\n";
+        alert("Παρακαλώ συμπληρώστε ορθά τα ακόλουθα πεδία:\n" + remaining);
+    }
+});
+
 $("#submit_PS").on("click", function(){
     window.location.href = "/sdi1500102_sdi1500165/php/secretary_app3.php";
+});
+
+$(document).on('click','.edit_box', function(e){
+    var item = $(this).closest("li");
+    item.find(".item").hide();
+    item.find(".container").show();
+});
+
+$(document).on('click','.delete_box', function(e){
+    if (confirm("Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το μάθημα;")){
+        $(this).closest("li").remove();
+    }
+});
+
+$(document).on('click','.cancel_edit', function(e){
+    var item = $(this).closest("li");
+    item.find(".container").hide();
+    item.find(".item").show();
 });
