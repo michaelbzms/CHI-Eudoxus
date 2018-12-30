@@ -21,20 +21,35 @@
             <p class="breadcrump_item">Φοιτητές</p> > 
             <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/student_info.php">Επισκόπιση Στοιχείων Φοιτητή</a>
         </nav>
+        <?php
+            include("dbConnection.php");
+            $conn = connectToDB();
+            if (! $conn) {
+                die("Database connection failed: " . mysqli_connect_error());
+            }
+            mysqli_set_charset($conn, 'utf8');
+            // TODO: get studentID from session
+            $studentID = 1;
+            $sqlQuery = "SELECT st.*, sec.university, sec.department, usr.email FROM STUDENTS st, SECRETARIES sec, USERS usr WHERE st.idUser=$studentID AND st.SECRETARIES_id=sec.idUser AND st.idUser=usr.idUser";
+            $result = $conn->query($sqlQuery);
+            $studentRow = $result->fetch_assoc();
+            if ($result->num_rows == 0) {
+                die("Invalid UserID");
+            }
+        ?>
         <div>
-            <br>
-            <h2 class="orange_header"><?php print "Ελπινίκη Παπαδοπούλου"; ?></h2>
+            <h2 class="orange_header m-3"> <?php echo $studentRow['firstname'] . " " . $studentRow['lastname']; ?> </h2>
             <div class="centered_bordered_field">
-                <label>Ίδρυμα:</label> <?php print "ΕΘΝΙΚΟ ΚΑΙ ΚΑΠΟΔΙΣΤΡΙΑΚΟ ΠΑΝΕΠΙΣΤΗΜΙΟ ΑΘΗΝΩΝ"; ?> <br>
-                <label>Σχολή:</label> <?php print "ΝΟΜΙΚΗ ΣΧΟΛΗ"; ?> <br>
-                <label>Τμήμα:</label> <?php print "ΝΟΜΙΚΗ"; ?> <br>
-                <label>Κωδικός Εύδοξου:</label>  <?php print "12345678"; ?> <br>
-                <label>Αριθμός Μητρώου:</label> <?php print "1119201800123"; ?> <br>
-                <label>Email:</label> <?php print "elpiniki@gmail.com"; ?> <img id="modify_email" class="image_button" src="/sdi1500102_sdi1500165/images/pencil.png"/> <br> 
-                <label>Τηλέφωνο:</label> <?php print "6912345678"; ?> <img id="modify_phone" class="image_button" src="/sdi1500102_sdi1500165/images/pencil.png"/> <br>
-                <label>Τρέχον Εξάμηνο:</label> <?php print "1"; ?> <br>
+                <label>Σχολή:</label> <?php echo $studentRow['university']; ?> <br>
+                <label>Τμήμα:</label> <?php echo $studentRow['department']; ?> <br>
+                <label>Κωδικός Εύδοξου:</label> <?php echo $studentRow['idUser']; ?> <br>
+                <label>Αριθμός Μητρώου:</label> <?php echo $studentRow['AM']; ?> <br>
+                <label>Email:</label> <?php echo $studentRow['email']; ?> <img id="modify_email" class="image_button" src="/sdi1500102_sdi1500165/images/pencil.png"/> <br> 
+                <label>Τηλέφωνο:</label> <?php echo $studentRow['phone']; ?> <img id="modify_phone" class="image_button" src="/sdi1500102_sdi1500165/images/pencil.png"/> <br>
+                <label>Τρέχον Εξάμηνο:</label> <?php echo $studentRow['current_semester']; ?> <br>
             </div>
         </div>
+        <?php $conn->close(); ?>
         <?php include("../footer.html"); ?>
     </div>
 </body>
