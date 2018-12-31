@@ -198,3 +198,8 @@ a:hover.breadcrump_item {
     color: #0056b3 !important;
     text-decoration: underline !important;
 }
+
+.requiredField:after {
+    content: " *";
+    color: red;
+}

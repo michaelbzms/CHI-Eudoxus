@@ -27,30 +27,29 @@
                 <h2>Επικοινωνήστε μαζί μας</h2>
                 <form class="border rounded m-3 p-3">
                     <div class="form-group">
-                        <label>Ονοματεπώνυμο</label>
-                        <input class="form-control" id="name">
+                        <label class="requiredField">Ονοματεπώνυμο</label>
+                        <input class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="requiredField">Email</label>
+                        <input class="form-control" id="email" type="email" required>
                     </div>
                     <div class="form-group">
                         <label>Τηλέφωνο</label>
                         <input class="form-control" id="phone">
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input class="form-control" id="email" type="email">
+                        <label class="requiredField">Είδος Χρήστη</label>
+                        <select class="form-control" id="userType">
+                            <option>Φοιτητής</option>
+                            <option>Εκδότης</option>
+                            <option>Γραμματεία</option>
+                            <option>Σημείο Διανομής</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label>Είδος Χρήστη</label>
-                        <select class="form-control" id="userType">
-                          <option>Φοιτητής</option>
-                          <option>Εκδότης</option>
-                          <option>Γραμματεία</option>
-                          <option>Σημείο Διανομής</option>
-                          <option>Άλλο</option>
-                        </select>
-                     </div>
-                    <div class="form-group">
-                        <label>Κείμενο</label>
-                        <textarea class="form-control" id="message" rows="5"></textarea>
+                        <label class="requiredField">Κείμενο</label>
+                        <textarea class="form-control" id="message" rows="5" required></textarea>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Αποστολή</button>
