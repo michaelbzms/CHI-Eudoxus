@@ -27,7 +27,6 @@
             if (! $conn) {
                 die("Database connection failed: " . mysqli_connect_error());
             }
-            mysqli_set_charset($conn, 'utf8');
             // TODO: get studentID from session
             $studentID = 1;
             $sqlQuery = "SELECT st.*, sec.university, sec.department, usr.email FROM STUDENTS st, SECRETARIES sec, USERS usr WHERE st.idUser=$studentID AND st.SECRETARIES_id=sec.idUser AND st.idUser=usr.idUser";
