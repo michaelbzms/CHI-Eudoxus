@@ -4,12 +4,14 @@
 <!-- <img id="slogan" src="/sdi1500102_sdi1500165/images/slogan.png"/> -->
 <!-- Login | register (or log out) always on top right-->
 <div id="login_register_div">
-    <?php if ( /* NotInSession */ true ) { // TODO: check session ?>
+    <?php if ( ! isset($_SESSION["userID"]) ) { ?>
         <a class="linkLike" data-toggle="modal" data-target="#loginModal"><img class="pr-1" src="/sdi1500102_sdi1500165/images/login.png"/>Log In</a>
          | 
         <a href="/sdi1500102_sdi1500165/php/register_page.php">Register</a> <!-- Only ONE register page for all-->
     <?php } else { ?>
-        <button class="btn btn-outline-secondary"><img class="pr-2" src="/sdi1500102_sdi1500165/images/logout.png"/>Log Out</button>
+    	<form action="#" method="POST">
+        	<button class="btn btn-outline-secondary" name="logoutSubmit" type="submit"><img class="pr-2" src="/sdi1500102_sdi1500165/images/logout.png"/>Log Out</button>
+        </form>
     <?php } ?>
 </div>
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -19,16 +21,16 @@
             	<button type="button" class="close m-1 mr-2" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-			    <form action="#" method="post">
+			    <form action="#" method="POST">
 			        <h2 class="text-center">Log in</h2>       
 			        <div class="form-group">
-			            <input type="email" class="login-form-control w-100" placeholder="Email" required="required">
+			            <input name="email" type="email" class="login-form-control w-100" placeholder="Email" required="required">
 			        </div>
 			        <div class="form-group">
-			            <input type="password" class="login-form-control w-100" placeholder="Password" required="required">
+			            <input name="password" type="password" class="login-form-control w-100" placeholder="Password" required="required">
 			        </div>
 			        <div class="form-group">
-			            <button type="submit" class="btn login-btn btn-primary btn-block">Log in</button>
+			            <button name="loginSubmit" type="submit" class="btn login-btn btn-primary btn-block">Log in</button>
 			        </div>
 			        <div class="clearfix text-center">
 			            <a href="/sdi1500102_sdi1500165/php/notimplemented.php" class="text-center">Ξεχάσατε τον κωδικό σας?</a><br>

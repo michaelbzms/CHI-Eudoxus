@@ -1,3 +1,4 @@
+<?php include("php/control/sessionManager.php") ?>
 <!DOCTYPE html>
 <?php $active_page = "HomePage"; ?>
 <html>

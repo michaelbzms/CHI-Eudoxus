@@ -1,3 +1,4 @@
+<?php include("control/sessionManager.php") ?>
 <!DOCTYPE html>
 <?php $active_page = "Anouncements"; ?>
 <html>

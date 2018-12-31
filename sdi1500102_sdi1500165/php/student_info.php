@@ -1,3 +1,4 @@
+<?php include("control/sessionManager.php") ?>
 <!DOCTYPE html>
 <?php $active_page = "StudentInfo"; ?>
 <html>
@@ -22,13 +23,12 @@
             <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/student_info.php">Επισκόπιση Στοιχείων Φοιτητή</a>
         </nav>
         <?php
-            include("dbConnection.php");
             $conn = connectToDB();
             if (! $conn) {
                 die("Database connection failed: " . mysqli_connect_error());
             }
-            // TODO: get studentID from session
-            $studentID = 1;
+            // TODO: error page if user type != student
+            $studentID = $_SESSION['userID'];
             $sqlQuery = "SELECT st.*, sec.university, sec.department, usr.email FROM STUDENTS st, SECRETARIES sec, USERS usr WHERE st.idUser=$studentID AND st.SECRETARIES_id=sec.idUser AND st.idUser=usr.idUser";
             $result = $conn->query($sqlQuery);
             $studentRow = $result->fetch_assoc();
