@@ -16,6 +16,7 @@
     <div class="main-container">
         <?php include("headlines.php") ?>
         <?php include("general_navbar.php"); ?>
+        <?php $formUserType = $_GET['userType']; ?>
         <div class="row justify-content-center">
             <div class="col-6 m-2 text_div">
                 <h2 id="registerTitle" class="m-3">Εγγραφή Φοιτητή</h2>     <!-- changes dynamically -->
@@ -35,10 +36,26 @@
                     <div class="form-group">
                         <label class="requiredField">Είδος Χρήστη</label>
                         <select class="form-control" id="userType" onchange="changeFormByType();">
-                            <option value="1">Φοιτητής</option>
-                            <option value="2">Εκδότης</option>
-                            <option value="3">Γραμματεία</option>
-                            <option value="4">Σημείο Διανομής</option>
+                            <?php if ($formUserType == "student") { ?>
+                                <option value="1" selected>Φοιτητής</option>
+                            <?php } else { ?>
+                                <option value="1">Φοιτητής</option>
+                            <?php } ?>
+                            <?php if ($formUserType == "publisher") { ?>
+                                <option value="2" selected>Εκδότης</option>
+                            <?php } else { ?>
+                                <option value="2">Εκδότης</option>
+                            <?php } ?>
+                            <?php if ($formUserType == "secretary") { ?>
+                                <option value="3" selected>Γραμματεία</option>
+                            <?php } else { ?>
+                                <option value="3">Γραμματεία</option>
+                            <?php } ?>
+                            <?php if ($formUserType == "distPoint") { ?>
+                                <option value="4" selected>Σημείο Διανομής</option>
+                            <?php } else { ?>
+                                <option value="4">Σημείο Διανομής</option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div id="variableDivByType"></div>

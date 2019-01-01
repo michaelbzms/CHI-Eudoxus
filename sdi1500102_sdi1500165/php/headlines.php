@@ -7,9 +7,9 @@
     <?php if ( ! isset($_SESSION["userID"]) ) { ?>
         <a class="linkLike" data-toggle="modal" data-target="#loginModal"><img class="pr-1" src="/sdi1500102_sdi1500165/images/login.png"/>Log In</a>
          | 
-        <a href="/sdi1500102_sdi1500165/php/register_page.php">Register</a> <!-- Only ONE register page for all-->
+        <a href="/sdi1500102_sdi1500165/php/register_page.php?userType=student">Register</a> <!-- Only ONE register page for all-->
     <?php } else { ?>
-    	<form action="#" method="POST">
+    	<form action="/sdi1500102_sdi1500165/index.php" method="POST">
         	<button class="btn btn-outline-secondary" name="logoutSubmit" type="submit"><img class="pr-2" src="/sdi1500102_sdi1500165/images/logout.png"/>Log Out</button>
         </form>
     <?php } ?>
