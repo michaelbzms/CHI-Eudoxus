@@ -5,11 +5,12 @@ function connectToDB() {
     $password = '';
     $db ='eudoxusdb';
 
-    $conn = mysqli_connect($host,$user,$password,$db);
-    if ($conn) mysqli_set_charset($conn, 'utf8');		// allow greek characters
-    return $conn;
+    $mysqli = new mysqli($host, $user, $password, $db);
+    if (! mysqli_connect_errno()) $mysqli->set_charset('utf8');		// allow greek characters
+    return $mysqli;
 }
 
+// OBSOLETE; to be deleted:
 function userIsType($conn, $user_id, $type) : bool {
     if (! $conn) {
         echo "Warning: connection not established at userIsType()!";
@@ -37,13 +38,13 @@ function userIsType($conn, $user_id, $type) : bool {
     return $result->num_rows > 0;  // == 1
 }
 
-function getNumberOfSemesters($conn, $secr_id) : int {
-    if (! $conn){
+function getNumberOfSemesters($mysqli, $secr_id) : int {
+    if ( mysqli_connect_errno() ){
         echo "Warning: connection not established at getNumberOfSemesters()!";
         return -1;
     }
-    $result = $conn->query("SELECT number_of_semesters FROM SECRETARIES WHERE idUser = $secr_id;");
-    if ($result->num_rows > 0){
+    $result = $mysqli->query("SELECT number_of_semesters FROM SECRETARIES WHERE idUser = $secr_id;");
+    if ($result->num_rows > 0) {
         return $result->fetch_assoc()['number_of_semesters'];
     } else {   // should not happen
         return -1;
