@@ -37,11 +37,11 @@
                         <div class="row mb-2">
                             <div class="col-5">Εξάμηνο:</div>
                             <div class="col-7">
-                                <select class="form-control semester_param" name="semester" form="add_class_form" value="$class[3]">
+                                <select class="form-control semester_param" name="semester" form="add_class_form">
 EOT;
                                     $maxSemesters = 8; // TODO: get from db
                                         for ( $i = 1 ; $i <= 8 ; $i++ ) { ?>
-                                            <option value="<?php echo $i ?>"><?php echo $i ?>ο</option>
+                                            <option value="<?php echo $i ?>" <?php if ( $i == $class[3] ) echo " selected=\"selected\" " ?>><?php echo $i ?>ο</option>
                                     <?php }
                                     echo <<<EOT
                                 </select>

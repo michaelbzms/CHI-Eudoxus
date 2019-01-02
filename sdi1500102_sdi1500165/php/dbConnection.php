@@ -9,3 +9,31 @@ function connectToDB() {
     if ($conn) mysqli_set_charset($conn, 'utf8');		// allow greek characters
     return $conn;
 }
+
+function userIsType($conn, $user_id, $type) : bool {
+    if (! $conn) {
+        echo "Warning: connection not established at userIsType()!";
+        return false;
+    }
+    $sqlQuery = "";
+    switch ($type) {
+        case 'student':
+            $sqlQuery = "SELECT 1 FROM STUDENTS st WHERE st.idUser = $user_id;";
+            break;
+        case 'publisher':
+            $sqlQuery = "SELECT 1 FROM PUBLISHERS pb WHERE pb.idUser = $user_id;";
+            break;
+        case 'secretary':
+            $sqlQuery = "SELECT 1 FROM SECRETARIES sec WHERE sec.idUser = $user_id;";
+            break;
+        case 'distribution_point':
+            $sqlQuery = "SELECT 1 FROM DISTRIBUTION_POINTS st WHERE st.idUser = $user_id;";
+            break;
+        default:
+            echo "Warning: Wrong type of user: \"" . $type . "\" at userIsType()!";
+            return false;
+    }
+    $result = $conn->query($sqlQuery);
+    return $result->num_rows > 0;  // == 1
+}
+?>

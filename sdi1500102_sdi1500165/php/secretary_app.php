@@ -23,48 +23,62 @@
             <p class="breadcrump_item">Γραμματείες</p> > 
             <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων</a>
         </nav>
-        <h2 class="orange_header mb-4">Διαχείριση Μαθημάτων/Συγγραμμάτων</h2>
         <?php 
-            $alreadyUploadedPS = False;  // TODO: check in with db
-            if  ( $alreadyUploadedPS ) { 
+            $conn = connectToDB();
+            if (! $conn) {
+                die("Database connection failed: " . mysqli_connect_error());
+            }
+            $hasSession = array_key_exists('userID', $_SESSION);
+            if ( $hasSession && userIsType($conn, $_SESSION['userID'], 'secretary') ) {
+                $secretary_id = $_SESSION['userID'];
+                $sqlQuery = "SELECT 1 FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id;";
+                $result = $conn->query($sqlQuery);
+                $alreadyUploadedPS  = $result->num_rows > 0;
         ?>
-            <div class="text-center">
-                <p>
-                    Έχετε ήδη κάνει μία υποβολή για το νέο Πρόγραμμα Σπουδών του τρέχοντος ακαδημαϊκού έτους.
-                    Θέλετε να τροποποιήσετε αυτήν ή να υποβάλετε νέα;
-                </p>
-                <div class="mt-4">
-                    <button id="modify" class="d-inline-block btn btn-dark hover_orange">Τροποποίηση Τρέχουσας Υποβολής</button>
-                    <button id="submit_new" class="d-inline-block btn btn-dark hover_orange">Νέα Υποβολή</button>
+            <h2 class="orange_header mb-4">Διαχείριση Μαθημάτων/Συγγραμμάτων</h2>
+            <?php if  ( $alreadyUploadedPS ) {  ?>
+                <div class="text-center">
+                    <p>
+                        Έχετε ήδη κάνει μία υποβολή για το νέο Πρόγραμμα Σπουδών του τρέχοντος ακαδημαϊκού έτους.
+                        Θέλετε να τροποποιήσετε αυτήν ή να υποβάλετε νέα;
+                    </p>
+                    <div class="mt-4">
+                        <button id="modify" class="d-inline-block btn btn-dark hover_orange">Τροποποίηση Τρέχουσας Υποβολής</button>
+                        <button id="submit_new" class="d-inline-block btn btn-dark hover_orange">Νέα Υποβολή</button>
+                    </div>
                 </div>
-            </div>
-        <?php } else { ?>
-            <div class="text-center">
-                <p>Θέλω να υποβάλω το νέο Πρόγραμμα Σπουδών...</p><br>
-                <div class="option_size d-inline-block border border-dark p-3">
-                    <p>Ανεβάζοντας κατάλληλο .xml αρχείο:</p>
-                    <form id="PS_xml_input_form" method="post" action="/sdi1500102_sdi1500165/php/notimplemented.php">
-                        <div class="d-flex justify-content-between mt-1">
-                            <div class="custom-file d-inline-block">
-                                <input id="PS_xml_input" class="custom-file-input" type="file" name="file_input" accept=".xml">
-                                <label class="custom-file-label" for="inputGroupFile01"><i>Choose .xml file</i></label>
+            <?php } else { ?>
+                <div class="text-center">
+                    <p>Θέλω να υποβάλω το νέο Πρόγραμμα Σπουδών...</p><br>
+                    <div class="option_size d-inline-block border border-dark p-3">
+                        <p>Ανεβάζοντας κατάλληλο .xml αρχείο:</p>
+                        <form id="PS_xml_input_form" method="post" action="/sdi1500102_sdi1500165/php/notimplemented.php">
+                            <div class="d-flex justify-content-between mt-1">
+                                <div class="custom-file d-inline-block">
+                                    <input id="PS_xml_input" class="custom-file-input" type="file" name="file_input" accept=".xml">
+                                    <label class="custom-file-label" for="inputGroupFile01"><i>Choose .xml file</i></label>
+                                </div>
+                                <div class="d-inline-block text-right ml-3">
+                                    <input type="submit" value="Υποβολή" class="btn btn-dark hover_orange">
+                                </div>
                             </div>
-                            <div class="d-inline-block text-right ml-3">
-                                <input type="submit" value="Υποβολή" class="btn btn-dark hover_orange">
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                    <br>
+                    <div id="or">ή</div>
+                    <br>
+                    <a href="/sdi1500102_sdi1500165/php/secretary_app2.php">
+                        <button class="d-inline-block btn btn-lg btn-dark hover_orange">Συμπληρώνοντας αντίστοιχες φόρμες</button>
+                    </a>
                 </div>
-                <br>
-                <div id="or">ή</div>
-                <br>
-                <a href="/sdi1500102_sdi1500165/php/secretary_app2.php">
-                    <button class="d-inline-block btn btn-lg btn-dark hover_orange">Συμπληρώνοντας αντίστοιχες φόρμες</button>
-                </a>
-            </div>
-        <?php } ?>
-        <br>
-        <?php include("../footer.html"); ?>
+        <?php   } 
+            } else if (!$hasSession){
+                include("../notconnected.html");
+            } else {
+                include("unauthorized.php");
+            } 
+            include("../footer.html"); 
+        ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/secretary.js"></script>
 <body>

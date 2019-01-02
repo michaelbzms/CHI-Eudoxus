@@ -188,15 +188,25 @@ a:hover.breadcrump_item {
     font-weight: bold;
 }
 
-.linkLike {
+.linklike {
     cursor: pointer;
     color: #007bff !important;
     text-decoration: none !important;
 }
 
 .linkLike:hover {
-    color: #0056b3 !important;
-    text-decoration: underline !important;
+    color: #cd7400 !important;
+}
+
+#register, #login{
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: none;
+}
+
+#register:hover, #login:hover {
+    color: #cd7400;
+    text-decoration: none;
 }
 
 .requiredField:after {

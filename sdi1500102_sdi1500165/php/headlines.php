@@ -5,9 +5,9 @@
 <!-- Login | register (or log out) always on top right-->
 <div id="login_register_div">
     <?php if ( ! isset($_SESSION["userID"]) ) { ?>
-        <a class="linkLike" data-toggle="modal" data-target="#loginModal"><img class="pr-1" src="/sdi1500102_sdi1500165/images/login.png"/>Log In</a>
+        <a id="login" data-toggle="modal" data-target="#loginModal"><img class="pr-1" src="/sdi1500102_sdi1500165/images/login.png"/>Είσοδος</a>
          | 
-        <a href="/sdi1500102_sdi1500165/php/register_page.php?userType=student">Register</a> <!-- Only ONE register page for all-->
+        <a id="register" href="/sdi1500102_sdi1500165/php/register_page.php?userType=student">Εγγραφή</a> <!-- Only ONE register page for all-->
     <?php } else { ?>
     	<form action="/sdi1500102_sdi1500165/index.php" method="POST">
         	<button class="btn btn-outline-secondary" name="logoutSubmit" type="submit"><img class="pr-2" src="/sdi1500102_sdi1500165/images/logout.png"/>Log Out</button>
@@ -22,15 +22,15 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
 			    <form action="#" method="POST">
-			        <h2 class="text-center">Log in</h2>       
+			        <h2 class="text-center" style="color: #cd7400; font-weight: 500;">Είσοδος</h2>       
 			        <div class="form-group">
-			            <input name="email" type="email" class="login-form-control w-100" placeholder="Email" required="required">
+			            <input name="email" type="email" class="form-control login-form-control w-100" placeholder="Email" required="required">
 			        </div>
 			        <div class="form-group">
-			            <input name="password" type="password" class="login-form-control w-100" placeholder="Password" required="required">
+			            <input name="password" type="password" class="form-control login-form-control w-100" placeholder="Password" required="required">
 			        </div>
 			        <div class="form-group">
-			            <button name="loginSubmit" type="submit" class="btn login-btn btn-primary btn-block">Log in</button>
+			            <button name="loginSubmit" type="submit" class="btn login-btn btn-primary btn-block">Σύνδεση</button>
 			        </div>
 			        <div class="clearfix text-center">
 			            <a href="/sdi1500102_sdi1500165/php/notimplemented.php" class="text-center">Ξεχάσατε τον κωδικό σας?</a><br>

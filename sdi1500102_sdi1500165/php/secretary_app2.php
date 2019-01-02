@@ -24,29 +24,22 @@
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων</a> > 
             <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app2.php">Υποβολή Μαθημάτων</a>
         </nav>
-        <h2 class="orange_header mb-4">Υποβολή Μαθημάτων Προγράμματος Σπουδών</h2>
         <?php 
-            // check in all secretary_app.php pages for safety (and also backend)
-            $alreadyUploadedPS = False;  // TODO: check in with db
-            if  ( $alreadyUploadedPS ) { 
+            $conn = connectToDB();
+            if (! $conn) {
+                die("Database connection failed: " . mysqli_connect_error());
+            }
+            $hasSession = array_key_exists('userID', $_SESSION);
+            if ( $hasSession && userIsType($conn, $_SESSION['userID'], 'secretary') ) {
+                $secretary_id = $_SESSION['userID'];
         ?>
-            <div class="text-center">
-                <p>
-                    Έχετε ήδη κάνει μία υποβολή για το νέο Πρόγραμμα Σπουδών για το τρέχον ακαδημαϊκό έτος.
-                    Θέλετε να τροποποιήσετε αυτήν ή να υποβάλετε νέα;
-                </p>
-                <div class="mt-4">
-                    <button id="modify" class="d-inline-block btn btn-dark hover_orange">Τροποποίηση Τρέχουσας Υποβολής</button>
-                    <button id="submit_new" class="d-inline-block btn btn-dark hover_orange">Νέα Υποβολή</button>
-                </div>
-            </div>
-        <?php } else { ?>
+            <h2 class="orange_header mb-4">Υποβολή Μαθημάτων Προγράμματος Σπουδών</h2>
             <div id="classes_list">
-                <p>Προσθήκη/Αφαίρεση Μαθημάτων στο Πρόγραμμα Σπουδών:</p><br>
+                <p>Προσθήκη / Αφαίρεση / Επεξεργασία Μαθημάτων στο Πρόγραμμα Σπουδών:</p><br>
                 <ol>
                     <?php // TODO: get already submitted classes FROM DB for this secretary's PS into <li>s 
-                        $classes = [[12101, "Γραμμική Άλγεβρα", "E.Ράπτης", 1, ""], 
-                                    [12102, "Πιθανότητες Ι", "Ν.Παπαδάτος", 1, ""] ];
+                        $classes = [[12101, "Γραμμική Άλγεβρα", "E.Ράπτης", 2, ""], 
+                                    [12102, "Πιθανότητες Ι", "Ν.Παπαδάτος", 3, ""] ];
                         foreach ($classes as $class) {                         
                             echo <<<EOT
                             <li>
@@ -77,11 +70,11 @@
                                                 <div class="row mb-2">
                                                     <div class="col-5">Εξάμηνο:</div>
                                                     <div class="col-7">
-                                                        <select class="form-control semester_param" name="semester" form="add_class_form" value="$class[3]">
+                                                        <select class="form-control semester_param" name="semester" form="add_class_form">
 EOT;
                                                             $maxSemesters = 8; // TODO: get from db
                                                                 for ( $i = 1 ; $i <= 8 ; $i++ ) { ?>
-                                                                    <option value="<?php echo $i ?>"><?php echo $i ?>ο</option>
+                                                                    <option value="<?php echo $i ?>" <?php if ( $i == $class[3] ) echo " selected=\"selected\" " ?>><?php echo $i ?>ο</option>
                                                             <?php }
                                                             echo <<<EOT
                                                         </select>
@@ -158,8 +151,13 @@ EOT;
                     <button id="submit_PS" class="btn btn-dark hover_orange m-4"><img src="/sdi1500102_sdi1500165/images/checkGreen.png" style="width:20px; height:20px; margin-right: 10px"/>Υποβολή Μαθημάτων ΠΣ</button>
                 </div>
             </div>
-        <?php } ?>
-        <?php include("../footer.html"); ?>
+        <?php 
+            } else if (!$hasSession){
+                include("../notconnected.html");
+            } else {
+                include("unauthorized.php");
+            }
+            include("../footer.html"); ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/secretary.js"></script>
 <body>
