@@ -30,8 +30,8 @@
             if (! $conn) {
                 die("Database connection failed: " . mysqli_connect_error());
             }
-            $hasSession = array_key_exists('userID', $_SESSION);
-            if ( $hasSession && userIsType($conn, $_SESSION['userID'], 'secretary') ) {
+            $hasSession = isset($_SESSION['userID']);
+            if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'secretary' ) {
                 $secretary_id = $_SESSION['userID'];
         ?>
             <h2 class="orange_header mb-4">Υποβολή Συγγραμμάτων Μαθημάτων του ΠΣ</h2>
@@ -110,7 +110,9 @@ EOT;
         } else {
             include("../unauthorized.html");
         }
-        include("../footer.html"); ?>
+        include("../footer.html"); 
+        $conn->close();
+    ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/secretary.js"></script>
 <body>

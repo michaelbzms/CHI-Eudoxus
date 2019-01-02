@@ -7,7 +7,7 @@ $("#submit_new").on("click", function(){
     if ( !confirm("Προσοχή! Αυτή η πράξη θα διαγράψει την προηγούμενή σας δήλωση. Είστε σίγουροι ότι θέλετε να προχωρήσετε;") ) return;
     // send ajax (AND WAIT FOR IT TO FINISH) to delete current submission
     $.ajax({
-        url: "/sdi1500102_sdi1500165/php/control/secretary_delete_classes.php",
+        url: "/sdi1500102_sdi1500165/php/AJAX/secretary_delete_classes.php",
         type: "post",
         data: {},
         async: false,   /* (!) Synchronous */
@@ -36,7 +36,7 @@ $("#add_class_form").on("submit", function(e){
     };
     if (checkValid(formdata["id"]) && checkValid(formdata["title"]) && checkValid(formdata["professors"]) ){
         $.ajax({
-            url: "/sdi1500102_sdi1500165/php/control/secretary_add_class.php?removePrevious=false",
+            url: "/sdi1500102_sdi1500165/php/AJAX/secretary_add_class.php?removePrevious=false",
             type: "post",
             data: formdata,
             success: function(response){
@@ -75,7 +75,7 @@ $(document).on('submit','.edit_class_form', function(e){
     };
     if (checkValid(formdata["id"]) && checkValid(formdata["title"]) && checkValid(formdata["professors"]) ){
         $.ajax({
-            url: "/sdi1500102_sdi1500165/php/control/secretary_add_class.php?removePrevious=true",
+            url: "/sdi1500102_sdi1500165/php/AJAX/secretary_add_class.php?removePrevious=true",
             type: "post",
             data: formdata,
             success: function(response){

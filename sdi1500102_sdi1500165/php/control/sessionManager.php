@@ -1,7 +1,7 @@
 <?php
 	session_start(); 
 	$dbConnectionPath = $_SERVER['DOCUMENT_ROOT'];
-	$dbConnectionPath .= "/sdi1500102_sdi1500165/php/dbConnection.php";
+	$dbConnectionPath .= "/sdi1500102_sdi1500165/php/control/dbConnection.php";
 	include_once($dbConnectionPath);
     if ( isset($_POST['loginSubmit']) ) {
     	// TODO: better connection management per page?
@@ -28,7 +28,7 @@
         	$mysqli->close();
 	    	die("Could not prepare SQL statement");
 	    }
-    } elseif ( isset($_POST['logoutSubmit']) ) {
+    } else if ( isset($_POST['logoutSubmit']) ) {
         session_unset();
         session_destroy();
     }

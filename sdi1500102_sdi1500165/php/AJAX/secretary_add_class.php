@@ -1,10 +1,10 @@
 <?php 
-    include "../dbConnection.php";
+    include("../control/sessionManager.php");
     $update_previous_from_db = $_GET["removePrevious"];
     $conn = connectToDB();
     if (! $conn) { die("AJAX Database connection failed: " . mysqli_connect_error()); }
-    $hasSession = array_key_exists('userID', $_SESSION);
-    if ( $hasSession && userIsType($conn, $_SESSION['userID'], 'secretary') ) {
+    $hasSession = isset($_SESSION['userID']);
+    if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'secretary' ) {
         $secretary_id = $_SESSION['userID']; 
         $num_of_semesters = getNumberOfSemesters($conn, $secretary_id);
         if ( $update_previous_from_db == "true"){
@@ -74,4 +74,5 @@ EOT;
     } else {
         echo "NO_SESSION";
     }
+    $conn->close();
 ?>
