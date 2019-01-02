@@ -36,4 +36,17 @@ function userIsType($conn, $user_id, $type) : bool {
     $result = $conn->query($sqlQuery);
     return $result->num_rows > 0;  // == 1
 }
+
+function getNumberOfSemesters($conn, $secr_id) : int {
+    if (! $conn){
+        echo "Warning: connection not established at getNumberOfSemesters()!";
+        return -1;
+    }
+    $result = $conn->query("SELECT number_of_semesters FROM SECRETARIES WHERE idUser = $secr_id;");
+    if ($result->num_rows > 0){
+        return $result->fetch_assoc()['number_of_semesters'];
+    } else {   // should not happen
+        return -1;
+    }
+}
 ?>

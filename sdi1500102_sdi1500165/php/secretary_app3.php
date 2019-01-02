@@ -45,7 +45,7 @@
                         <ul id="left_class_list">
                             <?php
                                 $i = 0;
-                                foreach ($classes as $class){
+                                foreach ($classes as $class) {
                                     echo <<<EOT
                                         <li id="selector_$i" class="left_class_list_item">
                                             [$class[0]] $class[1]
@@ -108,7 +108,7 @@ EOT;
         } else if (!$hasSession){
             include("../notconnected.html");
         } else {
-            include("unauthorized.php");
+            include("../unauthorized.html");
         }
         include("../footer.html"); ?>
     </div>

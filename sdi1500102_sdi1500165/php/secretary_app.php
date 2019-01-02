@@ -75,7 +75,7 @@
             } else if (!$hasSession){
                 include("../notconnected.html");
             } else {
-                include("unauthorized.php");
+                include("../unauthorized.html");
             } 
             include("../footer.html"); 
         ?>

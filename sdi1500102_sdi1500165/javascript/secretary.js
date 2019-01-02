@@ -1,12 +1,22 @@
 $("#modify").on("click", function(){
-    window.location.href = "/sdi1500102_sdi1500165/php/notimplemented.php";  // TODO: implement?
+    window.location.href = "/sdi1500102_sdi1500165/php/secretary_app2.php";
 });
 
 $("#submit_new").on("click", function(){
     // ask for validation
     if ( !confirm("Προσοχή! Αυτή η πράξη θα διαγράψει την προηγούμενή σας δήλωση. Είστε σίγουροι ότι θέλετε να προχωρήσετε;") ) return;
     // send ajax (AND WAIT FOR IT TO FINISH) to delete current submission
-    //TODO
+    $.ajax({
+        url: "/sdi1500102_sdi1500165/php/control/secretary_delete_classes.php",
+        type: "post",
+        data: {},
+        async: false,   /* (!) Synchronous */
+        success: function(response){
+            if ( response === "NO_SESSION"){
+                alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
+            }
+        }
+    });
     // redirect user to submit page
     window.location.replace("/sdi1500102_sdi1500165/php/secretary_app.php");
 });
@@ -30,12 +40,14 @@ $("#add_class_form").on("submit", function(e){
             type: "post",
             data: formdata,
             success: function(response){
-                if (response !== "" && response !== "FAIL") {
+                if (response !== "" && response !== "FAIL" && response !== "NO_SESSION") {
                     $("#ajax_target_div").append(response);
+                    $('html, body').animate({
+                        scrollTop: $("#add_class_form").offset().top
+                    }, 450);
+                } else if ( response === "NO_SESSION"){
+                    alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
                 }
-                $('html, body').animate({
-                    scrollTop: $("#add_class_form").offset().top
-                }, 450);
                 // clear data:
                 document.getElementById("add_class_form").reset();
                 $("#semester_param").val(formdata["semester"]);  // reset but save this
@@ -54,6 +66,7 @@ $(document).on('submit','.edit_class_form', function(e){
     e.preventDefault();
     var item = $(this).closest("li");
     var formdata = { 
+        class_id : item.val(),
         title : item.find(".title_param").val(),
         id : item.find(".id_param").val(),
         professors : item.find(".prof_param").val(),
@@ -66,8 +79,10 @@ $(document).on('submit','.edit_class_form', function(e){
             type: "post",
             data: formdata,
             success: function(response){
-                if (response !== "" && response !== "FAIL") {
+                if (response !== "" && response !== "FAIL" && response !== "NO_SESSION") {
                     item.html(response);
+                } else if ( response === "NO_SESSION"){
+                    alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
                 }
             }
         });

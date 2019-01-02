@@ -32,17 +32,24 @@
             $hasSession = array_key_exists('userID', $_SESSION);
             if ( $hasSession && userIsType($conn, $_SESSION['userID'], 'secretary') ) {
                 $secretary_id = $_SESSION['userID'];
+                $num_of_semesters = getNumberOfSemesters($conn, $secretary_id);
         ?>
             <h2 class="orange_header mb-4">Υποβολή Μαθημάτων Προγράμματος Σπουδών</h2>
             <div id="classes_list">
                 <p>Προσθήκη / Αφαίρεση / Επεξεργασία Μαθημάτων στο Πρόγραμμα Σπουδών:</p><br>
                 <ol>
                     <?php // TODO: get already submitted classes FROM DB for this secretary's PS into <li>s 
-                        $classes = [[12101, "Γραμμική Άλγεβρα", "E.Ράπτης", 2, ""], 
-                                    [12102, "Πιθανότητες Ι", "Ν.Παπαδάτος", 3, ""] ];
-                        foreach ($classes as $class) {                         
+                        $sqlQuery = "SELECT idClass, title, code, professors, semester, comments FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id ORDER BY semester;";
+                        $result = $conn->query($sqlQuery);
+                        $classes = [];
+                        if ($result->num_rows > 0) {
+                            while( $row = $result->fetch_assoc() ){
+                                $classes[$row["idClass"]] = [ $row["code"], $row["title"], $row["professors"], $row["semester"], $row["comments"] ];
+                            }
+                        }
+                        foreach ($classes as $class_id => $class) {                         
                             echo <<<EOT
-                            <li>
+                            <li value="$class_id">
                                 <div class="item">
                                     <span class="id_span">[$class[0]]</span><h2>$class[1]</h2><img class="delete_box" src="/sdi1500102_sdi1500165/images/red_cross_box.png"/><img class="edit_box" src="/sdi1500102_sdi1500165/images/yellow_pencil_box.png"/><br>
                                     <span class="field_span"><label>Καθηγητής/ές: </label>$class[2]</span><span class="field_span"><label>Εξάμηνο: </label>$class[3]o</span><br>
@@ -72,8 +79,7 @@
                                                     <div class="col-7">
                                                         <select class="form-control semester_param" name="semester" form="add_class_form">
 EOT;
-                                                            $maxSemesters = 8; // TODO: get from db
-                                                                for ( $i = 1 ; $i <= 8 ; $i++ ) { ?>
+                                                                for ( $i = 1 ; $i <= $num_of_semesters ; $i++ ) { ?>
                                                                     <option value="<?php echo $i ?>" <?php if ( $i == $class[3] ) echo " selected=\"selected\" " ?>><?php echo $i ?>ο</option>
                                                             <?php }
                                                             echo <<<EOT
@@ -126,8 +132,8 @@ EOT;
                                             <div class="col-5">Εξάμηνο:</div>
                                             <div class="col-7">
                                                 <select class="form-control" name="semester" form="add_class_form" id="semester_param">
-                                                    <?php $maxSemesters = 8; // TODO: get from db
-                                                        for ( $i = 1 ; $i <= 8 ; $i++ ) { ?>
+                                                    <?php
+                                                        for ( $i = 1 ; $i <= $num_of_semesters ; $i++ ) { ?>
                                                             <option value="<?php echo $i ?>"><?php echo $i ?>ο</option>
                                                     <?php } ?>
                                                 </select>
@@ -155,7 +161,7 @@ EOT;
             } else if (!$hasSession){
                 include("../notconnected.html");
             } else {
-                include("unauthorized.php");
+                include("../unauthorized.html");
             }
             include("../footer.html"); ?>
     </div>
