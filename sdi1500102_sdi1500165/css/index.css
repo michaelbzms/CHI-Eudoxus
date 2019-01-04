@@ -140,17 +140,20 @@
     background-image: url("/sdi1500102_sdi1500165/images/user_info.jpg");
 }
 
-#register_secr {
+#register_student {
     background-image: url("/sdi1500102_sdi1500165/images/signupLightBlue.jpg");
 }
 
-/* TODO: Different pic? */
-#register_publ_one, #register_publ_many {
+#register_secr {
+    background-image: url("/sdi1500102_sdi1500165/images/signupBlue.jpg");
+}
+
+#register_publisher {
     background-image: url("/sdi1500102_sdi1500165/images/signupOrange.jpg");
 }
 
 #register_dist {
-    background-image: url("/sdi1500102_sdi1500165/images/signupBlue.jpg");
+    background-image: url("/sdi1500102_sdi1500165/images/signupLightBlue.jpg");
 }
 
 #price {

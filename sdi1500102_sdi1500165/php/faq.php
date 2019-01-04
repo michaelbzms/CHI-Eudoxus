@@ -9,6 +9,24 @@
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/navbar.css"/>
 	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
+    <style>
+        /* TODO: dark font? Also move this in a .css? */
+        .orange_nav a {
+            color: #c06d00;
+        }
+
+        .orange_nav a:hover {
+            color: rgb(231, 150, 0);
+        }
+
+        .tab-content a {
+            color: #1c6fc7;
+        }
+
+        .tab-content a:hover {
+            color: rgb(231, 150, 0);
+        }
+    </style>
 	<!-- JS -->
 	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
 	<script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
@@ -23,9 +41,9 @@
             <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/faq.php">FAQ</a>
         </nav>
         <div class="m-2 text_div">
-            <h2>Συχνές Ερωτήσεις</h2>
+            <h2 class="mb-3">Συχνές Ερωτήσεις</h2>
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs orange_nav">
                 <li class="nav-item pl-2">
                     <a class="nav-link active" data-toggle="tab" href="#student">Φοιτητές</a>
                 </li>

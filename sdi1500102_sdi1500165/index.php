@@ -39,6 +39,9 @@
             <div id="student_options">
                 <h3>...Φοιτητής</h3>
                 <div class="option-list">
+                    <a id="register_dist" class="option-item" href="php/register_page.php?userType=student">
+                        <div class="option-title">Εγγραφή Φοιτητή</div>
+                    </a>
                     <a id="book_declaration" class="option-item" href="php/book_declaration1.php">
                         <div class="option-title">Δήλωση Συγγραμμάτων</div>
                     </a>
@@ -56,11 +59,8 @@
             <div id="publisher_options">
                 <h3>...Εκδότης</h3>
                 <div class="option-list">
-                    <a id="register_publ_one" class="option-item" href="php/register_page.php">
-                        <div class="option-title">Εγγραφή Αυτοεκδότη</div>
-                    </a>
-                    <a id="register_publ_many" class="option-item register_background" href="php/register_page.php">
-                        <div class="option-title">Εγγραφή Εκδοτικού Οίκου</div>
+                    <a id="register_publisher" class="option-item" href="php/register_page.php?userType=publisher">
+                        <div class="option-title">Εγγραφή Εκδότη</div>
                     </a>
                     <a class="option-item" href="php/notimplemented.php">
                         <div class="option-title">Διαχείριση Συγγραμμάτων</div>
@@ -73,7 +73,7 @@
             <div id="secretary_options">
                 <h3>...Υπάλληλος Γραμματίας Τμήματος</h3>
                 <div class="option-list">
-                    <a id="register_secr" class="option-item" href="php/register_page.php">
+                    <a id="register_secr" class="option-item" href="php/register_page.php?userType=secretary">
                         <div class="option-title">Εγγραφή Γραμματείας</div>
                     </a>
                     <a class="option-item" href="php/secretary_app.php">
@@ -84,7 +84,7 @@
             <div id="distribution_point_options">
                 <h3>...Υπάλληλος Σημείου Διανομής</h3>
                 <div class="option-list">
-                    <a id="register_dist" class="option-item" href="php/register_page.php">
+                    <a id="register_dist" class="option-item" href="php/register_page.php?userType=distPoint">
                         <div class="option-title">Εγγραφή Σημείου Διανομής</div>
                     </a>
                     <a id="book_delivery" class="option-item" href="php/notimplemented.php">
