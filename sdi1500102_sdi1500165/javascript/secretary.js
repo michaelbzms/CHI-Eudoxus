@@ -32,7 +32,9 @@ $("#add_class_form").on("submit", function(e){
         id : $("#id_param").val(),
         professors : $("#prof_param").val(),
         semester : $("#semester_param").val(),
-        comments : $("#comment_param").val()
+        comments : $("#comment_param").val(),
+        isForeign : ( $("#is_foreign_param").is(":checked") ) ? "true" : "false",
+        foreignDepartment : $("#foreign_department_param").val()
     };
     if (checkValid(formdata["id"]) && checkValid(formdata["title"]) && checkValid(formdata["professors"]) ){
         $.ajax({
@@ -51,6 +53,7 @@ $("#add_class_form").on("submit", function(e){
                 // clear data:
                 document.getElementById("add_class_form").reset();
                 $("#semester_param").val(formdata["semester"]);  // reset but save this
+                $("#add_class_form").find(".foreign_class_options").hide();
             }
         });
     } else {
@@ -71,7 +74,9 @@ $(document).on('submit','.edit_class_form', function(e){
         id : item.find(".id_param").val(),
         professors : item.find(".prof_param").val(),
         semester : item.find(".semester_param").val(),
-        comments : item.find(".comment_param").val()
+        comments : item.find(".comment_param").val(),
+        isForeign : ( item.find(".is_foreign_param").is(":checked") ) ? "true" : "false",
+        foreignDepartment : item.find(".foreign_department_param").val()
     };
     if (checkValid(formdata["id"]) && checkValid(formdata["title"]) && checkValid(formdata["professors"]) ){
         $.ajax({
@@ -108,6 +113,8 @@ $(document).on('click','.edit_box', function(e){
 $(document).on('click','.delete_box', function(e){
     if (confirm("Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το μάθημα;")){
         $(this).closest("li").remove();
+        // + ajax to delete it from db
+        //TODO
     }
 });
 
@@ -115,4 +122,13 @@ $(document).on('click','.cancel_edit', function(e){
     var item = $(this).closest("li");
     item.find(".container").hide();
     item.find(".item").show();
+});
+
+$(document).on('change','.foreign_class_checkbox', function(e){
+    var options = $(this).closest('.row').find(".foreign_class_options");
+    if ($(this).is(':checked')){
+        options.show();
+    } else {
+        options.hide();
+    }
 });

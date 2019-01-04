@@ -7,6 +7,7 @@
     if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'secretary' ) {
         $secretary_id = $_SESSION['userID']; 
         $num_of_semesters = getNumberOfSemesters($conn, $secretary_id);
+        $affiliated_departments = getAllDepartementsForUniExceptGiven($conn, getUniForSecretary($conn, $secretary_id), $secretary_id);
         if ( $update_previous_from_db == "true"){
             // update  previous version of this class
             //TODO
@@ -15,7 +16,7 @@
             //TODO
         }
         // then return it to be dynamically added to view
-        $class = [$_POST["id"], $_POST["title"], $_POST["professors"], $_POST["semester"], $_POST["comments"] ];
+        $class = [$_POST["id"], $_POST["title"], $_POST["professors"], $_POST["semester"], $_POST["comments"], ($_POST["isForeign"] == "true") ? true : false , $_POST["foreignDepartment"] ];
         if ( !($update_previous_from_db == "true") ) echo "<li>\n";
         echo <<<EOT
             <div class="item">
@@ -55,8 +56,25 @@ EOT;
                                 </div>
                             </div>
                             <div class="row mb-2">
-                                <div class="col-5">Σχόλια</div>
-                                <div class="col-7"><textarea class="form-control comment_param" name="comments" value="$class[4]"></textarea></div>
+                                <div class="col-5">Άλλης Σχολής:</div>
+                                <div class="col-7 row pr-0">
+EOT;
+                                    ?>
+                                    <div class="col-2"><input type="checkbox" class="form-control form-chek-input foreign_class_checkbox is_foreign_param" name="isForeign" <?php if ($class[5]) echo "checked"; ?>></div>
+                                    <div class="col-10 pr-0 foreign_class_options" <?php if (!$class[5]) echo "style=\"display: none\"" ?>>
+                                        <select class="form-control foreign_department_param" name="foreign_department" form="edit_class_form">
+                                            <option value="" disabled hidden <?php if ( !$class[5] || $class[6] == "" ) echo " selected=\"selected\" " ?>>Επιλέξτε σχολή</option>
+                                            <?php    foreach ( $affiliated_departments as $department ) { ?>
+                                                    <option value="<?php echo $department[0] ?>" <?php if ( $class[5] && $class[6] == $department[0] ) echo " selected=\"selected\" " ?>><?php echo $department[1] ?></option>
+                                            <?php }
+                                            echo <<<EOT
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5">Σχόλια:</div>
+                                <div class="col-7"><textarea class="form-control comment_param" name="comments" value="$class[4]">$class[4]</textarea></div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-5"></div>

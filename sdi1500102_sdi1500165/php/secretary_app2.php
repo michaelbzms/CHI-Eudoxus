@@ -33,18 +33,19 @@
             if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'secretary' ) {
                 $secretary_id = $_SESSION['userID'];
                 $num_of_semesters = getNumberOfSemesters($conn, $secretary_id);
+                $affiliated_departments = getAllDepartementsForUniExceptGiven($conn, getUniForSecretary($conn, $secretary_id), $secretary_id);
         ?>
             <h2 class="orange_header mb-4">Υποβολή Μαθημάτων Προγράμματος Σπουδών</h2>
             <div id="classes_list">
                 <p>Προσθήκη / Αφαίρεση / Επεξεργασία Μαθημάτων στο Πρόγραμμα Σπουδών:</p><br>
                 <ol>
                     <?php // TODO: get already submitted classes FROM DB for this secretary's PS into <li>s 
-                        $sqlQuery = "SELECT idClass, title, code, professors, semester, comments FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id ORDER BY semester;";
+                        $sqlQuery = "SELECT idClass, title, code, professors, semester, comments, FREE_CLASS_SECRETARIES_id FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id ORDER BY semester;";
                         $result = $conn->query($sqlQuery);
                         $classes = [];
                         if ($result->num_rows > 0) {
                             while( $row = $result->fetch_assoc() ){
-                                $classes[$row["idClass"]] = [ $row["code"], $row["title"], $row["professors"], $row["semester"], $row["comments"] ];
+                                $classes[$row["idClass"]] = [ $row["code"], $row["title"], $row["professors"], $row["semester"], $row["comments"], ($row['FREE_CLASS_SECRETARIES_id'] != NULL ) ? true : false, ($row['FREE_CLASS_SECRETARIES_id'] != NULL ) ? $row['FREE_CLASS_SECRETARIES_id'] : -1 ];
                             }
                         }
                         foreach ($classes as $class_id => $class) {                         
@@ -77,7 +78,7 @@
                                                 <div class="row mb-2">
                                                     <div class="col-5">Εξάμηνο:</div>
                                                     <div class="col-7">
-                                                        <select class="form-control semester_param" name="semester" form="add_class_form">
+                                                        <select class="form-control semester_param" name="semester" form="edit_class_form">
 EOT;
                                                                 for ( $i = 1 ; $i <= $num_of_semesters ; $i++ ) { ?>
                                                                     <option value="<?php echo $i ?>" <?php if ( $i == $class[3] ) echo " selected=\"selected\" " ?>><?php echo $i ?>ο</option>
@@ -87,8 +88,25 @@ EOT;
                                                     </div>
                                                 </div>
                                                 <div class="row mb-2">
-                                                    <div class="col-5">Σχόλια</div>
-                                                    <div class="col-7"><textarea class="form-control comment_param" name="comments" value="$class[4]"></textarea></div>
+                                                    <div class="col-5">Άλλης Σχολής:</div>
+                                                    <div class="col-7 row pr-0">
+EOT;
+                                                        ?>
+                                                        <div class="col-2"><input type="checkbox" class="form-control form-chek-input foreign_class_checkbox is_foreign_param" name="isForeign" <?php if ($class[5]) echo "checked"; ?>></div>
+                                                        <div class="col-10 pr-0 foreign_class_options" <?php if (!$class[5]) echo "style=\"display: none\"" ?>>
+                                                            <select class="form-control foreign_department_param" name="foreign_department" form="edit_class_form">
+                                                                <option value="" disabled hidden <?php if ( !$class[5] || $class[6] == "" ) echo " selected=\"selected\" " ?>>Επιλέξτε σχολή</option>
+                                                                <?php    foreach ( $affiliated_departments as $department ) { ?>
+                                                                        <option value="<?php echo $department[0] ?>" <?php if ( $class[5] && $class[6] == $department[0] ) echo " selected=\"selected\" " ?>><?php echo $department[1] ?></option>
+                                                                <?php }
+                                                                echo <<<EOT
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-5">Σχόλια:</div>
+                                                    <div class="col-7"><textarea class="form-control comment_param" name="comments" value="$class[4]">$class[4]</textarea></div>
                                                 </div>
                                                 <div class="row mb-2">
                                                     <div class="col-5"></div>
@@ -132,7 +150,7 @@ EOT;
                                             <div class="col-5">Εξάμηνο:</div>
                                             <div class="col-7">
                                                 <select class="form-control" name="semester" form="add_class_form" id="semester_param">
-                                                    <?php
+                                                    <?php // TODO: PROBLEM: WHAT IF THIS IS A CLASS FROM ANOTHER DEPARTMENT AND THAT ONE HAS A DIFFERENT NUMBER OF SEMESTERS?!?!?! This should change dynamically -> overwritten by some js maybe?
                                                         for ( $i = 1 ; $i <= $num_of_semesters ; $i++ ) { ?>
                                                             <option value="<?php echo $i ?>"><?php echo $i ?>ο</option>
                                                     <?php } ?>
@@ -140,7 +158,22 @@ EOT;
                                             </div>
                                         </div>
                                         <div class="row mb-2">
-                                            <div class="col-5">Σχόλια</div>
+                                            <div class="col-5">Άλλης Σχολής:</div>
+                                            <div class="col-7 row pr-0">
+                                                <div class="col-2"><input type="checkbox" class="form-control form-chek-input foreign_class_checkbox" name="isForeign" id="is_foreign_param"></div>
+                                                <div class="col-10 pr-0 foreign_class_options" style="display: none">
+                                                    <select class="form-control" name="foreign_department" form="add_class_form" id="foreign_department_param">
+                                                        <option value="" selected disabled hidden>Επιλέξτε σχολή</option>
+                                                        <?php
+                                                            foreach ( $affiliated_departments as $department ) { ?>
+                                                                <option value="<?php echo $department[0] ?>"><?php echo $department[1] ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-5">Σχόλια:</div>
                                             <div class="col-7"><textarea class="form-control" name="comments" id="comment_param"></textarea></div>
                                         </div>
                                         <div class="row mb-2">
