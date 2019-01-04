@@ -12,12 +12,19 @@
         $sqlStmt = "";
         if ( $update_previous_from_db == "true"){
             // update  previous version of this class
-            // TODO
+            $sqlStmt = $conn->prepare("UPDATE UNIVERSITY_CLASSES SET title = ?, code = ?, professors = ?, semester = ?, comments = ?, FREE_CLASS_SECRETARIES_id = ? WHERE idClass = " . $_POST['class_id'] . ";");
+            $foreignDepartment = ($_POST["isForeign"] == "true") ? $_POST["foreignDepartment"] : null;
+            $sqlStmt->bind_param("ssssss", $_POST['title'], $_POST['id'], $_POST['professors'], $_POST['semester'], $_POST['comments'], $foreignDepartment);
+            $sqlStmt->execute();
             $class_id = $_POST['class_id'];
         } else {
             // add new class to db
-            // TODO
-            $class_id = -1; //TODO: get from db
+            // template: INSERT INTO `eudoxusdb`.`UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) VALUES (...);
+            $sqlStmt = $conn->prepare("INSERT INTO eudoxusdb.UNIVERSITY_CLASSES VALUES (default, $secretary_id, ?, ?, ?, ?, ?, ?)"); 
+            $foreignDepartment = ($_POST["isForeign"] == "true") ? $_POST["foreignDepartment"] : null;
+            $sqlStmt->bind_param("ssssss", $foreignDepartment, $_POST['title'], $_POST['id'], $_POST['professors'], $_POST['semester'], $_POST['comments']);
+            $sqlStmt->execute();
+            $class_id = $conn->insert_id;;    // last id from db   TODO: Is this safe? Considering no other insert is going on with the same $conn then it should be -> each AJAX call makes its one connection
         }
         // then return it to be dynamically added to view
         $class = [$_POST["id"], $_POST["title"], $_POST["professors"], $_POST["semester"], $_POST["comments"], ($_POST["isForeign"] == "true") ? true : false , $_POST["foreignDepartment"] ];
