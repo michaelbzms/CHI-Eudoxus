@@ -39,7 +39,7 @@ function getAllDepartementsForUniExceptGiven($mysqli, $uni, $exceptionID){   // 
     $list = [];
     if ($result->num_rows > 0) {
         while ($row =  $result->fetch_assoc()){
-            $list[] = [$row['idUser'], $row['department'], $row['number_of_semesters']];
+            $list[$row['idUser']] = [$row['idUser'], $row['department'], $row['number_of_semesters']];
         }
     }
     return $list;

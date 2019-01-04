@@ -5,17 +5,17 @@
 	include_once($dbConnectionPath);
     if ( isset($_POST['loginSubmit']) ) {
     	// TODO: better connection management per page?
-        $mysqli = connectToDB();
-        if ( mysqli_connect_errno() ) {
-            die("Database connection failed: " . mysqli_connect_error());
+        $conn = connectToDB();
+        if ( $conn->connect_errno ) {
+            die("Database connection failed: " . $conn->connect_errno());
         }
-        if ($sqlStmt = $mysqli->prepare("SELECT idUser, user_type FROM USERS WHERE email=? AND password=?") ) {
+        if ($sqlStmt = $conn->prepare("SELECT idUser, user_type FROM USERS WHERE email=? AND password=?") ) {
 			$sqlStmt->bind_param("ss", $_POST['email'], $_POST['password']);
 	    	$sqlStmt->execute();
 	    	$result = $sqlStmt->get_result();
 	        if ($result->num_rows == 0) {
 	    		$sqlStmt->close();
-        		$mysqli->close();
+        		$conn->close();
 	        	// TODO: redirect to error page
 	            die("Wrong credentials");
 	        }
@@ -23,9 +23,9 @@
 	        $_SESSION['userType'] = $userRow['user_type'];
 	        $_SESSION['userID'] = $userRow['idUser'];
 	    	$sqlStmt->close();
-        	$mysqli->close();
+        	$conn->close();
 	    } else {
-        	$mysqli->close();
+        	$conn->close();
 	    	die("Could not prepare SQL statement");
 	    }
     } else if ( isset($_POST['logoutSubmit']) ) {

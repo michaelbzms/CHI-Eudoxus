@@ -2,25 +2,33 @@
     include("../control/sessionManager.php");
     $update_previous_from_db = $_GET["removePrevious"];
     $conn = connectToDB();
-    if (! $conn) { die("AJAX Database connection failed: " . mysqli_connect_error()); }
+    if ( $conn->connect_errno ) { die("AJAX Database connection failed: " . $conn->connect_error); }
     $hasSession = isset($_SESSION['userID']);
     if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'secretary' ) {
         $secretary_id = $_SESSION['userID']; 
         $num_of_semesters = getNumberOfSemesters($conn, $secretary_id);
         $affiliated_departments = getAllDepartementsForUniExceptGiven($conn, getUniForSecretary($conn, $secretary_id), $secretary_id);
+        $class_id = -1;
+        $sqlStmt = "";
         if ( $update_previous_from_db == "true"){
             // update  previous version of this class
-            //TODO
+            // TODO
+            $class_id = $_POST['class_id'];
         } else {
             // add new class to db
-            //TODO
+            // TODO
+            $class_id = -1; //TODO: get from db
         }
         // then return it to be dynamically added to view
         $class = [$_POST["id"], $_POST["title"], $_POST["professors"], $_POST["semester"], $_POST["comments"], ($_POST["isForeign"] == "true") ? true : false , $_POST["foreignDepartment"] ];
-        if ( !($update_previous_from_db == "true") ) echo "<li>\n";
-        echo <<<EOT
+        if ( !($update_previous_from_db == "true") ) echo "<li value=\"$class_id\">\n";
+            echo <<<EOT
             <div class="item">
-                <span class="id_span">[$class[0]]</span><h2>$class[1]</h2><img class="delete_box" src="/sdi1500102_sdi1500165/images/red_cross_box.png"/><img class="edit_box" src="/sdi1500102_sdi1500165/images/yellow_pencil_box.png"/><br>
+                <span class="id_span">[$class[0]]</span><h2>$class[1]</h2><img class="delete_box" src="/sdi1500102_sdi1500165/images/red_cross_box.png"/><img class="edit_box" src="/sdi1500102_sdi1500165/images/yellow_pencil_box.png"/>
+EOT;
+                if ( $class[5] ) { echo "<span class=\"foreign_title\">(" . $affiliated_departments[$class[6]][1] . ")</span>"; }
+                echo<<<EOT
+                <br>
                 <span class="field_span"><label>Καθηγητής/ές: </label>$class[2]</span><span class="field_span"><label>Εξάμηνο: </label>$class[3]o</span><br>
                 <label>Σχόλια: </label>$class[4]
             </div>
