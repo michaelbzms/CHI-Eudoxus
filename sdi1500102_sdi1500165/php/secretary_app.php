@@ -26,7 +26,7 @@
         <?php 
             $conn = connectToDB();
             if (! $conn) {
-                die("Database connection failed: " . mysqli_connect_error());
+                die("Database connection failed: " . $conn->connect_error);
             }
             $hasSession = isset($_SESSION['userID']);
             if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'secretary' ) {
@@ -40,11 +40,11 @@
                 <div class="text-center">
                     <p>
                         Έχετε ήδη κάνει μία υποβολή για το νέο Πρόγραμμα Σπουδών του τρέχοντος ακαδημαϊκού έτους.
-                        Θέλετε να τροποποιήσετε αυτήν ή να υποβάλετε νέα;
+                        Θέλετε να υποβάλετε νέα ή να τροποποιήσετε αυτήν;
                     </p>
                     <div class="mt-4">
+                        <button id="submit_new" class="d-inline-block btn btn-danger">Νέα Υποβολή</button>
                         <button id="modify" class="d-inline-block btn btn-dark hover_orange">Τροποποίηση Τρέχουσας Υποβολής</button>
-                        <button id="submit_new" class="d-inline-block btn btn-dark hover_orange">Νέα Υποβολή</button>
                     </div>
                 </div>
             <?php } else { ?>

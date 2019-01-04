@@ -21,6 +21,22 @@ $("#submit_new").on("click", function(){
     window.location.replace("/sdi1500102_sdi1500165/php/secretary_app.php");
 });
 
+$("#delete_all_classes").on("click", function(){
+    // ask for validation
+    if ( !confirm("Προσοχή! Αυτή η πράξη θα διαγράψει όλα τα μαθήματα που έχετε δηλώσει μέχρι τώρα. Είστε σίγουροι ότι θέλετε να προχωρήσετε;") ) return;
+    // send ajax (AND WAIT FOR IT TO FINISH) to delete current submission
+    $.ajax({
+        url: "/sdi1500102_sdi1500165/php/AJAX/secretary_delete_classes.php",
+        type: "post",
+        data: {},
+        success: function(response){
+            if ( response === "NO_SESSION"){
+                alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
+            }
+        }
+    });
+});
+
 function checkValid(str){
     return str.replace(/\s/g, "") !== "";
 }
@@ -112,9 +128,22 @@ $(document).on('click','.edit_box', function(e){
 
 $(document).on('click','.delete_box', function(e){
     if (confirm("Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το μάθημα;")){
-        $(this).closest("li").remove();
-        // + ajax to delete it from db
-        //TODO
+        var item = $(this).closest("li")
+        $.ajax({
+            url: "/sdi1500102_sdi1500165/php/AJAX/secretary_delete_classes.php",
+            type: "post",
+            data: { class_id : $(this).closest("li").val() },
+            async: false,   /* (!) Synchronous */
+            success: function(response){
+                if (response !== "FAIL" && response !== "NO_SESSION") {
+                    item.remove();
+                } else if ( response === "NO_SESSION"){
+                    alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
+                } else {
+                    alert("Unknown Error: Could not delete class.");   // should not happen
+                }
+            }
+        });
     }
 });
 

@@ -9,7 +9,6 @@
         $num_of_semesters = getNumberOfSemesters($conn, $secretary_id);
         $affiliated_departments = getAllDepartementsForUniExceptGiven($conn, getUniForSecretary($conn, $secretary_id), $secretary_id);
         $class_id = -1;
-        $sqlStmt = "";
         if ( $update_previous_from_db == "true"){
             // update  previous version of this class
             $sqlStmt = $conn->prepare("UPDATE UNIVERSITY_CLASSES SET title = ?, code = ?, professors = ?, semester = ?, comments = ?, FREE_CLASS_SECRETARIES_id = ? WHERE idClass = " . $_POST['class_id'] . ";");

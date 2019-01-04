@@ -37,7 +37,10 @@
         ?>
             <h2 class="orange_header mb-4">Υποβολή Μαθημάτων Προγράμματος Σπουδών</h2>
             <div id="classes_list">
-                <p>Προσθήκη / Αφαίρεση / Επεξεργασία Μαθημάτων στο Πρόγραμμα Σπουδών:</p><br>
+                <div class="mb-4">
+                    <p class="d-inline">Προσθήκη / Αφαίρεση / Επεξεργασία Μαθημάτων στο Πρόγραμμα Σπουδών:</p>
+                    <button id="delete_all_classes" class="d-inline-block float-right btn btn-outline-danger">Διαγραφή όλων</button>
+                </div>
                 <ol>
                     <?php // TODO: get already submitted classes FROM DB for this secretary's PS into <li>s 
                         $sqlQuery = "SELECT idClass, title, code, professors, semester, comments, FREE_CLASS_SECRETARIES_id FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id ORDER BY semester;";
