@@ -28,17 +28,22 @@
         <?php 
             $conn = connectToDB();
             if (! $conn) {
-                die("Database connection failed: " . mysqli_connect_error());
+                die("Database connection failed: " . $conn->connect_error);
             }
             $hasSession = isset($_SESSION['userID']);
             if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'secretary' ) {
                 $secretary_id = $_SESSION['userID'];
+                $affiliated_departments = getAllDepartementsForUniExceptGiven($conn, getUniForSecretary($conn, $secretary_id), $secretary_id);
+                $sqlQuery1 = "SELECT idClass, code, title, professors, semester, FREE_CLASS_SECRETARIES_id FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id;";
+                $result1 = $conn->query($sqlQuery1);
+                $classes = [];
+                if ($result1->num_rows > 0){
+                    while ($row = $result1->fetch_assoc()){
+                        $classes[$row['idClass']] = [$row['code'], $row['title'], $row['professors'], $row['semester'], ($row['FREE_CLASS_SECRETARIES_id'] != NULL ) ? true : false, ($row['FREE_CLASS_SECRETARIES_id'] != NULL ) ? $row['FREE_CLASS_SECRETARIES_id'] : -1];
+                    }
+                }
         ?>
             <h2 class="orange_header mb-4">Υποβολή Συγγραμμάτων Μαθημάτων του ΠΣ</h2>
-            <?php  
-                // TODO: get classes from db
-                $classes = [[12101,'Γραμμική Άλγεβρα'], [12102, 'Πιθανότητες Ι'], [12103, 'Ανάλυση Ι'], [12104, 'Θεωρία Παιγνίων'], [12105, 'Στατιστική Ι'], [12106, 'Στοχαστικός Λογισμός'], [12107, 'Επιχειρισιακή Έρευνα'], [12108, 'Διαφορική Γεωμετρία'], [12109, 'Ανάλυση ΙΙ'], [12110, 'Πιθανότητες ΙΙ'], [12112, 'Μιγαδική Ανάλυση']];    
-            ?>
             <div>
                 <div class="row">
                     <div class="col-4 pr-0">
@@ -46,9 +51,10 @@
                             <?php
                                 $i = 0;
                                 foreach ($classes as $class) {
+                                    $freeclassstr = ($class[4]) ? "(" . $affiliated_departments[$class[5]][1] . ")" : "";
                                     echo <<<EOT
                                         <li id="selector_$i" class="left_class_list_item">
-                                            [$class[0]] $class[1]
+                                            [$class[0]] $class[1] $freeclassstr
                                         </li>
                                         <script> <!-- scripts for selecting classes from the list -->
                                             $("#selector_$i").on("click", function(){
@@ -68,17 +74,40 @@ EOT;
                             <p>Επιλέξτε ένα μάθημα από την λίστα αριστερά για να προσθέσετε τα συγγράμματά του.</p>
                         </div>
                         <?php
+                            $sqlStmt = $conn->prepare("SELECT a.idBook, a.title, a.authors, a.ISBN, a.published_year, a.front_page_url FROM BOOKS a, UNIVERSITY_CLASSES_has_BOOKS b WHERE a.idBook = b.BOOKS_id AND b.UNIVERSITY_CLASSES_id = ?;");
+                            $idClass = -1;
+                            $sqlStmt->bind_param("s", $idClass);
                             $i = 0;
-                            foreach ($classes as $class){
+                            foreach ($classes as $class_id => $class) {
+                                $idClass = $class_id;
+                                $freeclassstr = ($class[4]) ? "<span class=\"foreign_title\">(" . $affiliated_departments[$class[5]][1] . ")</span>" : "";
+                                $sqlStmt->execute();
+                                $results2 = $sqlStmt->get_result();
+                                $books = [];
+                                if ( $results2->num_rows > 0 ){
+                                    while ($row = $results2->fetch_assoc()){
+                                        $books[$row['idBook']] = [$row['title'], $row['authors'], $row['published_year'], $row['ISBN'], ($row['front_page_url'] != null) ? $row['front_page_url'] : "/sdi1500102_sdi1500165/images/default_book_front_page.jpg"];
+                                    }
+                                }
                                 echo <<<EOT
-                                    <div id="content_$i" class="content" style="display: none">
-                                        <span class="id_span">[$class[0]]</span><h2>$class[1]</h2><br>
-                                        <p class="mb-0">Προσθήκη/Αφαίρεση συγγραμμάτων:</p><br>
-                                        <ol>
+                                    <div value="$class_id" id="content_$i" class="content" style="display: none">
+                                        <span class="id_span">[$class[0]]</span><h2>$class[1]</h2> $freeclassstr<br>
+                                        <p class="mb-0">Προσθήκη / Αφαίρεση συγγραμμάτων:</p><br>
+                                        <ol class="book_list">
 EOT;
-                                            $books = []; //TODO get from db
-                                            foreach ($books as $book) {
-                                                echo "<li>book_info</li>\n";  // TODO: show book
+                                            foreach ($books as $book_id => $book) {
+                                                echo <<<EOT
+                                                <li val="$book_id">
+                                                    <div class="row">
+                                                        <div class="col-2"><img class="book_cover_icon" src="$book[4]"/></div>
+                                                        <div class="col-10">
+                                                            <h3>$book[0]</h3><img class="delete_book_box" src="/sdi1500102_sdi1500165/images/red_cross_box.png"/><br>
+                                                            <span class="field_span"><label>Συγγραφέας/ες:</label> $book[1]</span><span class="field_span"><label>Έτος:</label> $book[2]</span><br>
+                                                            <label>ISBN:</label> $book[3]<br>
+                                                        </div>
+                                                    </div>
+                                                </li>
+EOT;
                                             }
                                     echo <<<EOT
                                             <li>
@@ -100,6 +129,7 @@ EOT;
 EOT;
                                 $i++;
                             }
+                            $sqlStmt->close();
                         ?>
                     </div>
                 </div>
