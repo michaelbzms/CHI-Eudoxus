@@ -53,7 +53,7 @@
                         }
                         foreach ($classes as $class_id => $class) {                         
                             echo <<<EOT
-                            <li value="$class_id">
+                            <li class_id="$class_id">
                                 <div class="item">
                                     <span class="id_span">[$class[0]]</span><h2>$class[1]</h2><img class="delete_box" src="/sdi1500102_sdi1500165/images/red_cross_box.png"/><img class="edit_box" src="/sdi1500102_sdi1500165/images/yellow_pencil_box.png"/>
 EOT;
@@ -194,7 +194,7 @@ EOT;
                     </li>
                 </ol>
                 <div class="text-center">
-                    <button id="submit_PS" class="btn btn-dark hover_orange m-4"><img src="/sdi1500102_sdi1500165/images/checkGreen.png" style="width:20px; height:20px; margin-right: 10px"/>Υποβολή Μαθημάτων ΠΣ</button>
+                    <button id="submit_PS" class="btn btn-dark hover_orange m-4"><img src="/sdi1500102_sdi1500165/images/checkGreen.png" style="width:20px; height:20px;"/>Υποβολή Μαθημάτων ΠΣ</button>
                 </div>
             </div>
         <?php 

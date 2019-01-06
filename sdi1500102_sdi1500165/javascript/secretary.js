@@ -86,7 +86,7 @@ $(document).on('submit','.edit_class_form', function(e){
     e.preventDefault();
     var item = $(this).closest("li");
     var formdata = { 
-        class_id : item.val(),
+        class_id : item.attr("class_id"),
         title : item.find(".title_param").val(),
         id : item.find(".id_param").val(),
         professors : item.find(".prof_param").val(),
@@ -122,6 +122,10 @@ $("#submit_PS").on("click", function(){
     window.location.href = "/sdi1500102_sdi1500165/php/secretary_app3.php";
 });
 
+$("#finish_PS").on("click", function(){
+    window.location.href = "/sdi1500102_sdi1500165/index.php";
+});
+
 $(document).on('click','.edit_box', function(e){
     var item = $(this).closest("li");
     item.find(".item").hide();
@@ -134,7 +138,7 @@ $(document).on('click','.delete_box', function(e){
         $.ajax({
             url: "/sdi1500102_sdi1500165/php/AJAX/secretary_delete_classes.php",
             type: "post",
-            data: { class_id : item.val() },
+            data: { class_id : item.attr("class_id") },
             async: false,   /* (!) Synchronous */
             success: function(response){
                 if (response !== "FAIL" && response !== "NO_SESSION") {
@@ -166,7 +170,8 @@ $(document).on('change','.foreign_class_checkbox', function(e){
 
 $(".add_book_form").on("submit", function(e){
     e.preventDefault();
-    var class_id = $(this).closest("li").val();
+    var class_id = $(this).closest("li").attr("class_id");
+    var class_num = $(this).closest("li").attr("class_num");
     var formdata = { 
         idClass : class_id,
         idBook : $(this).find(".book_id_input").val()
@@ -177,15 +182,20 @@ $(".add_book_form").on("submit", function(e){
             type: "post",
             data: formdata,
             success: function(response){
-                if (response !== "" && response !== "FAIL" && response !== "NOT_EXISTS" && response !== "NO_SESSION") {
-                    $("#ajax_target_div").append(response);
+                if (response !== "" && response !== "FAIL" && response !== "NOT_EXISTS" && response !== "ALREADY_EXISTS" && response !== "NO_SESSION") {
+                    $("#ajax_target_div" + class_id).append(response);
+                } else if ( response === "ALREADY_EXISTS") {
+                    alert("Το σύγγραμμα αυτό υπάρχει ήδη.")
                 } else if ( response === "NOT_EXISTS") {
                     alert("Δεν υπάρχει σύγγραμμα με αυτόν τον κωδικό στον Εύδοξο.")
                 } else if ( response === "NO_SESSION"){
                     alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
+                } else {
+                    alert("Unknown error");   // should not happen
                 }
-                // clear data:
-                //$(this).reset();   // <- fix
+                // reset data:
+                //$('.add_book_form input[type="text"]').val('');   // has bad sideffect with "required" property
+                $(".add_book_form")[class_num].reset();             // best solution so far + only resets the one
             }
         });
     } 
@@ -200,7 +210,7 @@ $(document).on('click','.delete_book_box', function(e){
         $.ajax({
             url: "/sdi1500102_sdi1500165/php/AJAX/secretary_delete_book.php",
             type: "post",
-            data: { book_id : item.val() },
+            data: { book_id : item.attr("book_id") },
             async: false,   /* (!) Synchronous */
             success: function(response){
                 if (response !== "FAIL" && response !== "NO_SESSION") {

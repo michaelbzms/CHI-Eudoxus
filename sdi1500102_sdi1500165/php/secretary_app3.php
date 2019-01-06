@@ -47,7 +47,7 @@
             <div>
                 <div class="row">
                     <div class="col-4 pr-0">
-                        <ul id="left_class_list">
+                        <ul id="left_class_list" class="mb-0">
                             <?php
                                 $i = 0;
                                 foreach ($classes as $class) {
@@ -97,7 +97,7 @@ EOT;
 EOT;
                                             foreach ($books as $book_id => $book) {
                                                 echo <<<EOT
-                                                <li value="$book_id">
+                                                <li book_id="$book_id">
                                                     <div class="row">
                                                         <div class="col-2"><img class="book_cover_icon" src="$book[4]"/></div>
                                                         <div class="col-10">
@@ -110,10 +110,10 @@ EOT;
 EOT;
                                             }
                                     echo <<<EOT
-                                            <div id="ajax_target_div">
+                                            <div id="ajax_target_div$class_id">
 
                                             </div>
-                                            <li value="$class_id">
+                                            <li class_num="$i" class_id="$class_id">
                                                 <form class="add_book_form"> <!-- AJAX form to add new book -->
                                                     <div class="row">
                                                         <div class="col-2">
@@ -136,6 +136,9 @@ EOT;
                         ?>
                     </div>
                 </div>
+            </div>
+            <div class="text-center">
+                <button id="finish_PS" class="btn btn-dark hover_orange m-4"><img src="/sdi1500102_sdi1500165/images/checkGreen.png" style="width:20px; height:20px;"/>Ολοκλήρωση Υποβολής Συγγραμμάτων</button>
             </div>
     <?php 
         } else if (!$hasSession){

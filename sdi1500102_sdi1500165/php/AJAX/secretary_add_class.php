@@ -29,7 +29,7 @@
         }
         // then return it to be dynamically added to view
         $class = [$_POST["id"], $_POST["title"], $_POST["professors"], $_POST["semester"], $_POST["comments"], ($_POST["isForeign"] == "true") ? true : false , $_POST["foreignDepartment"] ];
-        if ( !($update_previous_from_db == "true") ) echo "<li value=\"$class_id\">\n";
+        if ( !($update_previous_from_db == "true") ) echo "<li class_id=\"$class_id\">\n";
             echo <<<EOT
             <div class="item">
                 <span class="id_span">[$class[0]]</span><h2>$class[1]</h2><img class="delete_box" src="/sdi1500102_sdi1500165/images/red_cross_box.png"/><img class="edit_box" src="/sdi1500102_sdi1500165/images/yellow_pencil_box.png"/>
