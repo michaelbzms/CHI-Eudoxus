@@ -90,14 +90,14 @@ EOT;
                                     }
                                 }
                                 echo <<<EOT
-                                    <div value="$class_id" id="content_$i" class="content" style="display: none">
+                                    <div id="content_$i" class="content" style="display: none">
                                         <span class="id_span">[$class[0]]</span><h2>$class[1]</h2> $freeclassstr<br>
                                         <p class="mb-0">Προσθήκη / Αφαίρεση συγγραμμάτων:</p><br>
                                         <ol class="book_list">
 EOT;
                                             foreach ($books as $book_id => $book) {
                                                 echo <<<EOT
-                                                <li val="$book_id">
+                                                <li value="$book_id">
                                                     <div class="row">
                                                         <div class="col-2"><img class="book_cover_icon" src="$book[4]"/></div>
                                                         <div class="col-10">
@@ -110,7 +110,10 @@ EOT;
 EOT;
                                             }
                                     echo <<<EOT
-                                            <li>
+                                            <div id="ajax_target_div">
+
+                                            </div>
+                                            <li value="$class_id">
                                                 <form class="add_book_form"> <!-- AJAX form to add new book -->
                                                     <div class="row">
                                                         <div class="col-2">
@@ -118,7 +121,7 @@ EOT;
                                                         </div>
                                                         <div class="col-10">
                                                             <label>Κωδικός Συγγράμματος στον Εύδοξο:</label><br>
-                                                            <input class="form-control book_id_input" type="text" name="book_id"/>
+                                                            <input class="form-control book_id_input" type="text" name="book_id" required/>
                                                             <button type="submit" class="btn btn-success mt-2">Προσθήκη</button>
                                                         </div>
                                                     </div>

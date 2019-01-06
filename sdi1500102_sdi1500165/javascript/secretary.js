@@ -52,7 +52,7 @@ $("#add_class_form").on("submit", function(e){
         isForeign : ( $("#is_foreign_param").is(":checked") ) ? "true" : "false",
         foreignDepartment : $("#foreign_department_param").val()
     };
-    if (checkValid(formdata["id"]) && checkValid(formdata["title"]) && checkValid(formdata["professors"]) ){
+    if (checkValid(formdata["id"]) && checkValid(formdata["title"]) && checkValid(formdata["professors"]) && (formdata['isForeign'] !== "true" || (formdata['foreignDepartment'] !== null && formdata['foreignDepartment'] !== "" ) ) ) {
         $.ajax({
             url: "/sdi1500102_sdi1500165/php/AJAX/secretary_add_class.php?removePrevious=false",
             type: "post",
@@ -77,6 +77,7 @@ $("#add_class_form").on("submit", function(e){
         if (!checkValid(formdata["title"])) remaining += "- Τίτλος Μαθήματος\n";
         if (!checkValid(formdata["id"])) remaining += "- Κωδικός Μαθήματος\n";
         if (!checkValid(formdata["professors"])) remaining += "- Διδάσκοντας/ες\n";
+        if (!(formdata['isForeign'] !== "true" || (formdata['foreignDepartment'] !== null && formdata['foreignDepartment'] !== "" ) )) remaining += "- Επιλέξτε Σχολή\n";
         alert("Παρακαλώ συμπληρώστε ορθά τα ακόλουθα πεδία:\n" + remaining);
     }
 });
@@ -94,7 +95,7 @@ $(document).on('submit','.edit_class_form', function(e){
         isForeign : ( item.find(".is_foreign_param").is(":checked") ) ? "true" : "false",
         foreignDepartment : item.find(".foreign_department_param").val()
     };
-    if (checkValid(formdata["id"]) && checkValid(formdata["title"]) && checkValid(formdata["professors"]) ){
+    if (checkValid(formdata["id"]) && checkValid(formdata["title"]) && checkValid(formdata["professors"]) && (formdata['isForeign'] !== "true" || (formdata['foreignDepartment'] !== null && formdata['foreignDepartment'] !== "" ) )){
         $.ajax({
             url: "/sdi1500102_sdi1500165/php/AJAX/secretary_add_class.php?removePrevious=true",
             type: "post",
@@ -112,6 +113,7 @@ $(document).on('submit','.edit_class_form', function(e){
         if (!checkValid(formdata["title"])) remaining += "- Τίτλος Μαθήματος\n";
         if (!checkValid(formdata["id"])) remaining += "- Κωδικός Μαθήματος\n";
         if (!checkValid(formdata["professors"])) remaining += "- Διδάσκοντας/ες\n";
+        if (!(formdata['isForeign'] !== "true" || (formdata['foreignDepartment'] !== null && formdata['foreignDepartment'] !== "" ) )) remaining += "- Επιλέξτε Σχολή\n";
         alert("Παρακαλώ συμπληρώστε ορθά τα ακόλουθα πεδία:\n" + remaining);
     }
 });
@@ -128,11 +130,11 @@ $(document).on('click','.edit_box', function(e){
 
 $(document).on('click','.delete_box', function(e){
     if (confirm("Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το μάθημα;")){
-        var item = $(this).closest("li")
+        var item = $(this).closest("li");
         $.ajax({
             url: "/sdi1500102_sdi1500165/php/AJAX/secretary_delete_classes.php",
             type: "post",
-            data: { class_id : $(this).closest("li").val() },
+            data: { class_id : item.val() },
             async: false,   /* (!) Synchronous */
             success: function(response){
                 if (response !== "FAIL" && response !== "NO_SESSION") {
@@ -159,5 +161,56 @@ $(document).on('change','.foreign_class_checkbox', function(e){
         options.show();
     } else {
         options.hide();
+    }
+});
+
+$(".add_book_form").on("submit", function(e){
+    e.preventDefault();
+    var class_id = $(this).closest("li").val();
+    var formdata = { 
+        idClass : class_id,
+        idBook : $(this).find(".book_id_input").val()
+    };
+    if (checkValid(formdata["idBook"])) {
+        $.ajax({
+            url: "/sdi1500102_sdi1500165/php/AJAX/secretary_add_book.php",
+            type: "post",
+            data: formdata,
+            success: function(response){
+                if (response !== "" && response !== "FAIL" && response !== "NOT_EXISTS" && response !== "NO_SESSION") {
+                    $("#ajax_target_div").append(response);
+                } else if ( response === "NOT_EXISTS") {
+                    alert("Δεν υπάρχει σύγγραμμα με αυτόν τον κωδικό στον Εύδοξο.")
+                } else if ( response === "NO_SESSION"){
+                    alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
+                }
+                // clear data:
+                //$(this).reset();   // <- fix
+            }
+        });
+    } 
+    else {
+        alert("Παρακαλώ συμπληρώστε ορθά τα ακόλουθα πεδία:\n" + "- Kωδικός Συγγράμματος στον Εύδοξο\n");
+    }
+});
+
+$(document).on('click','.delete_book_box', function(e){
+    if (confirm("Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σύγγραμμα;")){
+        var item = $(this).closest("li");
+        $.ajax({
+            url: "/sdi1500102_sdi1500165/php/AJAX/secretary_delete_book.php",
+            type: "post",
+            data: { book_id : item.val() },
+            async: false,   /* (!) Synchronous */
+            success: function(response){
+                if (response !== "FAIL" && response !== "NO_SESSION") {
+                    item.remove();
+                } else if ( response === "NO_SESSION"){
+                    alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
+                } else {
+                    alert("Unknown Error: Could not delete book.");   // should not happen
+                }
+            }
+        });
     }
 });

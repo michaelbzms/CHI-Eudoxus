@@ -10,6 +10,7 @@
             $sqlStmt = $conn->prepare("DELETE FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id AND idClass = ?;");
             $sqlStmt->bind_param("s", $_POST['class_id']);
             $sqlStmt->execute();
+            $sqlStmt->close();
         } else {
             // Delete all classes (and their associated books -> cascade) from db for this secretary
             $sql = "DELETE FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id;";

@@ -24,4 +24,5 @@ INSERT INTO `eudoxusdb`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `aut
 						 VALUES (default, 5, 'Ιατρικό Δίκαιο', '1678-1523-2871-3454', 'Ιπποκράτης', 2009,  932, 'ιατρικό δίκαιο γιατρός γιατροί νομική νόμος δικαιοσύνη', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `eudoxusdb`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
 						 VALUES (default, 6, 'Πώς να εκπαιδεύσετε τον δράκο σας', '7475-5647-4544-4754', 'Daennerys Targeryen', 2012, 423, 'δράκο εκπαιδεύσετε εκπαίδευση δράκου πώς', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
 /* TODO: add more */
