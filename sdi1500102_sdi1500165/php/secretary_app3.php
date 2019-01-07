@@ -34,7 +34,7 @@
             if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'secretary' ) {
                 $secretary_id = $_SESSION['userID'];
                 $affiliated_departments = getAllDepartementsForUniExceptGiven($conn, getUniForSecretary($conn, $secretary_id), $secretary_id);
-                $sqlQuery1 = "SELECT idClass, code, title, professors, semester, FREE_CLASS_SECRETARIES_id FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id;";
+                $sqlQuery1 = "SELECT idClass, code, title, professors, semester, FREE_CLASS_SECRETARIES_id FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id ORDER BY semester;";
                 $result1 = $conn->query($sqlQuery1);
                 $classes = [];
                 if ($result1->num_rows > 0){
@@ -92,6 +92,7 @@ EOT;
                                 echo <<<EOT
                                     <div id="content_$i" class="content" style="display: none">
                                         <span class="id_span">[$class[0]]</span><h2>$class[1]</h2> $freeclassstr<br>
+                                        $class[2], $class[3]ο Εξάμηνο<br><br>
                                         <p class="mb-0">Προσθήκη / Αφαίρεση συγγραμμάτων:</p><br>
                                         <ol class="book_list">
 EOT;

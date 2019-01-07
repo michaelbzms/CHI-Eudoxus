@@ -68,6 +68,9 @@
                     <a id="price"class="option-item" href="php/notimpkemented.php">
                         <div class="option-title">Κοστολόγιση</div>
                     </a>
+                    <a id="publisher_info" class="option-item" href="php/notimplemented.php">
+                        <div class="option-title">Επισκόπιση Στοιχείων Εκδότη</div>
+                    </a>
                 </div>
             </div>
             <div id="secretary_options">
@@ -79,6 +82,9 @@
                     <a class="option-item" href="php/secretary_app.php">
                         <div class="option-title">Διαχείριση Μαθημάτων/Συγγραμμάτων</div>
                     </a>
+                    <a id="secretary_info" class="option-item" href="php/secretary_info.php">
+                        <div class="option-title">Επισκόπιση Στοιχείων Γραμματείας</div>
+                    </a>
                 </div>
             </div>
             <div id="distribution_point_options">
@@ -89,6 +95,9 @@
                     </a>
                     <a id="book_delivery" class="option-item" href="php/notimplemented.php">
                         <div class="option-title">Παράδοση Συγγραμμάτων</div>
+                    </a>
+                    <a id="dist_point_info" class="option-item" href="php/notimplemented.php">
+                        <div class="option-title">Επισκόπιση Στοιχείων Σημείου Διανομής</div>
                     </a>
                 </div>
             </div>
