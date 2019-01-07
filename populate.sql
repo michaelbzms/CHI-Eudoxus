@@ -25,6 +25,7 @@ INSERT INTO `eudoxusdb`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `aut
 INSERT INTO `eudoxusdb`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
 						 VALUES (default, 6, 'Πώς να εκπαιδεύσετε τον δράκο σας', '7475-5647-4544-4754', 'Daennerys Targeryen', 2012, 423, 'δράκο εκπαιδεύσετε εκπαίδευση δράκου πώς', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
+/* ANNOUNCEMENTS */
 INSERT INTO `eudoxusdb`.`ANNOUNCEMENTS` (`idAnnouncement`, `title`, `text`, `category`, `date`) 
 VALUES (default, 'Έναρξη Δήλωσης και Διανομής Συγγραμμάτων Χειμερινής Περιόδου 2018-2019', 'Έναρξη Δήλωσης και Διανομής Συγγραμμάτων Χειμερινής Περιόδου 2018-2019 Έναρξη Δήλωσης και Διανομής Συγγραμμάτων Χειμερινής Περιόδου 2018-2019 Έναρξη Δήλωσης και Διανομής Συγγραμμάτων Χειμερινής Περιόδου 2018-2019 Έναρξη Δήλωσης και Διανομής Συγγραμμάτων Χειμερινής Περιόδου 2018-2019', 
         'general', '2018-10-23');
@@ -32,4 +33,15 @@ VALUES (default, 'Έναρξη Δήλωσης και Διανομής Συγγρ
 INSERT INTO `eudoxusdb`.`ANNOUNCEMENTS` (`idAnnouncement`, `title`, `text`, `category`, `date`) 
 VALUES (default, 'Παράταση περιόδου καταχώρησης συνολικών καταλόγων συγγραμμάτων 2018-2019', 'Παράταση περιόδου καταχώρησης συνολικών καταλόγων συγγραμμάτων 2018-2019 Παράταση περιόδου καταχώρησης συνολικών καταλόγων συγγραμμάτων 2018-2019 Παράταση περιόδου καταχώρησης συνολικών καταλόγων συγγραμμάτων 2018-2019\n\nΠαράταση περιόδου καταχώρησης συνολικών καταλόγων συγγραμμάτων 2018-2019 Παράταση περιόδου καταχώρησης συνολικών καταλόγων συγγραμμάτων 2018-2019.', 
         'secretaries', '2018-09-12');
+
+/* GLOBAL SEARCH */
+INSERT INTO `eudoxusdb`.`GLOBAL_SEARCH` (`idSearchItem`, `link`, `keywords`, `title`) VALUES (default, '/sdi1500102_sdi1500165/php/announcements.php', 'ανακοινώσεις ανακοίνωση announcements announcement', 'Ανακοινώσεις');
+INSERT INTO `eudoxusdb`.`GLOBAL_SEARCH` (`idSearchItem`, `link`, `keywords`, `title`) VALUES (default, '/sdi1500102_sdi1500165/php/faq.php', 'faq βοήθεια ερωτήσεις απαντήσεις πληροφορίες', 'FAQ');
+INSERT INTO `eudoxusdb`.`GLOBAL_SEARCH` (`idSearchItem`, `link`, `keywords`, `title`) VALUES (default, '/sdi1500102_sdi1500165/php/aboutus.php', 'faq about us πληροφορίες', 'About Us');
+INSERT INTO `eudoxusdb`.`GLOBAL_SEARCH` (`idSearchItem`, `link`, `keywords`, `title`) VALUES (default, '/sdi1500102_sdi1500165/php/contact.php', 'contact επικοινωνία email πληροφορίες', 'Επικοινωνία');
+INSERT INTO `eudoxusdb`.`GLOBAL_SEARCH` (`idSearchItem`, `link`, `keywords`, `title`) VALUES (default, '/sdi1500102_sdi1500165/php/book_search.php', 'book search αναζήτηση συγγραμμάτων συγγράμματα βιβλία βιβλίων βιβλίο', 'Αναζήτηση Συγγραμμάτων');
+INSERT INTO `eudoxusdb`.`GLOBAL_SEARCH` (`idSearchItem`, `link`, `keywords`, `title`) VALUES (default, '/sdi1500102_sdi1500165/php/book_declaration1.php', 'book declaration δήλωση συγγραμμάτων συγγράμματος φοιτητές φοιτητής', 'Δήλωση Συγγραμμάτων (Φοιτητές)');
+INSERT INTO `eudoxusdb`.`GLOBAL_SEARCH` (`idSearchItem`, `link`, `keywords`, `title`) VALUES (default, '/sdi1500102_sdi1500165/php/secretary_app.php', 'υποβολή μαθημάτων γραμματείες γραμματεία', 'Υποβολή Μαθημάτων (Γραμματείες)');
+INSERT INTO `eudoxusdb`.`GLOBAL_SEARCH` (`idSearchItem`, `link`, `keywords`, `title`) VALUES (default, '/sdi1500102_sdi1500165/php/secretary_app3.php', 'υποβολή συγγραμμάτων γραμματείες γραμματεία', 'Υποβολή Συγγραμμάτων (Γραμματείες)');
+
 /* TODO: add more */

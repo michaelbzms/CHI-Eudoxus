@@ -16,7 +16,7 @@ DROP SCHEMA IF EXISTS `eudoxusdb` ;
 -- -----------------------------------------------------
 -- Schema eudoxusdb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `eudoxusdb` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `eudoxusdb` DEFAULT CHARACTER SET utf8mb4 ;  -- better than utf8 according to the internet!
 USE `eudoxusdb` ;
 
 
@@ -188,11 +188,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `eudoxusdb`.`ANNOUNCEMENTS` ;
 
 CREATE TABLE IF NOT EXISTS `eudoxusdb`.`ANNOUNCEMENTS` (
-  `idAnnouncment` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `idAnnouncement` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(256) NOT NULL,
   `text` MEDIUMTEXT NOT NULL,
-  `category` ENUM('all', 'students', 'secretaries', 'publishers', 'dist_points', 'general') NULL,
-  PRIMARY KEY (`idAnnouncment`))
+  `category` ENUM('general', 'students', 'secretaries', 'publishers', 'dist_points') NULL,
+  `date` DATE NULL,
+  PRIMARY KEY (`idAnnouncement`))
 ENGINE = InnoDB;
 
 
@@ -205,6 +206,7 @@ CREATE TABLE IF NOT EXISTS `eudoxusdb`.`GLOBAL_SEARCH` (
   `idSearchItem` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `link` VARCHAR(128) NOT NULL,
   `keywords` VARCHAR(512) NOT NULL,
+  `title` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idSearchItem`))
 ENGINE = InnoDB;
 

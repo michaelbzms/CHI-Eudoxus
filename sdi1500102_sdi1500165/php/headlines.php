@@ -43,7 +43,7 @@
 </div>
 <!-- Global search bar -->
 <img id="global_help" src="/sdi1500102_sdi1500165/images/help_icon.png"/><!-- add onClick() event -->
-<form id="global_search_form" action="#" method="get">
+<form id="global_search_form" action="/sdi1500102_sdi1500165/php/global_search.php" method="get">
     <input class="form-control" type="text" name="global_search_str" placeholder="Αναζήτηση">
     <!-- submit with 'enter' -->
 </form>
