@@ -21,7 +21,7 @@
         <nav class="my_breadcrump">
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/index.php">Αρχική Σελίδα</a> > 
             <p class="breadcrump_item">Γραμματείες</p> > 
-            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων</a>
+            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων (1/3)</a>
         </nav>
         <?php 
             $conn = connectToDB();

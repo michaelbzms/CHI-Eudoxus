@@ -20,7 +20,7 @@
         <nav class="my_breadcrump">
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/index.php">Αρχική Σελίδα</a> > 
             <p class="breadcrump_item">Γραμματείες</p> > 
-            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_info.php">Επισκόπιση Στοιχείων Γραμματείας</a>
+            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_info.php">Επισκόπιση Στοιχείων Γραμματείας </a>
         </nav>
         <?php
             $conn = connectToDB();
@@ -29,7 +29,7 @@
             }
             $hasSession = isset($_SESSION['userID']);
             if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'secretary' ) {
-                $secretary_id = $_SESSION['userID'];            $studentID = $_SESSION['userID'];
+                $secretary_id = $_SESSION['userID'];
                 
                 $sqlQuery = "SELECT us.email, sec.* FROM SECRETARIES sec, Users us WHERE sec.idUser = $secretary_id AND us.idUser = sec.idUser;";
                 $result = $conn->query($sqlQuery);

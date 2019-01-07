@@ -21,9 +21,9 @@
         <nav class="my_breadcrump">
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/index.php">Αρχική Σελίδα</a> > 
             <p class="breadcrump_item">Γραμματείες</p> > 
-            <a class="breadcrump_item" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων</a> > 
-            <a class="breadcrump_item" href="/sdi1500102_sdi1500165/php/secretary_app2.php">Υποβολή Μαθημάτων</a> > 
-            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app3.php">Υποβολή Συγγραμμάτων</a>
+            <a class="breadcrump_item" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων (1/3)</a> > 
+            <a class="breadcrump_item" href="/sdi1500102_sdi1500165/php/secretary_app2.php">Υποβολή Μαθημάτων (2/3)</a> > 
+            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/secretary_app3.php">Υποβολή Συγγραμμάτων (3/3)</a>
         </nav>
         <?php 
             $conn = connectToDB();
@@ -61,6 +61,8 @@
                                                 $("#noselection").hide();
                                                 $(".content").hide();
                                                 $("#content_$i").show();
+                                                $(".left_class_list_item").removeClass("active_tab");
+                                                $(this).addClass("active_tab");
                                             });
                                         </script>
 EOT;
@@ -139,7 +141,7 @@ EOT;
                 </div>
             </div>
             <div class="text-center">
-                <button id="finish_PS" class="btn btn-dark hover_orange m-4"><img src="/sdi1500102_sdi1500165/images/checkGreen.png" style="width:20px; height:20px;"/>Ολοκλήρωση Υποβολής Συγγραμμάτων</button>
+                <button id="finish_PS" class="btn btn-dark hover_orange m-4"><img src="/sdi1500102_sdi1500165/images/checkGreen.png" style="width:20px; height:20px; margin-right: 10px;"/>Ολοκλήρωση Υποβολής Συγγραμμάτων</button>
             </div>
     <?php 
         } else if (!$hasSession){

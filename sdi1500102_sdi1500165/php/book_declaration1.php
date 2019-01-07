@@ -20,7 +20,7 @@
         <nav class="my_breadcrump">
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/index.php">Αρχική Σελίδα</a> > 
             <p class="breadcrump_item">Φοιτητές</p> > 
-            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/book_declaration1.php">Δήλωση Συγγραμμάτων</a>
+            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/book_declaration1.php">Δήλωση Συγγραμμάτων (1/3)</a>
         </nav>
         <h2 class="orange_header m-3"><?php print "Δήλωση Συγγραμμάτων"; ?></h2>
         <form action="/sdi1500102_sdi1500165/php/book_declaration2.php" method="POST">

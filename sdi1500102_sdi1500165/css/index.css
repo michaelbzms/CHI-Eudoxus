@@ -30,7 +30,7 @@
    	    -1px -1px 0 #008ed3,
   	    1px -1px 0 #008ed3,
    	    -1px 1px 0 #008ed3,
-   	    1px 1px 0 #008ed3;
+        1px 1px 0 #008ed3;
 }
 
 #student,  #publisher, #secretary, #distribution_point {
@@ -109,7 +109,7 @@
 .option-item:hover {
     text-decoration: none;
     color:white;
-    box-shadow: 0px 0px 3px 2px #008ed3;
+    box-shadow: 0px 0px 3px 2px #acd7ff;
 }
 
 .option-title {
@@ -119,9 +119,9 @@
    	    -1px -1px 0 #008ed3,
   	    1px -1px 0 #008ed3,
    	    -1px 1px 0 #008ed3,
-           1px 1px 0 #008ed3;
+        1px 1px 0 #008ed3;
     cursor: pointer;
-    margin-bottom: 2vh;
+    margin-bottom: 15px;
 }
 
 #book_declaration {

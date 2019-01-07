@@ -20,6 +20,7 @@
 
         .search_results_list ul li{
             list-style-type: circle;
+            font-size: 150%;
         }
 
         .search_results_list ul li{
