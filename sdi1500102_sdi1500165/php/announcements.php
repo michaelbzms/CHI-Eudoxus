@@ -11,7 +11,19 @@
 	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
 	<!-- JS -->
 	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
-	<script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
+    <!-- style for only this page -->
+    <style>
+        a {
+            text-decoration: none !important;
+        }
+
+        a:hover {
+            text-decoration: none !important;
+            color: rgb(231, 150, 0);
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="main-container">
@@ -22,35 +34,64 @@
             <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/announcements.php">Ανακοινώσεις</a>
         </nav>
         <div>
+            <?php 
+                $limmit = 50;       // CONFIG: Maximum ammount of announcements loaded
+                $category = "all";  // default
+                if ( isset($_GET['category']) ) { 
+                    $category = $_GET['category'];
+                }
+            ?>
+            <h2 class="orange_header">Ανακοινώσεις</h2>
             <br>
-            <h2 class="orange_header"><?php print "Ανακοινώσεις"; ?></h2>
-            <div style="width: 75vw; margin-left: 5vw;">
-                <form style="width: 200px;">
-                    <select name="Category" class="form-control">
-                        <option value="all">Όλες</option>
-                        <option value="general">Γενικές</option>
-                        <option value="students">Φοιτητές</option>
-                        <option value="publishers">Εκδότες</option>
-                        <option value="secretaries">Γραμματείες</option>
-                        <option value="distribution_points">Σημεία Διανομής</option>
-                        <option value="other_users">Άλλοι Χρήστες</option>
-                    </select> 
+            <div class="container">
+                <form id="pick_category" style="width: 200px;">
+                    <select id="select_cat" name="Category" class="form-control">
+                        <option value="all" <?php if ($category == "all") echo "selected" ?>>Όλες</option>
+                        <option value="general" <?php if ($category == "general") echo "selected" ?>>Γενικές</option>
+                        <option value="students" <?php if ($category == "students") echo "selected" ?>>Φοιτητές</option>
+                        <option value="publishers" <?php if ($category == "publishers") echo "selected" ?>>Εκδότες</option>
+                        <option value="secretaries" <?php if ($category == "secretaries") echo "selected" ?>>Γραμματείες</option>
+                        <option value="distribution_points" <?php if ($category == "distribution_points") echo "selected" ?>>Σημεία Διανομής</option>
+                    </select>
+                    <script>
+                        $("#pick_category").on('change', function(){
+                            window.location.replace("/sdi1500102_sdi1500165/php/announcements.php?category=" + $("#select_cat").val());
+                        });
+                    </script>
                 </form>
-                <br>
-                <table>
-                    <tr>
-                        <th>Ανακοινώσεις</th>
-                        <th>Ημερομηνία</th>
-                    </tr>
-                    <?php
-                        $Anouncements = [ ['Έναρξη Δήλωσης και Διανομής Συγγραμμάτων Χειμερινής Περιόδου 2018-2019', '23/10/2018'],
-                                        ['Παράταση περιόδου καταχώρησης συνολικών καταλόγων συγγραμμάτων 2018-2019', '12/09/2018'],
-                                        ['Παράταση ανάρτησης διδακτικών συγγραμμάτων ακαδημαϊκού έτους 2018-2019 στο Π.Σ. Εύδοξος', '27/07/2018'] ];
-                        foreach ( $Anouncements as $row ){
-                            print "<tr><td style=\"padding-right: 30px\">" . $row[0] . "</td><td>" . $row[1] . "</td></tr>\n";
-                        } 
-                    ?>
-                </table>
+            </div>
+            <br>
+            <div class="container mb-3 mt-2">
+                <div class="row border-bottom">
+                    <div class="col-10 lead" style="color: #cd7400;"><strong>Ανακοινώσεις</strong></div>
+                    <div class="col-2 lead" style="color: #cd7400;"><strong>Ημερομηνία</strong></div>
+                </div>
+                <?php
+                    $conn = connectToDB();
+                    if (! $conn) {
+                        die("Database connection failed: " . $conn->connect_error);
+                    }
+                    $result;
+                    if ($category == "all"){
+                        $sql = "SELECT idAnnouncement, title, date FROM ANNOUNCEMENTS ORDER BY date DESC LIMIT $limmit";
+                        $result = $conn->query($sql);
+                    } else {
+                        $sqlStmt = $conn->prepare("SELECT idAnnouncement, title, date FROM ANNOUNCEMENTS WHERE category = ? ORDER BY date DESC LIMIT $limmit");
+                        $sqlStmt->bind_param("s", $category);
+                        $sqlStmt->execute();
+                        $result = $sqlStmt->get_result();
+                    }
+                    $Anouncements = [];
+                    if ($result->num_rows > 0) { 
+                        while ($row = $result->fetch_assoc()){
+                            $Anouncements[$row['idAnnouncement']] = [$row['title'], $row['date']];
+                        }
+                    }
+                    foreach ( $Anouncements as $id => $anouncement ){
+                        print "<div class=\"row\"><div class=\"col-10\"><a class=\"simpler_links\" href=\"announcement_page.php?id=$id\">" . $anouncement[0] . "</a></div><div class=\"col-2\">" . $anouncement[1] . "</div></div>\n";
+                    }
+                    $conn->close();
+                ?>
             </div>
         </div>
         <br>
