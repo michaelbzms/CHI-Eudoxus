@@ -19,8 +19,8 @@
         <?php $formUserType = $_GET['userType']; ?>
         <div class="row justify-content-center">
             <div class="col-6 m-2 text_div">
-                <h2 id="registerTitle" class="m-3">Εγγραφή Φοιτητή</h2>     <!-- changes dynamically -->
-                <form class="border rounded m-3 p-3">
+                <h2 id="registerTitle" class="m-3 mb-4">Εγγραφή Φοιτητή</h2>     <!-- changes dynamically -->
+                <form class="border rounded m-3 p-3 bg-light">
                     <div class="form-group">
                         <label class="requiredField">Email</label>
                         <input class="form-control" id="email" type="email" required>
@@ -60,7 +60,7 @@
                     </div>
                     <div id="variableDivByType"></div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Εγγραφή</button>
+                        <button type="submit" class="btn btn-dark hover_orange">Εγγραφή</button>
                     </div>
                 </form>
             </div>
