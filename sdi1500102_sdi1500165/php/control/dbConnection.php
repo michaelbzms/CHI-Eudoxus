@@ -134,4 +134,28 @@ function getBookPublisherName($mysqli, $bookId) {
     return "-";
 }
 
+function getDeclaredInOrder($mysqli, $type, $array){
+    if ( mysqli_connect_errno() ){
+        echo "Warning: connection not established at getDeclaredInOrder()!";
+        return [];
+    }
+    if ($type == "classes") {
+        $impodedArray = implode(",", $_SESSION['bookDeclClassesArr']);
+        $result = $mysqli->query("SELECT * FROM UNIVERSITY_CLASSES WHERE idClass IN ($impodedArray) ORDER BY FIELD(idClass,$impodedArray);");
+    } elseif ($type == "books") {    
+        $impodedArray = implode(",", $_SESSION['bookDeclBooksArr']);
+        $result = $mysqli->query("SELECT * FROM BOOKS WHERE idBook IN ($impodedArray) ORDER BY FIELD(idBook,$impodedArray);");
+    } else {
+        echo "Warning: unknown type at getDeclaredInOrder()!";
+        return [];
+    }
+    $list = [];
+    if ($result->num_rows > 0) {
+        while ($row =  $result->fetch_assoc()){
+            $list[] = $row;
+        }
+    }
+    return $list;
+}
+
 ?>
