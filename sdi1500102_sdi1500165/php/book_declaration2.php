@@ -31,10 +31,36 @@
             }
             $hasSession = isset($_SESSION['userID']);
             if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student' ) {
+                $userUni = $_SESSION['studentUni'];
+                $userDpt = $_SESSION['studentDpt'];
+            } else {
+                // TODO: for not in session
+            }
+            // Handle book_declaration1.php form:
+            if ( isset($_POST['submit']) ) {
+                $_SESSION['bookDeclUni'] = $userUni;
+                $_SESSION['bookDeclDpt'] = $userDpt;
+                $_SESSION['bookDeclArr'] = [];
+                $semNum = getDptNumberOfSemesters($conn, $userDpt);
+                $i = 1;     // TODO: period?
+                for (; $i <= $semNum; $i += 2) {
+                    $semClasses = getDptSemClasses($conn, $userDpt, $i);
+                    foreach ($semClasses as $class) {
+                        if ( isset($_POST["class{$class['idClass']}"]) && isset($_POST["book{$class['idClass']}"]) ) {
+                            $_SESSION['bookDeclArr'][] = [$class['idClass'], $_POST["book{$class['idClass']}"] ];
+                        }
+                    }
+                }
+            }
+            if ( isset($_SESSION['bookDeclArr']) && $_SESSION['bookDeclArr'] != [] ) {
+                foreach ($_SESSION['bookDeclArr'] as $val) {
+                    echo $val[0] . " - " . $val[1] . "<br>";
+                }
         ?>
             <h2 class="orange_header m-3"><?php print "Επισκόπηση Δήλωσης Συγγραμμάτων"; ?></h2>
             <?php include("bookModal.php") ?>
             <?php
+                // TODO
                 $Departments = ["Νομική (Τμήμα Φοιτητή)", "Φιλοσοφική", "Μαθηματικό"];
                 foreach ($Departments as $dpt) {
                     $selectedSubjects = ["subject", "Τεχνητή Νοημοσύνη"];
@@ -63,10 +89,13 @@
             </div>  
             <br>
         <?php
-            } else if (!$hasSession){
-                include("../notconnected.html");
-            } else {
-                include("../unauthorized.html");
+            } else { ?>
+                <div class="alert-warning p-3 ml-5 mr-5">
+                    <p>⚠ Πρέπει πρώτα να <a href="/sdi1500102_sdi1500165/php/book_declaration1.php">επιλέξετε συγγράμματα</a>!</p>
+                </div>
+                <!-- <button class="btn btn-light mt-4" data-toggle="modal" data-target="#loginModal"><img class="pr-1" src="/sdi1500102_sdi1500165/images/login.png"/>Είσοδος</button><br> -->
+                <img class="mt-3" src="/sdi1500102_sdi1500165/images/oops-sign.jpg"/>
+        <?php
             } 
             include("../footer.html"); 
             $conn->close();
