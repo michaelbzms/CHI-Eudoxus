@@ -57,7 +57,6 @@
                 }
                 $bookDeclaration = $result->fetch_assoc();
                 $studentPIN = $bookDeclaration['PIN'];
-                exit();
         ?>
             <h2 class="orange_header m-3"><?php print "Παραλαβή Συγγραμμάτων"; ?></h2>
             <div class="text-center">
@@ -73,17 +72,18 @@
                             <h3 class="text-primary mb-2 d-inline-block">Επιλογές Παραλαβής</h3>
                         </div>
                     </div>
-                    <?php include("printReceivingBookRow.php") ?>
-                    <?php include("bookModal.php") ?>
-                    <?php
-                        $selectedSubjects = ["subject", "Τεχνητή Νοημοσύνη"];
-                        if ( count($selectedSubjects) == 0 ) echo "Δεν επιλέχθηκαν συγγράμματα";    // TODO error messsage?
-                        $selectedBooksRows = [ ["eudoxusID", "title", "authors", "version", "versionYear", "keywords", "ISBN", "Publisher", "Tie", "dimensions", "pageNum", "website", "contents", "excerpt", "frontpage", "backpage", false], [13909, "ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ: ΜΙΑ ΣΥΓΧΡΟΝΗ ΠΡΟΣΕΓΓΙΣΗ", "STUART RUSSELL, PETER NORVIG", "2η", "2005", "ΕΜΠΕΙΡΑ ΣΥΣΤΗΜΑΤΑ, ΕΥΦΥΗ ΣΥΣΤΗΜΑΤΑ, ΘΕΩΡΙΑ ΛΗΨΗΣ ΑΠΟΦΑΣΕΩΝ, ΛΟΓΙΚΟΣ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ, ΜΗΧΑΝΙΚΗ ΓΝΩΣΗΣ, ΠΡΑΚΤΟΡΕΣ, ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ", "960-209-873-2", "ΕΚΔΟΣΕΙΣ ΚΛΕΙΔΑΡΙΘΜΟΣ ΕΠΕ", "Σκληρό Εξώφυλλο", "[21 x 29]", "1200", "https://www.klidarithmos.gr/texnhth-nohmosynh-2h-ekdosh", "https://static.eudoxus.gr/books/09/toc-13909.pdf", "https://static.eudoxus.gr/books/09/chapter-13909.pdf", "https://static.eudoxus.gr/books/preview/09/cover-13909.jpg", "https://static.eudoxus.gr/books/preview/09/backcover-13909.jpg", true] ];
-                        for ($i = 0; $i < count($selectedSubjects); $i++) {
-                            printReceivingBookRow($selectedSubjects[$i], $selectedBooksRows[$i]);
+                    <?php 
+                        include("printReceivingBookRow.php");
+                        include("bookModal.php");
+                        $bookIds = [];
+                        $bookClassTuples = getBookDeclarationTuples($conn, $bookDeclaration['idDeclaration']);
+                        foreach ($bookClassTuples as $bcTuple) {
+                            printReceivingBookRow($conn, $bcTuple);
+                            $bookIds[] = $bcTuple['BOOKS_id'];
                         }
-                        foreach ($selectedBooksRows as $bookRow) {
-                            bookModal($conn, $bookRow);
+                        $declaredBooks = getDeclaredInOrder($conn, "books", $bookIds);
+                        foreach ($declaredBooks as $book) {
+                            bookModal($conn, $book);
                         }
                     ?>
                     <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>

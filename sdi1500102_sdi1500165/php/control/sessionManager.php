@@ -28,6 +28,9 @@
 	        	$studentRow =  $result->fetch_assoc();
 	        	$_SESSION['studentUni'] = $studentRow['university'];
 	        	$_SESSION['studentDpt'] = $studentRow['department'];
+                $declaration_period = "2018-09";
+                $result = $conn->query("SELECT * FROM BOOK_DECLARATION WHERE STUDENTS_id={$_SESSION['userID']} AND declaration_period='$declaration_period';");
+                $_SESSION['studentHasMadeBookDecl'] = ($result->num_rows > 0);
 	        }
         	$conn->close();
 	    } else {

@@ -19,6 +19,22 @@ function getNumberOfSemesters($mysqli, $secr_id) : int {
     return ( $result->num_rows > 0 ) ? $result->fetch_assoc()['number_of_semesters'] : -1;
 }
 
+function getByID($mysqli, $item, $itemId) {
+    if ( mysqli_connect_errno() ){
+        echo "Warning: connection not established at getBookPublisherName()!";
+        return [];
+    }
+    if ($item == "class") {
+        $result = $mysqli->query("SELECT * FROM UNIVERSITY_CLASSES WHERE idClass=$itemId;");
+    } elseif ($item == "book") {
+        $result = $mysqli->query("SELECT * FROM BOOKS WHERE idBook=$itemId;");
+    } else {
+        echo "Warning: unknown item at getByID()!";
+        return [];
+    }
+    return $result->fetch_assoc();
+}
+
 function getDptNumberOfSemesters($mysqli, $department) : int {
     if ( mysqli_connect_errno() ){
         echo "Warning: connection not established at getDptNumberOfSemesters()!";
@@ -91,6 +107,21 @@ function getClassBooks($mysqli, $classId){
     return $list;
 }
 
+function getBookDistPoints($mysqli, $bookId){
+    if ( mysqli_connect_errno() ){
+        echo "Warning: connection not established at getBookDistPoints()!";
+        return [];
+    }
+    $result = $mysqli->query("SELECT dp.*, dphb.count FROM DISTRIBUTION_POINTS dp, DISTRIBUTION_POINTS_has_BOOKS dphb WHERE dphb.BOOKS_id=$bookId AND dphb.DISTRIBUTION_POINTS_id=dp.idUser;");
+    $list = [];
+    if ($result->num_rows > 0) {
+        while ($row =  $result->fetch_assoc()){
+            $list[] = $row;
+        }
+    }
+    return $list;
+}
+
 function getAllUniDepartments($mysqli, $uni){
     if ( mysqli_connect_errno() ){
         echo "Warning: connection not established at getAllUniDepartments()!";
@@ -139,16 +170,30 @@ function getDeclaredInOrder($mysqli, $type, $array){
         echo "Warning: connection not established at getDeclaredInOrder()!";
         return [];
     }
+    $impodedArray = implode(",", $array);
     if ($type == "classes") {
-        $impodedArray = implode(",", $_SESSION['bookDeclClassesArr']);
         $result = $mysqli->query("SELECT * FROM UNIVERSITY_CLASSES WHERE idClass IN ($impodedArray) ORDER BY FIELD(idClass,$impodedArray);");
-    } elseif ($type == "books") {    
-        $impodedArray = implode(",", $_SESSION['bookDeclBooksArr']);
+    } elseif ($type == "books") {
         $result = $mysqli->query("SELECT * FROM BOOKS WHERE idBook IN ($impodedArray) ORDER BY FIELD(idBook,$impodedArray);");
     } else {
         echo "Warning: unknown type at getDeclaredInOrder()!";
         return [];
     }
+    $list = [];
+    if ($result->num_rows > 0) {
+        while ($row =  $result->fetch_assoc()){
+            $list[] = $row;
+        }
+    }
+    return $list;
+}
+
+function getBookDeclarationTuples($mysqli, $declarationId){
+    if ( mysqli_connect_errno() ){
+        echo "Warning: connection not established at getBookDeclarationTuples()!";
+        return [];
+    }
+    $result = $mysqli->query("SELECT * FROM BOOK_CLASS_TUPLES WHERE BOOK_DECLARATION_id=$declarationId;");
     $list = [];
     if ($result->num_rows > 0) {
         while ($row =  $result->fetch_assoc()){
