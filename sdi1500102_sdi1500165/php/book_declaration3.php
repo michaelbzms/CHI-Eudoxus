@@ -26,43 +26,59 @@
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/php/book_declaration2.php">Επισκόπηση Δήλωσης (2/3)</a> >
             <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/book_declaration3.php">Παραλαβή Συγγραμμάτων (3/3)</a>
         </nav>
-        <h2 class="orange_header m-3"><?php print "Παραλαβή Συγγραμμάτων"; ?></h2>
-        <div class="text-center">
-            <button type="submit" class="btn btn-secondary d-inline-block" onClick="alert('Το PIN που θα πρέπει να παρουσιάσετε κατά την παραλαβή των συγγραμμάτων σας είναι:  [PIN]');">Προβολή PIN</button>
-        </div> 
-        <div class="row justify-content-center">
-            <div class="col-10 m-2 text_div">
-                <div class="row mb-2">
-                    <div class="col-6 text-center">
-                        <h3 class="text-primary mb-2 d-inline-block">Συγγράμματα</h3>
+        <?php 
+            $conn = connectToDB();
+            if (! $conn) {
+                die("Database connection failed: " . $conn->connect_error);
+            }
+            $hasSession = isset($_SESSION['userID']);
+            if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student' ) {
+        ?>
+            <h2 class="orange_header m-3"><?php print "Παραλαβή Συγγραμμάτων"; ?></h2>
+            <div class="text-center">
+                <button type="submit" class="btn btn-secondary d-inline-block" onClick="alert('Το PIN που θα πρέπει να παρουσιάσετε κατά την παραλαβή των συγγραμμάτων σας είναι:  [PIN]');">Προβολή PIN</button>
+            </div> 
+            <div class="row justify-content-center">
+                <div class="col-10 m-2 text_div">
+                    <div class="row mb-2">
+                        <div class="col-6 text-center">
+                            <h3 class="text-primary mb-2 d-inline-block">Συγγράμματα</h3>
+                        </div>
+                        <div class="col-6 text-center">
+                            <h3 class="text-primary mb-2 d-inline-block">Επιλογές Παραλαβής</h3>
+                        </div>
                     </div>
-                    <div class="col-6 text-center">
-                        <h3 class="text-primary mb-2 d-inline-block">Επιλογές Παραλαβής</h3>
-                    </div>
+                    <?php include("printReceivingBookRow.php") ?>
+                    <?php include("bookModal.php") ?>
+                    <?php
+                        $selectedSubjects = ["subject", "Τεχνητή Νοημοσύνη"];
+                        if ( count($selectedSubjects) == 0 ) echo "Δεν επιλέχθηκαν συγγράμματα";    // TODO error messsage?
+                        $selectedBooksRows = [ ["eudoxusID", "title", "authors", "version", "versionYear", "keywords", "ISBN", "Publisher", "Tie", "dimensions", "pageNum", "website", "contents", "excerpt", "frontpage", "backpage", false], [13909, "ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ: ΜΙΑ ΣΥΓΧΡΟΝΗ ΠΡΟΣΕΓΓΙΣΗ", "STUART RUSSELL, PETER NORVIG", "2η", "2005", "ΕΜΠΕΙΡΑ ΣΥΣΤΗΜΑΤΑ, ΕΥΦΥΗ ΣΥΣΤΗΜΑΤΑ, ΘΕΩΡΙΑ ΛΗΨΗΣ ΑΠΟΦΑΣΕΩΝ, ΛΟΓΙΚΟΣ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ, ΜΗΧΑΝΙΚΗ ΓΝΩΣΗΣ, ΠΡΑΚΤΟΡΕΣ, ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ", "960-209-873-2", "ΕΚΔΟΣΕΙΣ ΚΛΕΙΔΑΡΙΘΜΟΣ ΕΠΕ", "Σκληρό Εξώφυλλο", "[21 x 29]", "1200", "https://www.klidarithmos.gr/texnhth-nohmosynh-2h-ekdosh", "https://static.eudoxus.gr/books/09/toc-13909.pdf", "https://static.eudoxus.gr/books/09/chapter-13909.pdf", "https://static.eudoxus.gr/books/preview/09/cover-13909.jpg", "https://static.eudoxus.gr/books/preview/09/backcover-13909.jpg", true] ];
+                        for ($i = 0; $i < count($selectedSubjects); $i++) {
+                            printReceivingBookRow($selectedSubjects[$i], $selectedBooksRows[$i]);
+                        }
+                        foreach ($selectedBooksRows as $bookRow) {
+                            bookModal($bookRow);
+                        }
+                    ?>
+                    <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
                 </div>
-                <?php include("printReceivingBookRow.php") ?>
-                <?php include("bookModal.php") ?>
-                <?php
-                    $selectedSubjects = ["subject", "Τεχνητή Νοημοσύνη"];
-                    if ( count($selectedSubjects) == 0 ) echo "Δεν επιλέχθηκαν συγγράμματα";    // TODO error messsage?
-                    $selectedBooksRows = [ ["eudoxusID", "title", "authors", "version", "versionYear", "keywords", "ISBN", "Publisher", "Tie", "dimensions", "pageNum", "website", "contents", "excerpt", "frontpage", "backpage", false], [13909, "ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ: ΜΙΑ ΣΥΓΧΡΟΝΗ ΠΡΟΣΕΓΓΙΣΗ", "STUART RUSSELL, PETER NORVIG", "2η", "2005", "ΕΜΠΕΙΡΑ ΣΥΣΤΗΜΑΤΑ, ΕΥΦΥΗ ΣΥΣΤΗΜΑΤΑ, ΘΕΩΡΙΑ ΛΗΨΗΣ ΑΠΟΦΑΣΕΩΝ, ΛΟΓΙΚΟΣ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ, ΜΗΧΑΝΙΚΗ ΓΝΩΣΗΣ, ΠΡΑΚΤΟΡΕΣ, ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ", "960-209-873-2", "ΕΚΔΟΣΕΙΣ ΚΛΕΙΔΑΡΙΘΜΟΣ ΕΠΕ", "Σκληρό Εξώφυλλο", "[21 x 29]", "1200", "https://www.klidarithmos.gr/texnhth-nohmosynh-2h-ekdosh", "https://static.eudoxus.gr/books/09/toc-13909.pdf", "https://static.eudoxus.gr/books/09/chapter-13909.pdf", "https://static.eudoxus.gr/books/preview/09/cover-13909.jpg", "https://static.eudoxus.gr/books/preview/09/backcover-13909.jpg", true] ];
-                    for ($i = 0; $i < count($selectedSubjects); $i++) {
-                        printReceivingBookRow($selectedSubjects[$i], $selectedBooksRows[$i]);
-                    }
-                    foreach ($selectedBooksRows as $bookRow) {
-                        bookModal($bookRow);
-                    }
-                ?>
-                <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
             </div>
-        </div>
-        <br>
-        <?php include("../footer.html"); ?>
+            <br>
+            <script>
+                $(document).ready(function(){
+                    $('[data-toggle="tooltip"]').tooltip(); 
+                });
+            </script>
+        <?php
+            } else if (!$hasSession){
+                include("../notconnected.html");
+            } else {
+                include("../unauthorized.html");
+            } 
+            include("../footer.html"); 
+            $conn->close();
+        ?>
     </div>
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip(); 
-        });
-    </script>
 </body>
 </html>

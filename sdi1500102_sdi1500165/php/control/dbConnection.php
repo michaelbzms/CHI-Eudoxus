@@ -37,6 +37,15 @@ function getUniForSecretary($mysqli, $secretary_id){
     return ( $result->num_rows > 0 ) ? $result->fetch_assoc()['university'] : "";
 }
 
+function getDptForSecretary($mysqli, $secretary_id){
+    if ( mysqli_connect_errno() ){
+        echo "Warning: connection not established at getUniForSecretary()!";
+        return "";
+    }
+    $result = $mysqli->query("SELECT department FROM SECRETARIES WHERE idUser = $secretary_id;");
+    return ( $result->num_rows > 0 ) ? $result->fetch_assoc()['department'] : "";
+}
+
 function getAllUnis($mysqli){
     if ( mysqli_connect_errno() ){
         echo "Warning: connection not established at getAllUnis()!";
