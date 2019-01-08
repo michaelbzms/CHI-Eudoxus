@@ -37,7 +37,7 @@
                 // TODO: for not in session
             }
             // Handle book_declaration1.php form:
-            if ( isset($_POST['submit']) ) {
+            if ( isset($_POST['bookDeclSubmit']) ) {
                 $_SESSION['bookDeclUni'] = $userUni;
                 $_SESSION['bookDeclDpt'] = $userDpt;
                 $_SESSION['bookDeclClassesArr'] = [];
@@ -78,7 +78,9 @@
             ?>
             <div class="text-center">
                 <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
-                <button type="submit" class="btn btn-dark hover_orange d-inline-block ml-3 mr-5" onClick="window.location='book_declaration3.php';">Συνέχεια</button>
+                <form action="/sdi1500102_sdi1500165/php/book_declaration3.php" class="d-inline-block" method="POST">
+                    <button type="submit" class="btn btn-dark hover_orange ml-3 mr-5" onClick="confirm('Είστε σίγουροι ότι θέλετε να υποβάλετε αυτή τη Δήλωση Συγγραμμάτων;');" name="bookDeclSubmitFinal">Υποβολή Δήλωσης</button>
+                </form>
             </div>  
             <br>
         <?php

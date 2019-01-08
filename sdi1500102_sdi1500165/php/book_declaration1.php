@@ -158,7 +158,7 @@ EOT;
                 </div>
                 <br>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-dark hover_orange" name="submit">Συνέχεια</button>
+                    <button type="submit" class="btn btn-dark hover_orange" name="bookDeclSubmit">Συνέχεια</button>
                 </div>         
             </form>
             <br>

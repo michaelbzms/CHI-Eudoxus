@@ -33,10 +33,35 @@
             }
             $hasSession = isset($_SESSION['userID']);
             if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student' ) {
+                $declaration_period = "2018-09";
+                if ( isset($_POST['bookDeclSubmitFinal']) ) {
+                    // delete previous book declaration
+                    if ( ! $conn->query("DELETE FROM BOOK_DECLARATION WHERE STUDENTS_id={$_SESSION['userID']};") ) {
+                        die("Failed to delete previous book declaration from database: {$conn->error}");
+                    }
+                    // Insert book declaration to DB
+                    $generatedPIN = mt_rand(100000000, 999999999);          // substr( md5($_SESSION['userID'] . $declaration_period), 0, 10 );
+                    if ( ! $conn->query("INSERT INTO BOOK_DECLARATION (idDeclaration, STUDENTS_id, PIN, declaration_period) VALUES (default, {$_SESSION['userID']}, $generatedPIN, '$declaration_period');") ) {
+                        die("Failed to insert book declaration to database: {$conn->error}");
+                    }
+                    $declarationId = $conn->insert_id;
+                    for ($i = 0; $i < count($_SESSION['bookDeclClassesArr']); $i++) {
+                        if ( ! $conn->query("INSERT INTO BOOK_CLASS_TUPLES (BOOK_DECLARATION_id, UNIVERSITY_CLASSES_id, BOOKS_id, received) VALUES ($declarationId, {$_SESSION['bookDeclClassesArr'][$i]}, {$_SESSION['bookDeclBooksArr'][$i]}, false);") ) {
+                            die("Failed to insert book_class_tuple to database: {$conn->error}");
+                        }
+                    } 
+                }
+                $result = $conn->query("SELECT * FROM BOOK_DECLARATION WHERE STUDENTS_id={$_SESSION['userID']} AND declaration_period='$declaration_period';");
+                if ($result->num_rows == 0) {
+                    die("Could not fetch book declaration from DB");
+                }
+                $bookDeclaration = $result->fetch_assoc();
+                $studentPIN = $bookDeclaration['PIN'];
+                exit();
         ?>
             <h2 class="orange_header m-3"><?php print "Παραλαβή Συγγραμμάτων"; ?></h2>
             <div class="text-center">
-                <button type="submit" class="btn btn-secondary d-inline-block" onClick="alert('Το PIN που θα πρέπει να παρουσιάσετε κατά την παραλαβή των συγγραμμάτων σας είναι:  [PIN]');">Προβολή PIN</button>
+                <button type="submit" class="btn btn-secondary d-inline-block" onClick="alert('Το PIN που θα πρέπει να παρουσιάσετε κατά την παραλαβή των συγγραμμάτων σας είναι:  <?php echo $studentPIN; ?>');">Προβολή PIN</button>
             </div> 
             <div class="row justify-content-center">
                 <div class="col-10 m-2 text_div">
@@ -58,7 +83,7 @@
                             printReceivingBookRow($selectedSubjects[$i], $selectedBooksRows[$i]);
                         }
                         foreach ($selectedBooksRows as $bookRow) {
-                            bookModal($bookRow);
+                            bookModal($conn, $bookRow);
                         }
                     ?>
                     <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
