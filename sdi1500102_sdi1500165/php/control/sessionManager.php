@@ -20,9 +20,15 @@
 	            die("Wrong credentials");
 	        }
 	    	$userRow = $result->fetch_assoc();
-	        $_SESSION['userType'] = $userRow['user_type'];
 	        $_SESSION['userID'] = $userRow['idUser'];
+	        $_SESSION['userType'] = $userRow['user_type'];
 	    	$sqlStmt->close();
+	        if ($_SESSION['userType'] == "student") {
+	        	$result = $conn->query("SELECT sec.university, sec.department FROM SECRETARIES sec, STUDENTS st WHERE st.idUser={$_SESSION['userID']} AND st.SECRETARIES_id=sec.idUser;");
+	        	$studentRow =  $result->fetch_assoc();
+	        	$_SESSION['studentUni'] = $studentRow['university'];
+	        	$_SESSION['studentDpt'] = $studentRow['department'];
+	        }
         	$conn->close();
 	    } else {
         	$conn->close();

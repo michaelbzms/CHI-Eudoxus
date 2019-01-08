@@ -32,7 +32,7 @@
             if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student' ) {
         ?>
             <h2 class="orange_header m-3"><?php print "Δήλωση Συγγραμμάτων"; ?></h2>
-            <?php if ( /* NotInSession */ false ) { // TODO: check session ?>
+            <?php if ( /* NotInSession */ false ) { // TODO !! ?>
                 <div class="form-group text-center m-4">
                     <select class="form-control d-inline-block w-25" id="uni-options" onchange="getDpts();">
                         <?php
@@ -73,11 +73,11 @@
                     }
                     </script>
                 </div>
-            <?php } else {
-                // get these from session:
-                $userUni = "Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών";
-                $userDpt = "Τμήμα Νομικής";
-            } ?>
+            <?php } else {      // in session
+                $userUni = $_SESSION['studentUni'];
+                $userDpt = $_SESSION['studentDpt'];
+            }
+            ?>
             <form action="/sdi1500102_sdi1500165/php/book_declaration2.php" method="POST">
                 <div class="row">
                     <div class="col-2">
@@ -121,7 +121,10 @@
                                             <div class="card">
                                                 <div class="card-header">
                                                     <a class="collapsed card-link" data-toggle="collapse" href="#collapse{$class['idClass']}">
-                                                        <h5 class="d-inline-block">{$class['title']}</h5><h6 class="d-inline-block">$freeClassDpt</h6>
+                                                        <div class="form-check d-inline-block" id="checkbDiv{$class['idClass']}">
+                                                            <input class="form-check-input d-inline-block" type="checkbox" id="checkbox{$class['idClass']}" name="class{$class['idClass']}">
+                                                            <label class="form-check-label"><h5 class="d-inline-block">{$class['title']}</h5><h6 class="d-inline-block">$freeClassDpt</h6></label>
+                                                        </div>
                                                     </a>
                                                 </div>
                                                 <div id="collapse{$class['idClass']}" class="collapse">
@@ -133,7 +136,7 @@ EOT;
                                         foreach ($classBooks as $book) {
                                             echo <<<EOT
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="book{$class['idClass']}" id="book{$class['idClass']}_$j">
+                                                    <input class="form-check-input" type="radio" name="book{$class['idClass']}" id="book{$class['idClass']}_$j" value="{$book['idBook']}">
                                                     <label class="form-check-label" for="book{$class['idClass']}_$j">
                                                         <strong>[{$book['idBook']}]:</strong> <span class="bookModalSpan" data-toggle="modal" data-target="#book{$book['idBook']}">{$book['title']}</span> | {$book['authors']}
                                                     </label>
@@ -155,24 +158,23 @@ EOT;
                 </div>
                 <br>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-dark hover_orange">Συνέχεια</button>
+                    <button type="submit" class="btn btn-dark hover_orange" name="submit">Συνέχεια</button>
                 </div>         
             </form>
-            <?php
-                include("bookModal.php");
-                $i = 1;
-                foreach ($Semesters as $sem) {
-                    $semClasses = getDptSemClasses($conn, $userDpt, $i);
-                    foreach ($semClasses as $class) {
-                        $classBooks = getClassBooks($conn, $class['idClass']);
-                        foreach ($classBooks as $book) {
-                            bookModal($conn, $book);
-                        }
+            <br>
+        <?php
+            include("bookModal.php");
+            $i = 1;
+            foreach ($Semesters as $sem) {
+                $semClasses = getDptSemClasses($conn, $userDpt, $i);
+                foreach ($semClasses as $class) {
+                    $classBooks = getClassBooks($conn, $class['idClass']);
+                    foreach ($classBooks as $book) {
+                        bookModal($conn, $book);
                     }
-                    $i++;
                 }
-            ?>
-        <?php    
+                $i++;
+            }
             } else if (!$hasSession){
                 include("../notconnected.html");
             } else {
@@ -182,5 +184,31 @@ EOT;
             $conn->close();
         ?>
     </div>
+    <script>
+        $(document).on("click", "[id^='checkbDiv']", function(e){
+            e.preventDefault();
+            var checkbox = $(this).find('[type=checkbox]')
+            // only uncheck if it's checked
+            if ( $(checkbox).prop('checked') ) {
+                $(checkbox).prop('checked', false);
+                // also unselect any radio selcted
+                var classID = ($(this).attr('id')).replace("checkbDiv", "");
+                $("input[name=book" + classID + "]").prop('checked', false);
+            }
+            // console.log( $(this).prop('checked') );
+            // $(this).closest("[id^='checkbox']").prop('checked', true);
+            // $(this).prop('checked', false);
+            // if ( $(this).prop('checked') == true ) {
+            //     $(this).next('input[type=checkbox]').prop('checked', true);
+            //     $(this).next('input[type=checkbox]').prop('checked', true);
+            // }
+        });
+
+        $(document).on("click", "[id^='book']", function(e){
+            var classID = ($(this).attr('id')).replace("book", "");
+            classID = classID.slice(0, classID.lastIndexOf("_"));
+            $("#checkbox" + classID).prop('checked', true);
+        });
+    </script>
 </body>
 </html>
