@@ -13,7 +13,7 @@
     background-color: #343a40 !important;
 }
 
-.content_box{
+.content_box {
     color: black;
 }
 
@@ -21,6 +21,7 @@
     cursor: pointer;
 }
 
-.class_card a {
+.class_card .card-header label {
     color: black !important;
+    cursor: pointer;
 }

@@ -42,7 +42,7 @@
                                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
                                     <?php
                                         $semNum = getDptNumberOfSemesters($conn, $userDpt);
-                                        $i = 1;         // TODO: get period
+                                        $i = 1;         // TODO: get period (that's what she said)
                                         $Semesters = [];
                                         for (; $i <= $semNum; $i += 2) {
                                             $Semesters[] = $i . "ο Εξάμηνο";
@@ -78,12 +78,12 @@
                                                 echo <<<EOT
                                                     <div class="class_card card mb-2">
                                                         <div class="card-header" data-toggle="collapse" href="#collapse{$class['idClass']}">
-                                                            <a class="collapsed card-link">
-                                                                <div class="form-check d-inline-block" id="checkbDiv{$class['idClass']}">
-                                                                    <input class="form-check-input d-inline-block" type="checkbox" id="checkbox{$class['idClass']}" name="class{$class['idClass']}">
+                                                            <div class="collapsed card-link">
+                                                                <div class="form-check d-inline-block">
+                                                                    <input id="checkbDiv{$class['idClass']}" class="form-check-input d-inline-block" type="checkbox" id="checkbox{$class['idClass']}" name="class{$class['idClass']}">
                                                                     <label class="form-check-label"><h5 class="d-inline-block">{$class['title']}</h5><h6 class="d-inline-block">$freeClassDpt</h6></label>
                                                                 </div>
-                                                            </a>
+                                                            </div>
                                                         </div>
                                                         <div id="collapse{$class['idClass']}" class="collapse">
                                                             <div class="card-body text-justify">
