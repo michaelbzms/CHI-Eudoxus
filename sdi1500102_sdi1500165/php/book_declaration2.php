@@ -8,6 +8,7 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/navbar.css"/>
+    <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/student.css"/>
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/books.css"/>
 	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
 	<!-- JS -->
@@ -56,45 +57,48 @@
             }
             if ( isset($_SESSION['bookDeclBooksArr']) && $_SESSION['bookDeclBooksArr'] != [] ) {
         ?>
-            <h2 class="orange_header m-3"><?php print "Επισκόπηση Δήλωσης Συγγραμμάτων"; ?></h2>
-            <?php include("bookModal.php") ?>
-            <?php
-                $classesInOrder = getDeclaredInOrder($conn, "classes", $_SESSION['bookDeclClassesArr']);
-                $booksInOrder = getDeclaredInOrder($conn, "books", $_SESSION['bookDeclBooksArr']);
-                echo "<table class=\"table table-striped table-bordered border book_table mb-4\" style=\"border: 2px solid gray!important\">";
-                for ($i = 0; $i < count($classesInOrder); $i++) { 
-                    if ( isset($classesInOrder[$i]['FREE_CLASS_SECRETARIES_id']) ) $freeClassDpt = "&ensp;(" . getDptForSecretary($conn, $classesInOrder[$i]['FREE_CLASS_SECRETARIES_id']) . ")";
-                    else $freeClassDpt = "";
-                    echo "
-                        <tr>
-                            <th style=\"border-right: 2px solid gray!important\">{$classesInOrder[$i]['title']}<span class=\"font-weight-normal\">$freeClassDpt</span></th>
-                            <th class=\"font-weight-normal\"><strong>[{$booksInOrder[$i]['idBook']}]:</strong> <span class=\"bookModalSpan\" data-toggle=\"modal\" data-target=\"#book{$booksInOrder[$i]['idBook']}\">{$booksInOrder[$i]['title']}</span> | {$booksInOrder[$i]['authors']}</th>
-                        </tr>";
-                } 
-                echo "</table>";
-                foreach ($booksInOrder as $book) {
-                    bookModal($conn, $book);
-                }
-            ?>
-            <div class="text-center">
-                <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
-                <form action="/sdi1500102_sdi1500165/php/book_declaration3.php" class="d-inline-block" method="POST">
-                    <button type="submit" class="btn btn-dark hover_orange ml-3 mr-5" onClick="confirm('Είστε σίγουροι ότι θέλετε να υποβάλετε αυτή τη Δήλωση Συγγραμμάτων;');" name="bookDeclSubmitFinal">Υποβολή Δήλωσης</button>
-                </form>
-            </div>  
-            <br>
+                <h2 class="orange_header mt-3 mb-4">Επισκόπηση Δήλωσης Συγγραμμάτων</h2>
+                <?php include("bookModal.php") ?>
+                <?php
+                    $classesInOrder = getDeclaredInOrder($conn, "classes", $_SESSION['bookDeclClassesArr']);
+                    $booksInOrder = getDeclaredInOrder($conn, "books", $_SESSION['bookDeclBooksArr']);
+                    echo "<div class=\"container\"><table class=\"table table-striped table-bordered border book_table mb-4\" style=\"border: 2px solid gray!important\">";
+                    for ($i = 0; $i < count($classesInOrder); $i++) { 
+                        if ( isset($classesInOrder[$i]['FREE_CLASS_SECRETARIES_id']) ) $freeClassDpt = "&ensp;(" . getDptForSecretary($conn, $classesInOrder[$i]['FREE_CLASS_SECRETARIES_id']) . ")";
+                        else $freeClassDpt = "";
+                        echo "
+                            <tr>
+                                <th style=\"border-right: 2px solid gray!important\">{$classesInOrder[$i]['title']}<span class=\"font-weight-normal\">$freeClassDpt</span></th>
+                                <th class=\"font-weight-normal\"><strong>[{$booksInOrder[$i]['idBook']}]:</strong> <span class=\"bookModalSpan\" data-toggle=\"modal\" data-target=\"#book{$booksInOrder[$i]['idBook']}\">{$booksInOrder[$i]['title']}</span> | {$booksInOrder[$i]['authors']}</th>
+                            </tr>";
+                    } 
+                    echo "</table></div>";
+                    foreach ($booksInOrder as $book) {
+                        bookModal($conn, $book);
+                    }
+                ?>
+                <div class="text-center">
+                    <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
+                    <form id="submit_book_declaration_form" action="/sdi1500102_sdi1500165/php/book_declaration3.php" class="d-inline-block" method="POST">
+                        <button type="submit" class="btn btn-dark hover_orange ml-3 mr-5" name="bookDeclSubmitFinal">Υποβολή Δήλωσης</button>
+                    </form>
+                </div>  
+                <br>
         <?php
             } else { ?>
-                <div class="alert-warning p-3 ml-5 mr-5">
-                    <p>⚠ Πρέπει πρώτα να <a href="/sdi1500102_sdi1500165/php/book_declaration1.php">επιλέξετε συγγράμματα</a>!</p>
+                <div class="text-center">
+                    <div class="alert-warning p-3 ml-5 mr-5">
+                        <p>⚠ Για να κάνετε μία δήλωση συγγραμμάτων πρέπει πρώτα να <a href="/sdi1500102_sdi1500165/php/book_declaration1.php">επιλέξετε συγγράμματα</a>!</p>
+                    </div>
+                    <!-- <button class="btn btn-light mt-4" data-toggle="modal" data-target="#loginModal"><img class="pr-1" src="/sdi1500102_sdi1500165/images/login.png"/>Είσοδος</button><br> -->
+                    <img class="mt-3" src="/sdi1500102_sdi1500165/images/oops-sign.jpg"/>
                 </div>
-                <!-- <button class="btn btn-light mt-4" data-toggle="modal" data-target="#loginModal"><img class="pr-1" src="/sdi1500102_sdi1500165/images/login.png"/>Είσοδος</button><br> -->
-                <img class="mt-3" src="/sdi1500102_sdi1500165/images/oops-sign.jpg"/>
         <?php
             } 
             include("../footer.html"); 
             $conn->close();
         ?>
     </div>
+    <script src="/sdi1500102_sdi1500165/javascript/student.js"></script>
 </body>
 </html>

@@ -1,0 +1,26 @@
+.vertical_tab {
+    background-color: whitesmoke;
+    color: black;
+    margin-bottom: 2px;
+}
+
+.vertical_tab:hover {
+    color: rgb(231, 150, 0);
+}
+
+.vertical_tab.active {
+    color: rgb(231, 150, 0) !important;
+    background-color: #343a40 !important;
+}
+
+.content_box{
+    color: black;
+}
+
+.card-header {
+    cursor: pointer;
+}
+
+.class_card a {
+    color: black !important;
+}

@@ -8,6 +8,7 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/navbar.css"/>
+    <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/student.css"/>
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/books.css"/>
 	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
 	<!-- JS -->
@@ -58,43 +59,43 @@
                 $bookDeclaration = $result->fetch_assoc();
                 $studentPIN = $bookDeclaration['PIN'];
         ?>
-            <h2 class="orange_header m-3"><?php print "Παραλαβή Συγγραμμάτων"; ?></h2>
-            <div class="text-center">
-                <button type="submit" class="btn btn-secondary d-inline-block" onClick="alert('Το PIN που θα πρέπει να παρουσιάσετε κατά την παραλαβή των συγγραμμάτων σας είναι:  <?php echo $studentPIN; ?>');">Προβολή PIN</button>
-            </div> 
-            <div class="row justify-content-center">
-                <div class="col-10 m-2 text_div">
-                    <div class="row mb-2">
-                        <div class="col-6 text-center">
-                            <h3 class="text-primary mb-2 d-inline-block">Συγγράμματα</h3>
+                <h2 class="orange_header mt-3 mb-4">Παραλαβή Συγγραμμάτων</h2>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-secondary d-inline-block" onClick="alert('Το PIN που θα πρέπει να παρουσιάσετε κατά την παραλαβή των συγγραμμάτων σας είναι:  <?php echo $studentPIN; ?>');">Προβολή PIN</button>
+                </div> 
+                <div class="row justify-content-center">
+                    <div class="col-10 m-2 text_div">
+                        <div class="row mb-2">
+                            <div class="col-6 text-center">
+                                <h3 class="text-primary mb-2 d-inline-block">Συγγράμματα</h3>
+                            </div>
+                            <div class="col-6 text-center">
+                                <h3 class="text-primary mb-2 d-inline-block">Επιλογές Παραλαβής</h3>
+                            </div>
                         </div>
-                        <div class="col-6 text-center">
-                            <h3 class="text-primary mb-2 d-inline-block">Επιλογές Παραλαβής</h3>
-                        </div>
+                        <?php 
+                            include("printReceivingBookRow.php");
+                            include("bookModal.php");
+                            $bookIds = [];
+                            $bookClassTuples = getBookDeclarationTuples($conn, $bookDeclaration['idDeclaration']);
+                            foreach ($bookClassTuples as $bcTuple) {
+                                printReceivingBookRow($conn, $bcTuple);
+                                $bookIds[] = $bcTuple['BOOKS_id'];
+                            }
+                            $declaredBooks = getDeclaredInOrder($conn, "books", $bookIds);
+                            foreach ($declaredBooks as $book) {
+                                bookModal($conn, $book);
+                            }
+                        ?>
+                        <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
                     </div>
-                    <?php 
-                        include("printReceivingBookRow.php");
-                        include("bookModal.php");
-                        $bookIds = [];
-                        $bookClassTuples = getBookDeclarationTuples($conn, $bookDeclaration['idDeclaration']);
-                        foreach ($bookClassTuples as $bcTuple) {
-                            printReceivingBookRow($conn, $bcTuple);
-                            $bookIds[] = $bcTuple['BOOKS_id'];
-                        }
-                        $declaredBooks = getDeclaredInOrder($conn, "books", $bookIds);
-                        foreach ($declaredBooks as $book) {
-                            bookModal($conn, $book);
-                        }
-                    ?>
-                    <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
                 </div>
-            </div>
-            <br>
-            <script>
-                $(document).ready(function(){
-                    $('[data-toggle="tooltip"]').tooltip(); 
-                });
-            </script>
+                <br>
+                <script>
+                    $(document).ready(function(){
+                        $('[data-toggle="tooltip"]').tooltip(); 
+                    });
+                </script>
         <?php
             } else if (!$hasSession){
                 include("../notconnected.html");
@@ -105,5 +106,6 @@
             $conn->close();
         ?>
     </div>
+    <script src="/sdi1500102_sdi1500165/javascript/student.js"></script>
 </body>
 </html>

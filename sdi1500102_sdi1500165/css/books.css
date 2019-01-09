@@ -38,3 +38,8 @@
 	bottom: 0;
 	margin: 20px 5px;
 }
+
+.book_title {
+	color: #1b7ee7;
+	font-weight: 600;
+}
