@@ -38,14 +38,11 @@
                 
                 $sqlQuery = "SELECT us.email, sec.* FROM SECRETARIES sec, Users us WHERE sec.idUser = $secretary_id AND us.idUser = sec.idUser;";
                 $result = $conn->query($sqlQuery);
-                if ($result->num_rows == 0) {
-                    die("Error: Invalid UserID");
-                }
+                if ($result->num_rows == 0) { die("Error: Invalid UserID"); }   // should be caught at login
                 $secretary_info = $result->fetch_assoc();
         ?>
                 <h2 class="orange_header mt-3 mb-4">Στοιχεία Γραμματείας</h2>
-                <div id="info_box" class="m-3">
-                    <div class="text-center m-3"><button id="edit_btn" class="btn btn-warning">✏ Τροποποίηση</button></div>
+                <div id="info_box" class="m-3 mb-5">
                     <div class="container border border-dark rounded bg-light w-60 pl-3 pr-3 pt-2 pb-2">
                         <div class="row">
                             <div class="col-6"><strong>Πανεπιστήμιο:</strong></div>
@@ -56,7 +53,7 @@
                             <div class="col-6"><?php echo $secretary_info['department']; ?></div>
                         </div>
                         <div class="row">
-                            <div class="col-6"><strong>Κωδικός Φοιτητή στον Εύδοξου:</strong></div>
+                            <div class="col-6"><strong>Κωδικός Γραμματείας στον Εύδοξο:</strong></div>
                             <div class="col-6"><?php echo $secretary_info['idUser']; ?></div>
                         </div>
                         <div class="row">
@@ -88,13 +85,10 @@
                             <div class="col-6"><?php echo $secretary_info['phone']; ?></div>
                         </div>
                     </div>
+                    <div class="text-center m-3"><button id="edit_btn" class="btn btn-warning">✏ Τροποποίηση</button></div>
                 </div>
-                <div id="edit_box" class="m-3" style="display: none"> <!-- hidden at start -->
+                <div id="edit_box" class="m- mb-5" style="display: none"> <!-- hidden at start -->
                     <form id="secretary_edit_info_form">
-                        <div class="text-center m-3">
-                            <button type="submit" class="btn btn-warning mr-1">Αποθήκευση</button>
-                            <button id="cancel_edit_btn" class="btn btn-outline-secondary ml-1">Ακύρωση</button>
-                        </div>
                         <div class="container border border-dark rounded bg-light w-60 pl-3 pr-3 pt-2 pb-2">
                             <div class="row mb-2">
                                 <div class="col-6"><strong>Πανεπιστήμιο:</strong></div>
@@ -105,7 +99,7 @@
                                 <div class="col-6"><div style="padding-bottom: 5px"><?php echo $secretary_info['department']; ?></div></div>
                             </div>
                             <div class="row mb-2">
-                                <div class="col-6"><strong>Κωδικός Φοιτητή στον Εύδοξου:</strong></div>
+                                <div class="col-6"><strong>Κωδικός Γραμματείας στον Εύδοξο:</strong></div>
                                 <div class="col-6"><div style="padding-bottom: 5px"><?php echo $secretary_info['idUser']; ?></div></div>
                             </div>
                             <div class="row mb-2">
@@ -136,6 +130,10 @@
                                 <div class="col-6"><strong>Τηλέφωνο:</strong></div>
                                 <div class="col-6"><input id="phone" type="text" class="form-control input-sm" value="<?php echo $secretary_info['phone']; ?>" required/></div>
                             </div>
+                        </div>
+                        <div class="text-center m-3">
+                            <button type="submit" class="btn btn-warning mr-1">Αποθήκευση</button>
+                            <button type="reset" id="cancel_edit_btn" class="btn btn-outline-secondary ml-1">Ακύρωση</button>
                         </div>
                     </form>
                 </div>

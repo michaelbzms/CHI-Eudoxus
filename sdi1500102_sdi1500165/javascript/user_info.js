@@ -34,11 +34,10 @@ $("#secretary_edit_info_form").on("submit", function(e){
             data: formdata,
             async: false,   /* (!) Synchronous: wait for AJAX to finish */
             success: function(response){
-                alert(response);
                 if ( response === "NO_SESSION"){
                     alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
-                }  else  if ( response === "MISSING_PARAMETERS" ) {
-                    alert("Error: Ελλιπή δεδομένα φόρμας.");
+                } else  if ( response === "MISSING_PARAMETERS" ) {
+                    alert("Error: Ελλειπή δεδομένα φόρμας.");
                 } else {  // success
                     window.location.replace("/sdi1500102_sdi1500165/php/secretary_info.php");  //reload
                 }
@@ -46,6 +45,33 @@ $("#secretary_edit_info_form").on("submit", function(e){
         });
     } else if (isNaN(formdata['sem_num'])){
         alert("Ο αριθμός εξαμήνων πρέπει να είναι αριθμός.");
+    } else {
+        alert("Έχετε αφήσει κενά πεδία.");
+    }
+});
+
+$("#student_edit_info_form").on("submit", function(e){
+    e.preventDefault();
+    var formdata = {
+        email : $("#email").val(),
+        phone : $("#phone").val()
+    };
+    if ( checkValid(formdata['email']) && checkValid(formdata['phone']) ) {
+        $.ajax({
+            url: "/sdi1500102_sdi1500165/php/AJAX/change_student_info.php",
+            type: "post",
+            data: formdata,
+            async: false,   /* (!) Synchronous: wait for AJAX to finish */
+            success: function(response){
+                if ( response === "NO_SESSION"){
+                    alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
+                } else  if ( response === "MISSING_PARAMETERS" ) {
+                    alert("Error: Ελλειπή δεδομένα φόρμας.");
+                } else {  // success
+                    window.location.replace("/sdi1500102_sdi1500165/php/student_info.php");  //reload
+                }
+            }
+        });
     } else {
         alert("Έχετε αφήσει κενά πεδία.");
     }
