@@ -1,6 +1,6 @@
 <?php include("control/sessionManager.php") ?>
 <!DOCTYPE html>
-<?php $active_page = "StudentInfo"; ?>
+<?php $active_page = "SecretaryInfo"; ?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,11 @@
 	<!-- JS -->
 	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
 	<script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
+    <style>
+        strong {
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     <div class="main-container">
@@ -38,20 +43,101 @@
                 }
                 $secretary_info = $result->fetch_assoc();
         ?>
-                <div>
-                    <h2 class="orange_header m-3"><?php echo "Στοιχεία Γραμματείας" ?></h2>
-                    <div class="centered_bordered_field">
-                        <label>Πανεπιστήμιο:</label> <?php echo $secretary_info['university']; ?> <br>
-                        <label>Τμήμα:</label> <?php echo $secretary_info['department']; ?> <br>
-                        <label>Αριθμός Εξαμήνων:</label> <?php echo $secretary_info['number_of_semesters']; ?> <br>
-                        <label>Κωδικός Εύδοξου:</label> <?php echo $secretary_info['idUser']; ?> <br>
-                        <label>Πόλη:</label> <?php echo $secretary_info['city']; ?> <br>
-                        <label>Νομός:</label> <?php echo $secretary_info['county']; ?> <br>
-                        <label>Διεύθυνση:</label> <?php echo $secretary_info['address']; ?> <br>
-                        <label>T.K.:</label> <?php echo $secretary_info['TK']; ?> <br>
-                        <label>Email:</label> <?php echo $secretary_info['email']; ?> <br> 
-                        <label>Τηλέφωνο:</label> <?php echo $secretary_info['phone']; ?> <br>
+                <h2 class="orange_header mt-3 mb-4">Στοιχεία Γραμματείας</h2>
+                <div id="info_box" class="m-3">
+                    <div class="text-center m-3"><button id="edit_btn" class="btn btn-warning">✏ Τροποποίηση</button></div>
+                    <div class="container border border-dark rounded bg-light w-60 pl-3 pr-3 pt-2 pb-2">
+                        <div class="row">
+                            <div class="col-6"><strong>Πανεπιστήμιο:</strong></div>
+                            <div class="col-6"><?php echo $secretary_info['university']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>Τμήμα:</strong></div>
+                            <div class="col-6"><?php echo $secretary_info['department']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>Κωδικός Φοιτητή στον Εύδοξου:</strong></div>
+                            <div class="col-6"><?php echo $secretary_info['idUser']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>Αριθμός Εξαμήνων:</strong></div>
+                            <div class="col-6"><?php echo $secretary_info['number_of_semesters']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>Πόλη:</strong></div>
+                            <div class="col-6"><?php echo $secretary_info['city']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>Νομός:</strong></div>
+                            <div class="col-6"><?php echo $secretary_info['county']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>Διεύθυνση:</strong></div>
+                            <div class="col-6"><?php echo $secretary_info['address']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>T.K.:</strong></div>
+                            <div class="col-6"><?php echo $secretary_info['TK']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>Email:</strong></div>
+                            <div class="col-6"><?php echo $secretary_info['email']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><strong>Τηλέφωνο:</strong></div>
+                            <div class="col-6"><?php echo $secretary_info['phone']; ?></div>
+                        </div>
                     </div>
+                </div>
+                <div id="edit_box" class="m-3" style="display: none"> <!-- hidden at start -->
+                    <form id="secretary_edit_info_form">
+                        <div class="text-center m-3">
+                            <button type="submit" class="btn btn-warning mr-1">Αποθήκευση</button>
+                            <button id="cancel_edit_btn" class="btn btn-outline-secondary ml-1">Ακύρωση</button>
+                        </div>
+                        <div class="container border border-dark rounded bg-light w-60 pl-3 pr-3 pt-2 pb-2">
+                            <div class="row mb-2">
+                                <div class="col-6"><strong>Πανεπιστήμιο:</strong></div>
+                                <div class="col-6"><div style="padding-bottom: 5px"><?php echo $secretary_info['university']; ?></div></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6"><strong>Τμήμα:</strong></div>
+                                <div class="col-6"><div style="padding-bottom: 5px"><?php echo $secretary_info['department']; ?></div></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6"><strong>Κωδικός Φοιτητή στον Εύδοξου:</strong></div>
+                                <div class="col-6"><div style="padding-bottom: 5px"><?php echo $secretary_info['idUser']; ?></div></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6"><strong>Αριθμός Εξαμήνων:</strong></div>
+                                <div class="col-6"><input id="sem_num" type="text" class="form-control input-sm" value="<?php echo $secretary_info['number_of_semesters']; ?>" required/></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6"><strong>Πόλη:</strong></div>
+                                <div class="col-6"><input id="city" type="text" class="form-control input-sm" value="<?php echo $secretary_info['city']; ?>" required/></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6"><strong>Νομός:</strong></div>
+                                <div class="col-6"><input id="county" type="text" class="form-control input-sm" value="<?php echo $secretary_info['county']; ?>" required/></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6"><strong>Διεύθυνση:</strong></div>
+                                <div class="col-6"><input id="address" type="text" class="form-control input-sm" value="<?php echo $secretary_info['address']; ?>" required/></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6"><strong>T.K.:</strong></div>
+                                <div class="col-6"><input id="TK" type="text" class="form-control input-sm" value="<?php echo $secretary_info['TK']; ?>" required/></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6"><strong>Email:</strong></div>
+                                <div class="col-6"><input id="email" type="email" class="form-control input-sm" value="<?php echo $secretary_info['email']; ?>" required/></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6"><strong>Τηλέφωνο:</strong></div>
+                                <div class="col-6"><input id="phone" type="text" class="form-control input-sm" value="<?php echo $secretary_info['phone']; ?>" required/></div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
         <?php 
             } else if (!$hasSession){
@@ -63,5 +149,6 @@
             $conn->close();
         ?>
     </div>
+    <script src="/sdi1500102_sdi1500165/javascript/user_info.js"></script>
 </body>
 </html>
