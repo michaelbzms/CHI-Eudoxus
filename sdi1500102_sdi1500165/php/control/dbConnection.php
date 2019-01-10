@@ -173,7 +173,7 @@ function getDeclaredInOrder($mysqli, $type, $array){
     $impodedArray = implode(",", $array);
     if ($type == "classes") {
         $result = $mysqli->query("SELECT * FROM UNIVERSITY_CLASSES WHERE idClass IN ($impodedArray) ORDER BY FIELD(idClass,$impodedArray);");
-    } elseif ($type == "books") {
+    } elseif ($type == "books") {       // this won't return duplicates books (from different classes); now getting books seperately
         $result = $mysqli->query("SELECT * FROM BOOKS WHERE idBook IN ($impodedArray) ORDER BY FIELD(idBook,$impodedArray);");
     } else {
         echo "Warning: unknown type at getDeclaredInOrder()!";

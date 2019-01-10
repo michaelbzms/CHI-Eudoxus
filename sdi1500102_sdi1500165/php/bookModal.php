@@ -2,7 +2,7 @@
 function bookModal($conn, $book) {
     $publisherName = getBookPublisherName($conn, $book['idBook']);
     $front_page_url = ($book['front_page_url'] != null) ? $book['front_page_url'] : "/sdi1500102_sdi1500165/images/default_book_front_page.jpg";
-    $back_page_url = ($book['back_page_url'] != null) ? $book['front_page_url'] : "/sdi1500102_sdi1500165/images/default_book_front_page.jpg";
+    $back_page_url = ($book['back_page_url'] != null) ? $book['back_page_url'] : "/sdi1500102_sdi1500165/images/default_book_front_page.jpg";
     echo <<<EOT
     <div class="modal fade" id="book{$book['idBook']}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered book-modal-dialog" role="document">
@@ -24,12 +24,12 @@ function bookModal($conn, $book) {
                         <div class="col-9 pr-4">
                             <br>
                             <!-- OLD WAY: 
-                            <h4>Κωδικός Βιβλίου στον Εύδοξο:&ensp;<span class="font-weight-normal">{$book['idBook']}</span></h4>
+                            <h4>Κωδικός Βιβλίου:&ensp;<span class="font-weight-normal">{$book['idBook']}</span></h4>
                             <h4>Συγγραφέας/είς:&ensp;<span class="font-weight-normal">{$book['authors']}</span></h4><br> 
                             -->
                             <table class="table table-striped border book_table">
                                 <tr>
-                                    <th>Κωδικός Βιβλίου στον Εύδοξο:</th>
+                                    <th>Κωδικός Βιβλίου:</th>
                                     <th class="font-weight-normal">{$book['idBook']}</th>
                                 </tr>
                                 <tr>

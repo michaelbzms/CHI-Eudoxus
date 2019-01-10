@@ -61,7 +61,10 @@
                 <?php include("bookModal.php") ?>
                 <?php
                     $classesInOrder = getDeclaredInOrder($conn, "classes", $_SESSION['bookDeclClassesArr']);
-                    $booksInOrder = getDeclaredInOrder($conn, "books", $_SESSION['bookDeclBooksArr']);
+                    $booksInOrder = [];
+                    foreach ($_SESSION['bookDeclBooksArr'] as $bookId) {
+                        $booksInOrder[] = getByID($conn, "book", $bookId);
+                    }
                     echo "<div class=\"container\"><table class=\"table table-striped table-bordered border book_table mb-4\" style=\"border: 2px solid gray!important\">";
                     for ($i = 0; $i < count($classesInOrder); $i++) { 
                         if ( isset($classesInOrder[$i]['FREE_CLASS_SECRETARIES_id']) ) $freeClassDpt = "&ensp;(" . getDptForSecretary($conn, $classesInOrder[$i]['FREE_CLASS_SECRETARIES_id']) . ")";
@@ -90,7 +93,6 @@
                     <div class="alert-warning p-3 ml-5 mr-5">
                         <p>⚠ Για να κάνετε μία δήλωση συγγραμμάτων πρέπει πρώτα να <a href="/sdi1500102_sdi1500165/php/book_declaration1.php">επιλέξετε συγγράμματα</a>!</p>
                     </div>
-                    <!-- <button class="btn btn-light mt-4" data-toggle="modal" data-target="#loginModal"><img class="pr-1" src="/sdi1500102_sdi1500165/images/login.png"/>Είσοδος</button><br> -->
                     <img class="mt-3" src="/sdi1500102_sdi1500165/images/oops-sign.jpg"/>
                 </div>
         <?php

@@ -90,17 +90,15 @@
 EOT;
                                                             $classBooks = getClassBooks($conn, $class['idClass']);
                                                             if ($classBooks == []) echo "<h6><i>Δεν προσφέρονται συγγράμματα για αυτό το μάθημα.</i></h6>";
-                                                            $j = 1;
                                                             foreach ($classBooks as $book) {
                                                                 echo <<<EOT
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="book{$class['idClass']}" id="book{$class['idClass']}_$j" value="{$book['idBook']}">
-                                                                    <label class="form-check-label" for="book{$class['idClass']}_$j">
+                                                                    <input class="form-check-input" type="radio" name="book{$class['idClass']}" id="book{$class['idClass']}_{$book['idBook']}" value="{$book['idBook']}">
+                                                                    <label class="form-check-label" for="book{$class['idClass']}_{$book['idBook']}">
                                                                         <strong>[{$book['idBook']}]:</strong> <span class="bookModalSpan" data-toggle="modal" data-target="#book{$book['idBook']}">{$book['title']}</span> | {$book['authors']}
                                                                     </label>
                                                                 </div>
 EOT;
-                                                                $j++;
                                                              }
                                                 echo "      </div>
                                                         </div>
@@ -187,11 +185,14 @@ EOT;
     <script>
         $(window).on('load', function() {
             var declaredClassesArr = <?php echo json_encode($_SESSION['bookDeclClassesArr']); ?>;
+            console.log(declaredClassesArr);
             if ( !Array.isArray(declaredClassesArr) || !declaredClassesArr.length ) return;
-            var declaredBooksArr = <?php echo json_encode($_SESSION['bookDeclClassesArr']); ?>;
+            var declaredBooksArr = <?php echo json_encode($_SESSION['bookDeclBooksArr']); ?>;
+            console.log(declaredBooksArr);
             for (i = 0; i < declaredClassesArr.length; i++) {
                 $("input[name=class" + declaredClassesArr[i] + "]").prop('checked', true);
-                $("input[name=book" + declaredBooksArr[i] + "]").prop('checked', true);
+                console.log("#book" + declaredClassesArr[i] + "_" + declaredBooksArr[i]);
+                $("#book" + declaredClassesArr[i] + "_" + declaredBooksArr[i]).prop('checked', true);
             }
         });
     </script>

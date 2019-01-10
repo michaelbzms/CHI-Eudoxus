@@ -42,9 +42,19 @@
                     <a id="register_dist" class="option-item" href="php/register_page.php?userType=student">
                         <div class="option-title">Εγγραφή Φοιτητή</div>
                     </a>
-                    <a id="book_declaration" class="option-item" href="php/book_declaration1.php">
-                        <div class="option-title">Δήλωση Συγγραμμάτων</div>
-                    </a>
+                    <?php if ( isset($_SESSION['studentHasMadeBookDecl']) && $_SESSION['studentHasMadeBookDecl'] ) { ?>
+                        <a id="book_declaration" class="option-item" href="php/book_declaration3.php">
+                            <div class="option-title">Δήλωση Συγγραμμάτων</div>
+                        </a>
+                    <?php } elseif ( isset($_SESSION['bookDeclBooksArr']) && $_SESSION['bookDeclBooksArr'] != [] ) { ?>
+                        <a id="book_declaration" class="option-item" href="php/book_declaration2.php">
+                            <div class="option-title">Δήλωση Συγγραμμάτων</div>
+                        </a>
+                    <?php } else { ?>
+                        <a id="book_declaration" class="option-item" href="php/book_declaration1.php">
+                            <div class="option-title">Δήλωση Συγγραμμάτων</div>
+                        </a>
+                    <?php } ?>
                     <a id="book_exchange" class="option-item" href="php/notimplemented.php">
                         <div class="option-title">Ανταλλαγή Συγγραμμάτων</div>
                     </a>
