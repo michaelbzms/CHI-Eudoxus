@@ -62,7 +62,7 @@
             </div>
             <br>
             <div class="container mb-3 mt-2">
-                <div class="row border-bottom">
+                <div class="row border-bottom mb-2">
                     <div class="col-10 lead" style="color: #cd7400;"><strong>Ανακοινώσεις</strong></div>
                     <div class="col-2 lead" style="color: #cd7400;"><strong>Ημερομηνία</strong></div>
                 </div>
@@ -86,9 +86,11 @@
                         while ($row = $result->fetch_assoc()){
                             $Anouncements[$row['idAnnouncement']] = [$row['title'], $row['date']];
                         }
-                    }
-                    foreach ( $Anouncements as $id => $anouncement ){
-                        print "<div class=\"row\"><div class=\"col-10\"><a class=\"simpler_links\" href=\"announcement_page.php?id=$id\">" . $anouncement[0] . "</a></div><div class=\"col-2\">" . $anouncement[1] . "</div></div>\n";
+                        foreach ( $Anouncements as $id => $anouncement ){
+                            echo "<div class=\"row mt-1\"><div class=\"col-10\"><a class=\"simpler_links\" href=\"announcement_page.php?id=$id\">" . $anouncement[0] . "</a></div><div class=\"col-2\">" . $anouncement[1] . "</div></div>\n";
+                        }
+                    } else {
+                        echo "<h6 class=\"text-center\"><i>Δεν υπάρχουν διαθέσιμες ανακοινώσεις.</i></h6>";
                     }
                     $conn->close();
                 ?>

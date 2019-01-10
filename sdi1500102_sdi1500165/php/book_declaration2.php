@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
 	<!-- JS -->
 	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/lib/popper.min.js"></script>
 	<script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
 </head>
 <body>
@@ -30,13 +31,9 @@
             if (! $conn) {
                 die("Database connection failed: " . $conn->connect_error);
             }
-            $hasSession = isset($_SESSION['userID']);
-            if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student' ) {
-                $userUni = $_SESSION['studentUni'];
-                $userDpt = $_SESSION['studentDpt'];
-            } else {
-                // TODO: for not in session
-            }
+            $isLoggedInStudent = isset($_SESSION['userID']) && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student';
+            $userUni = $_SESSION['studentUni'];
+            $userDpt = $_SESSION['studentDpt'];
             // Handle book_declaration1.php form:
             if ( isset($_POST['bookDeclSubmit']) ) {
                 $_SESSION['bookDeclUni'] = $userUni;
@@ -82,16 +79,25 @@
                 ?>
                 <div class="text-center">
                     <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
-                    <form id="submit_book_declaration_form" action="/sdi1500102_sdi1500165/php/book_declaration3.php" class="d-inline-block" method="POST">
-                        <button type="submit" class="btn btn-dark hover_orange ml-3 mr-5" name="bookDeclSubmitFinal">Υποβολή Δήλωσης</button>
-                    </form>
+                    <?php if ($isLoggedInStudent) { ?>
+                            <form id="submit_book_declaration_form" action="/sdi1500102_sdi1500165/php/book_declaration3.php" class="d-inline-block" method="POST">
+                                <button type="submit" class="btn btn-dark hover_orange ml-3 mr-5" name="bookDeclSubmitFinal">Υποβολή Δήλωσης</button>
+                            </form>
+                    <?php } else { ?>
+                            <button class="btn btn-dark ml-3 mr-5 disabled" data-toggle="tooltip" data-placement="right" title="Για να υποβάλετε τη δήλωση πρέπει πρώτα να συνδεθείτε ως φοιτητής.">Υποβολή Δήλωσης</button>
+                            <script>
+                                $(document).ready(function(){
+                                    $('[data-toggle="tooltip"]').tooltip(); 
+                                });
+                            </script>
+                    <?php } ?>
                 </div>  
                 <br>
         <?php
             } else { ?>
                 <div class="text-center">
                     <div class="alert-warning p-3 ml-5 mr-5">
-                        <p>⚠ Για να κάνετε μία δήλωση συγγραμμάτων πρέπει πρώτα να <a href="/sdi1500102_sdi1500165/php/book_declaration1.php">επιλέξετε συγγράμματα</a>!</p>
+                        <p>⚠ Για να υποβάλλετε μία δήλωση συγγραμμάτων πρέπει πρώτα να <a href="/sdi1500102_sdi1500165/php/book_declaration1.php">επιλέξετε συγγράμματα</a>!</p>
                     </div>
                     <img class="mt-3" src="/sdi1500102_sdi1500165/images/oops-sign.jpg"/>
                 </div>

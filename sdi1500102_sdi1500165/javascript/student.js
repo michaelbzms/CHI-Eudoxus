@@ -17,6 +17,8 @@ $(document).on("click", "[id^='checkbDiv']", function(e){
     } else {
         //alert("CHECK");
         $(checkbox).prop('checked', false);
+    } else {        // open accordion
+        .collapse('toggle');    // TODO
     }
 });
 

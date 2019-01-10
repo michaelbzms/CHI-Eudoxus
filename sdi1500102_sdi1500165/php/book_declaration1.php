@@ -29,13 +29,47 @@
             if (! $conn) {
                 die("Database connection failed: " . $conn->connect_error);
             }
-            $hasSession = isset($_SESSION['userID']);
-            if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student' ) {   // in session user
-                $userUni = $_SESSION['studentUni'];
-                $userDpt = $_SESSION['studentDpt'];
         ?>
-                <h2 class="orange_header mt-3 mb-4">Δήλωση Συγγραμμάτων</h2>
+            <h2 class="orange_header mt-3 mb-4">Δήλωση Συγγραμμάτων</h2>
                 <div class="container">
+            <?php
+                $isLoggedInStudent = isset($_SESSION['userID']) && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student';
+                if (! $isLoggedInStudent) { ?>
+                    <form action="/sdi1500102_sdi1500165/php/book_declaration2.php" method="POST">
+                        <div class="form-group text-center">
+                            <select class="form-control d-inline-block w-25" id="uni-options" onchange="getDpts();">
+                                <?php
+                                    // $Unis = getAllUnis($conn);
+                                    // $Departments = [];
+                                    // foreach ($Unis as $uni) {
+                                    //    $Departments[] = getAllUniDepartments($conn, $uni);
+                                    //    echo "<option value=\"$uni\">$uni</option>";
+                                    // } 
+                                ?>
+                            </select>
+                            <select class="form-control d-inline-block w-25" id="dpt-options">
+                                <?php
+                                    // foreach ($Departments[1] as $dpt) {
+                                    //    echo "<option>$dpt</option>";
+                                    // } 
+                                ?>
+                            </select>
+                            <button type="submit" class="btn btn-dark hover_orange" name="uniSelect">Υποβολή</button>
+                        </div>
+                    </form>
+                    <?php   // After form handling:
+                        $userUni = "Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών";
+                        $userDpt = "Τμήμα Νομικής";
+
+                        $_SESSION['studentUni'] = $userUni;
+                        $_SESSION['studentDpt'] = $userDpt;
+                    ?>
+            <?php
+                } else {   // in session user
+                    $userUni = $_SESSION['studentUni'];
+                    $userDpt = $_SESSION['studentDpt'];
+                }
+            ?>
                     <form action="/sdi1500102_sdi1500165/php/book_declaration2.php" method="POST">
                         <div class="row">
                             <div class="col-2 pr-0">
@@ -119,64 +153,18 @@ EOT;
                     </form>
                 </div>
             <?php
-                include("bookModal.php");
-                $i = 1;
-                foreach ($Semesters as $sem) {
-                    $semClasses = getDptSemClasses($conn, $userDpt, $i);
-                    foreach ($semClasses as $class) {
-                        $classBooks = getClassBooks($conn, $class['idClass']);
-                        foreach ($classBooks as $book) {
-                            bookModal($conn, $book);
-                        }
+            include("bookModal.php");
+            $i = 1;
+            foreach ($Semesters as $sem) {
+                $semClasses = getDptSemClasses($conn, $userDpt, $i);
+                foreach ($semClasses as $class) {
+                    $classBooks = getClassBooks($conn, $class['idClass']);
+                    foreach ($classBooks as $book) {
+                        bookModal($conn, $book);
                     }
-                    $i++;
                 }
-            } else if (!$hasSession){
-                include("../notconnected.html"); ?>
-                <!-- TODO: create page for non-sessioned users
-                <div class="form-group text-center m-4">
-                    <select class="form-control d-inline-block w-25" id="uni-options" onchange="getDpts();">
-                        <?php
-                            //$Unis = getAllUnis($conn);
-                            //$Departments = [];
-                            //foreach ($Unis as $uni) {
-                            //    $Departments[] = getAllUniDepartments($conn, $uni);
-                            //    echo "<option value=\"$uni\">$uni</option>";
-                            //} 
-                        ?>
-                    </select>
-                    <select class="form-control d-inline-block w-25" id="dpt-options">
-                        <?php
-                            //foreach ($Departments[1] as $dpt) {
-                            //    echo "<option>$dpt</option>";
-                            //} 
-                        ?>
-                    </select>
-                    <script>
-                    function getDpts() {
-                        var str='';
-                        var val=document.getElementById('uni-options');
-                        for (i=0;i< val.length;i++) { 
-                            if(val[i].selected){
-                                str += val[i].value + ','; 
-                            }
-                        }         
-                        var str=str.slice(0,str.length -1);
-                            
-                        $.ajax({          
-                                type: "GET",
-                                url: "get_uni_dpts.php",
-                                data: 'uni='+str,
-                                success: function(data){
-                                    $("#dpt-options").html(data);
-                                }
-                        });
-                    }
-                    </script>
-                </div>  -->
-    <?php   } else {
-                include("../unauthorized.html");
-            } 
+                $i++;
+            }
             include("../footer.html"); 
             $conn->close();
         ?>

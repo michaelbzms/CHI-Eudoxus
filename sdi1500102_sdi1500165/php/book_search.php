@@ -54,10 +54,12 @@
                 </div>
             </form>
         </div>
+        <br>
         <!-- AJAX content down here -->
         <div id="book_search_results">
 
         </div>
+        <br>
         <?php include("../footer.html"); ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/book_search.js"></script>
