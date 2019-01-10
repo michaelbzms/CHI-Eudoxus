@@ -77,7 +77,7 @@
                             include("printReceivingBookRow.php");
                             include("bookModal.php");
                             $bookIds = [];
-                            $bookClassTuples = getBookDeclarationTuples($conn, $bookDeclaration['idDeclaration']);
+                            $bookClassTuples = getBookDeclarationTuples($conn, "declarationId", $bookDeclaration['idDeclaration']);
                             foreach ($bookClassTuples as $bcTuple) {
                                 printReceivingBookRow($conn, $bcTuple);
                                 $bookIds[] = $bcTuple['BOOKS_id'];

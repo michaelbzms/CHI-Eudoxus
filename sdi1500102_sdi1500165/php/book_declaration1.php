@@ -184,5 +184,16 @@ EOT;
         ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/student.js"></script>
+    <script>
+        $(window).on('load', function() {
+            var declaredClassesArr = <?php echo json_encode($_SESSION['bookDeclClassesArr']); ?>;
+            if ( !Array.isArray(declaredClassesArr) || !declaredClassesArr.length ) return;
+            var declaredBooksArr = <?php echo json_encode($_SESSION['bookDeclClassesArr']); ?>;
+            for (i = 0; i < declaredClassesArr.length; i++) {
+                $("input[name=class" + declaredClassesArr[i] + "]").prop('checked', true);
+                $("input[name=book" + declaredBooksArr[i] + "]").prop('checked', true);
+            }
+        });
+    </script>
 </body>
 </html>

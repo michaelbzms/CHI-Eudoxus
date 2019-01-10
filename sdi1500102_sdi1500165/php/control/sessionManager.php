@@ -31,6 +31,15 @@
                 $declaration_period = "2018-09";
                 $result = $conn->query("SELECT * FROM BOOK_DECLARATION WHERE STUDENTS_id={$_SESSION['userID']} AND declaration_period='$declaration_period';");
                 $_SESSION['studentHasMadeBookDecl'] = ($result->num_rows > 0);
+                if ( $_SESSION['studentHasMadeBookDecl'] ) {
+                	$_SESSION['bookDeclClassesArr'] = [];
+                	$_SESSION['bookDeclBooksArr'] = [];
+                    $bookClassTuples = getBookDeclarationTuples($conn, "studentId", $_SESSION['userID']);
+                    foreach ($bookClassTuples as $bcTuple) {
+                    	$_SESSION['bookDeclClassesArr'][] = $bcTuple['UNIVERSITY_CLASSES_id'];
+                        $_SESSION['bookDeclBooksArr'][] = $bcTuple['BOOKS_id'];
+                    }
+                }
 	        }
         	$conn->close();
 	    } else {

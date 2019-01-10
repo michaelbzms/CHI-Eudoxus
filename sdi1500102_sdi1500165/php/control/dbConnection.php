@@ -188,12 +188,19 @@ function getDeclaredInOrder($mysqli, $type, $array){
     return $list;
 }
 
-function getBookDeclarationTuples($mysqli, $declarationId){
+function getBookDeclarationTuples($mysqli, $idType, $id){
     if ( mysqli_connect_errno() ){
         echo "Warning: connection not established at getBookDeclarationTuples()!";
         return [];
     }
-    $result = $mysqli->query("SELECT * FROM BOOK_CLASS_TUPLES WHERE BOOK_DECLARATION_id=$declarationId;");
+    if ($idType == "declarationId") {
+        $result = $mysqli->query("SELECT * FROM BOOK_CLASS_TUPLES WHERE BOOK_DECLARATION_id=$id;");
+    } elseif ($idType == "studentId") {
+        $result = $mysqli->query("SELECT bct.* FROM BOOK_CLASS_TUPLES bct, BOOK_DECLARATION bd WHERE bd.STUDENTS_id=$id AND bd.idDeclaration=bct.BOOK_DECLARATION_id;");
+    } else {
+        echo "Warning: unknown type at getBookDeclarationTuples()!";
+        return [];
+    }
     $list = [];
     if ($result->num_rows > 0) {
         while ($row =  $result->fetch_assoc()){
