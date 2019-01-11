@@ -32,18 +32,14 @@
                 die("Database connection failed: " . $conn->connect_error);
             }
             $isLoggedInStudent = isset($_SESSION['userID']) && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student';
-            $userUni = $_SESSION['studentUni'];
-            $userDpt = $_SESSION['studentDpt'];
             // Handle book_declaration1.php form:
             if ( isset($_POST['bookDeclSubmit']) ) {
-                $_SESSION['bookDeclUni'] = $userUni;
-                $_SESSION['bookDeclDpt'] = $userDpt;
                 $_SESSION['bookDeclClassesArr'] = [];
                 $_SESSION['bookDeclBooksArr'] = [];
-                $semNum = getDptNumberOfSemesters($conn, $userDpt);
+                $semNum = getDptNumberOfSemesters($conn, $_SESSION['bookDeclUni'], $_SESSION['bookDeclDpt']);
                 $i = 1;     // TODO: period?
                 for (; $i <= $semNum; $i += 2) {
-                    $semClasses = getDptSemClasses($conn, $userDpt, $i);
+                    $semClasses = getDptSemClasses($conn, $_SESSION['bookDeclUni'], $_SESSION['bookDeclDpt'], $i);
                     foreach ($semClasses as $class) {
                         if ( isset($_POST["class{$class['idClass']}"]) && isset($_POST["book{$class['idClass']}"]) ) {
                             $_SESSION['bookDeclClassesArr'][] = $class['idClass'];

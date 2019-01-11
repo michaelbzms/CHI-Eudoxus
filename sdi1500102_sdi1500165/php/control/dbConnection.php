@@ -35,12 +35,12 @@ function getByID($mysqli, $item, $itemId) {
     return $result->fetch_assoc();
 }
 
-function getDptNumberOfSemesters($mysqli, $department) : int {
+function getDptNumberOfSemesters($mysqli, $university, $department) : int {
     if ( mysqli_connect_errno() ){
         echo "Warning: connection not established at getDptNumberOfSemesters()!";
         return -1;
     }
-    $result = $mysqli->query("SELECT number_of_semesters FROM SECRETARIES WHERE department = '$department';");
+    $result = $mysqli->query("SELECT number_of_semesters FROM SECRETARIES WHERE university='$university' AND department='$department';");
     return ( $result->num_rows > 0 ) ? $result->fetch_assoc()['number_of_semesters'] : -1;
 }
 
@@ -77,12 +77,12 @@ function getAllUnis($mysqli){
     return $list;
 }
 
-function getDptSemClasses($mysqli, $dpt, $sem){
+function getDptSemClasses($mysqli, $university, $dpt, $sem){
     if ( mysqli_connect_errno() ){
         echo "Warning: connection not established at getDptSemClasses()!";
         return [];
     }
-    $result = $mysqli->query("SELECT * FROM UNIVERSITY_CLASSES uc, SECRETARIES s WHERE s.department='$dpt' AND s.idUser=uc.SECRETARIES_id AND uc.semester=$sem;");
+    $result = $mysqli->query("SELECT * FROM UNIVERSITY_CLASSES uc, SECRETARIES s WHERE s.university='$university' AND s.department='$dpt' AND s.idUser=uc.SECRETARIES_id AND uc.semester=$sem;");
     $list = [];
     if ($result->num_rows > 0) {
         while ($row =  $result->fetch_assoc()){
@@ -94,7 +94,7 @@ function getDptSemClasses($mysqli, $dpt, $sem){
 
 function getClassBooks($mysqli, $classId){
     if ( mysqli_connect_errno() ){
-        echo "Warning: connection not established at getDptSemClasses()!";
+        echo "Warning: connection not established at getClassBooks()!";
         return [];
     }
     $result = $mysqli->query("SELECT b.* FROM BOOKS b, UNIVERSITY_CLASSES_has_BOOKS uhb WHERE uhb.UNIVERSITY_CLASSES_id=$classId AND uhb.BOOKS_id=b.idBook;");
