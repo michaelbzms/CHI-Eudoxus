@@ -65,7 +65,7 @@
                         echo "
                             <tr>
                                 <th style=\"border-right: 2px solid gray!important\">{$classesInOrder[$i]['title']}<span class=\"font-weight-normal\">$freeClassDpt</span></th>
-                                <th class=\"font-weight-normal\"><strong>[{$booksInOrder[$i]['idBook']}]:</strong> <span class=\"bookModalSpan\" data-toggle=\"modal\" data-target=\"#book{$booksInOrder[$i]['idBook']}\">{$booksInOrder[$i]['title']}</span> | {$booksInOrder[$i]['authors']}</th>
+                                <th class=\"font-weight-normal\"><strong>[{$booksInOrder[$i]['idBook']}]:</strong> <span class=\"simpler_link bookModalSpan\" data-toggle=\"modal\" data-target=\"#book{$booksInOrder[$i]['idBook']}\">{$booksInOrder[$i]['title']}</span> | {$booksInOrder[$i]['authors']}</th>
                             </tr>";
                     } 
                     echo "</table></div>";
@@ -74,13 +74,14 @@
                     }
                 ?>
                 <div class="text-center">
-                    <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
+                    <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block grey_link"> < Τροποποίηση Δήλωσης </a>
                     <?php if ($isLoggedInStudent) { ?>
                             <form id="submit_book_declaration_form" action="/sdi1500102_sdi1500165/php/book_declaration3.php" class="d-inline-block" method="POST">
                                 <button type="submit" class="btn btn-dark hover_orange ml-3 mr-5" name="bookDeclSubmitFinal">Υποβολή Δήλωσης</button>
                             </form>
                     <?php } else { ?>
                             <button class="btn btn-dark ml-3 mr-5 disabled" data-toggle="tooltip" data-placement="right" title="Για να υποβάλετε τη δήλωση πρέπει πρώτα να συνδεθείτε ως φοιτητής.">Υποβολή Δήλωσης</button>
+                            <!-- TODO: Make this clickable so that it promts a login and after a successful one redirects to book_declaration3.php -->
                             <script>
                                 $(document).ready(function(){
                                     $('[data-toggle="tooltip"]').tooltip(); 

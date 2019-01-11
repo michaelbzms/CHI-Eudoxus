@@ -2,6 +2,7 @@
 
 .general_navbar {
     clear: both;
+    border-radius: 5px;
 }
 
 .navbar .nav-link {

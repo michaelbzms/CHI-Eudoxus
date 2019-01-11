@@ -32,6 +32,16 @@ body {
     margin-top: 20px;
 }
 
+.simpler_link {
+    text-decoration: none !important;
+}
+
+.simpler_link:hover {
+    text-decoration: none !important;
+    color: rgb(231, 150, 0);
+    cursor: pointer;
+}
+
 /* headlines.php style */
 #logo {
     float: left;
@@ -205,4 +215,14 @@ a:hover.breadcrump_item {
 .requiredField:after {
     content: " *";
     color: red;
+}
+
+.grey_link {
+    color: #495057;
+    text-decoration: none !important;
+}
+
+.grey_link:hover {
+    color: rgb(231, 150, 0);
+    text-decoration: none !important;
 }

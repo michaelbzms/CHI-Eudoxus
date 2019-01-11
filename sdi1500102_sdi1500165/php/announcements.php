@@ -13,17 +13,6 @@
 	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
     <script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
     <!-- style for only this page -->
-    <style>
-        a {
-            text-decoration: none !important;
-        }
-
-        a:hover {
-            text-decoration: none !important;
-            color: rgb(231, 150, 0);
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
     <div class="main-container">
@@ -87,7 +76,7 @@
                             $Anouncements[$row['idAnnouncement']] = [$row['title'], $row['date']];
                         }
                         foreach ( $Anouncements as $id => $anouncement ){
-                            echo "<div class=\"row mt-1\"><div class=\"col-10\"><a class=\"simpler_links\" href=\"announcement_page.php?id=$id\">" . $anouncement[0] . "</a></div><div class=\"col-2\">" . $anouncement[1] . "</div></div>\n";
+                            echo "<div class=\"row mt-1\"><div class=\"col-10\"><a class=\"simpler_link\" href=\"announcement_page.php?id=$id\">" . $anouncement[0] . "</a></div><div class=\"col-2\">" . $anouncement[1] . "</div></div>\n";
                         }
                     } else {
                         echo "<h6 class=\"text-center\"><i>Δεν υπάρχουν διαθέσιμες ανακοινώσεις.</i></h6>";

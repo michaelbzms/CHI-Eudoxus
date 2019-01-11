@@ -36,9 +36,9 @@
             <?php
                 $isLoggedInStudent = isset($_SESSION['userID']) && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student';
                 if (! $isLoggedInStudent) { ?>
-                    <form action="/sdi1500102_sdi1500165/php/book_declaration1.php" method="POST">
+                    <form id="getUniAndDepForm" action="/sdi1500102_sdi1500165/php/book_declaration1.php" method="POST">
                         <div class="form-group text-center">
-                            <div class="d-inline-block" style="width: 410px;">
+                            <div class="d-inline-block mr-1" style="width: 410px;">
                                 <p class="text-left text-secondary mb-1 ml-2">Σχολή</p>
                                 <select class="form-control d-inline-block" id="unis" name="uniSelected" required onchange="showDptDropdown()">
                                 <?php
@@ -52,13 +52,13 @@
                                     } 
                                 ?>
                                 </select>
-                           </div>
-                            <div class="d-inline-block" style="width: 410px;">
+                            </div>
+                            <div class="d-inline-block ml-1" style="width: 410px;">
                                 <p class="text-left text-secondary mb-1 ml-2">Τμήμα</p>
                                 <?php
                                     $i = 0;
                                     foreach ($Unis as $uni) {
-                                        echo "<select class=\"form-control d-inline-block\" id=\"dpts_uni{$i}\" name=\"dptSelected\" style=\"display: none!important;\" required>";
+                                        echo "<select class=\"form-control d-inline-block department_select\" id=\"dpts_uni{$i}\" name=\"dptSelected\" style=\"display: none!important;\" required>";
                                         foreach ($Departments[$i] as $dpt) {
                                             echo "<option value=\"$dpt\">$dpt</option>";
                                         }
@@ -67,7 +67,19 @@
                                     }
                                 ?>
                             </div>
-                            <button type="submit" class="btn btn-dark hover_orange" name="uniSelectSubmit">Αναζήτηση</button>
+                            <!-- button is hidden and triggered as pressed when department or uni has changed! -->
+                            <div class="text-center m-2" style="display: none !important;">
+                                <button id="submit_btn" type="submit" class="btn btn-dark hover_orange" name="uniSelectSubmit">Αναζήτηση</button>
+                            </div>
+                            <script>
+                                $(".department_select").on("change", function(){
+                                    $("#submit_btn").trigger("click");
+                                });
+
+                                $(".unis").on("change", function(){
+                                    $("#submit_btn").trigger("click");
+                                });
+                            </script>
                         </div>
                     </form>
                     <br>
@@ -151,8 +163,8 @@ EOT;
                                                             echo <<<EOT
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio" name="book{$class['idClass']}" id="book{$class['idClass']}_{$book['idBook']}" value="{$book['idBook']}">
-                                                                <label class="form-check-label" for="book{$class['idClass']}_{$book['idBook']}">
-                                                                    <strong>[{$book['idBook']}]:</strong> <span class="bookModalSpan" data-toggle="modal" data-target="#book{$book['idBook']}">{$book['title']}</span> | {$book['authors']}
+                                                                <label> <!-- NOTE: Removed this: class="form-check-label" for="book{$class['idClass']}_{$book['idBook']}" : the user that just want to bring up the modal may not want to select it --> 
+                                                                    <strong>[{$book['idBook']}]:</strong> <span class="bookModalSpan simpler_link" data-toggle="modal" data-target="#book{$book['idBook']}">{$book['title']}</span> | {$book['authors']}
                                                                 </label>
                                                             </div>
 EOT;
@@ -170,7 +182,8 @@ EOT;
                             </div>
                         </div>
                         <br>
-                        <div class="text-center m-3">
+                        <div class="text-center m-3 mb-4">
+                            <!-- TODO: script that prevents this link if not selected any books! -->
                             <button type="submit" class="btn btn-dark hover_orange" name="bookDeclSubmit">Συνέχεια</button>
                         </div>         
                     </form>

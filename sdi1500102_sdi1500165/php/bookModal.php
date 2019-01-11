@@ -13,7 +13,6 @@ function bookModal($conn, $book) {
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -23,10 +22,6 @@ function bookModal($conn, $book) {
                         </div>
                         <div class="col-9 pr-4">
                             <br>
-                            <!-- OLD WAY: 
-                            <h4>Κωδικός Βιβλίου:&ensp;<span class="font-weight-normal">{$book['idBook']}</span></h4>
-                            <h4>Συγγραφέας/είς:&ensp;<span class="font-weight-normal">{$book['authors']}</span></h4><br> 
-                            -->
                             <table class="table table-striped border book_table">
                                 <tr>
                                     <th>Κωδικός Βιβλίου:</th>
@@ -70,12 +65,12 @@ function bookModal($conn, $book) {
                                 </tr>
                                 <tr>
                                     <th>Ιστοσελίδα:</th>
-                                    <th><a href="{$book['webpage_url']}" target="_blank"><img src="/sdi1500102_sdi1500165/images/outlink.png" height="32px" width="32px"></a></th>
+                                    <th><a class="simpler_link" href="{$book['webpage_url']}" target="_blank"><img src="/sdi1500102_sdi1500165/images/outlink.png" height="32px" width="32px"></a></th>
                                 </tr>
                             </table>
                             <div class="text-center">
-                                <a href="{$book['contents_url']}" class="d-inline-block m-1" target="_blank">Πίνακας Περιεχομένων</a><br>
-                                <a href="{$book['excerpt_url']}" class="d-inline-block m-2" target="_blank">Ενδεικτικό Απόσπασμα</a>
+                                <a class="simpler_link" href="{$book['contents_url']}" class="d-inline-block m-1" target="_blank">Πίνακας Περιεχομένων</a><br>
+                                <a class="simpler_link" href="{$book['excerpt_url']}" class="d-inline-block m-2" target="_blank">Ενδεικτικό Απόσπασμα</a>
                             </div>
                         </div>
                     </div>

@@ -96,9 +96,11 @@
                     </div>
                     <img class="mt-3" src="/sdi1500102_sdi1500165/images/oops-sign.jpg"/>
                 </div>
-    <?php  } 
-        include("../footer.html"); 
-    ?>
+    <?php  } ?>
+        <div class="container">
+            <a href="/sdi1500102_sdi1500165/php/announcements.php" class="grey_link"> < Πίσω στις Ανακοινώσεις </a>
+            </div>
+    <?php include("../footer.html"); ?>
     </div>
 </body>
 </html>

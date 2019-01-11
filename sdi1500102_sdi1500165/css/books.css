@@ -16,7 +16,6 @@
 }
 
 .bookModalSpan:hover {
-    color: #0056b3;
     text-decoration: none;
 }
 
@@ -40,6 +39,6 @@
 }
 
 .book_title {
-	color: #1b7ee7;
-	font-weight: 600;
+	color: #1b7ee7 !important;
+	font-weight: 600 !important;
 }

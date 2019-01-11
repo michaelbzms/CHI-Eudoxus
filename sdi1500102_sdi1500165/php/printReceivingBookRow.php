@@ -4,19 +4,20 @@ function printReceivingBookRow($conn, $bcTuple) {
     $class = getById($conn, "class", $bcTuple['UNIVERSITY_CLASSES_id']);
     $book = getById($conn, "book", $bcTuple['BOOKS_id']);
     $publisherName = getBookPublisherName($conn, $book['idBook']);
+    $front_page_url = ($book['front_page_url'] != null) ? $book['front_page_url'] : "/sdi1500102_sdi1500165/images/default_book_front_page.jpg";
     echo <<<EOT
     <div class="row border border-dark rounded mb-3 p-2">
         <div class="col-6 border-right border-dark">
-            <h5>{$class['title']}</h5>
+            <h3>{$class['title']}</h3>
             <div class="row mt-2">
                 <div class="col-3">
-                    <img src="{$book['front_page_url']}" alt="frontpage" class="frontpage frontpage-mini mb-2" data-toggle="modal" data-target="#book{$book['idBook']}"/>
+                    <img src="{$front_page_url}" alt="frontpage" class="frontpage frontpage-mini mb-2" data-toggle="modal" data-target="#book{$book['idBook']}"/>
                 </div>
                 <div class="col-9">
-                    <span class="bookModalSpan d-inline-block mt-3 mb-2" data-toggle="modal" data-target="#book{$book['idBook']}"><strong>{$book['title']}</strong></span><br>
+                    <span class="simpler_link bookModalSpan d-inline-block mt-3 mb-2" data-toggle="modal" data-target="#book{$book['idBook']}"><h5 style="font-weight: 600">{$book['title']}</h5></span><br>
                     <p>
-                        {$book['version']}<br>
-                        $publisherName
+                        $publisherName<br>
+                        {$book['version']}
                     </p>
 EOT;
     if ($bcTuple['received']) echo "<img src=\"/sdi1500102_sdi1500165/images/checkGreen.png\" class=\"greenCheck\"/ data-toggle=\"tooltip\" data-placement=\"right\" title=\"Έχετε ήδη παραλάβει αυτό το σύγγραμμα.\">";

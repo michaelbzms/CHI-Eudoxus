@@ -67,10 +67,10 @@
                     <div class="col-11 m-2 text_div">
                         <div class="row mb-2">
                             <div class="col-6 text-center">
-                                <h3 class="text-primary mb-2 d-inline-block">Συγγράμματα</h3>
+                                <h3 class="text-dark mb-2 d-inline-block">Συγγράμματα</h3>
                             </div>
                             <div class="col-6 text-center">
-                                <h3 class="text-primary mb-2 d-inline-block">Επιλογές Παραλαβής</h3>
+                                <h3 class="text-dark mb-2 d-inline-block">Επιλογές Παραλαβής</h3>
                             </div>
                         </div>
                         <?php 
@@ -87,7 +87,7 @@
                                 bookModal($conn, $book);
                             }
                         ?>
-                        <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block"> < Τροποποίηση Δήλωσης </a>
+                        <a href="/sdi1500102_sdi1500165/php/book_declaration1.php" class="d-inline-block grey_link mt-3 mb-4"> < Τροποποίηση Δήλωσης </a>
                     </div>
                 </div>
                 <br>
