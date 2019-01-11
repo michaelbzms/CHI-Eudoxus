@@ -20,26 +20,26 @@
         <!-- common navbar for all without login -->
         <?php include("php/general_navbar.php"); ?>
         <!-- specific navbar for each category -->
-        <div class="specific_navbar">
+        <div class="specific_navbar bg-light">
             <div class="navbar-specific-item">
                 <div class="icon_title">Είμαι... ►</div>
             </div>
             <div id="student" class="navbar-specific-item">
-                <div class="icon_title">Φοιτητής</div>
+                <div class="icon_title add_bg_dark">Φοιτητής</div>
             </div>
             <div id="publisher" class="navbar-specific-item">
-                <div class="icon_title">Εκδότης</div>
+                <div class="icon_title add_bg_dark">Εκδότης</div>
             </div>
             <div id="secretary" class="navbar-specific-item">
-                <div class="icon_title">Υπάλληλος<br>Γραμματείας<br>Τμήματος</div>
+                <div class="icon_title add_bg_dark">Υπάλληλος<br>Γραμματείας<br>Τμήματος</div>
             </div>
             <div id="distribution_point" class="navbar-specific-item">
-                <div class="icon_title">Υπάλληλος<br>Σημείου<br>Διανομής</div>
+                <div class="icon_title add_bg_dark">Υπάλληλος<br>Σημείου<br>Διανομής</div>
             </div>
-            <div id="student_options">
+            <div id="student_options" class="blue-options-list">
                 <h3>...Φοιτητής</h3>
                 <div class="option-list">
-                    <a id="register_dist" class="option-item" href="php/register_page.php?userType=student">
+                    <a id="register_student" class="option-item" href="php/register_page.php?userType=student">
                         <div class="option-title">Εγγραφή Φοιτητή</div>
                     </a>
                     <?php if ( isset($_SESSION['studentHasMadeBookDecl']) && $_SESSION['studentHasMadeBookDecl'] ) { ?>
@@ -66,13 +66,13 @@
                     </a>
                 </div>
             </div>
-            <div id="publisher_options">
+            <div id="publisher_options" class="orange-options-list">
                 <h3>...Εκδότης</h3>
                 <div class="option-list">
                     <a id="register_publisher" class="option-item" href="php/register_page.php?userType=publisher">
                         <div class="option-title">Εγγραφή Εκδότη</div>
                     </a>
-                    <a class="option-item" href="php/notimplemented.php">
+                    <a id="publisher_app" class="option-item" href="php/notimplemented.php">
                         <div class="option-title">Διαχείριση Συγγραμμάτων</div>
                     </a>
                     <a id="price"class="option-item" href="php/notimpkemented.php">
@@ -83,13 +83,13 @@
                     </a>
                 </div>
             </div>
-            <div id="secretary_options">
+            <div id="secretary_options" class="blue-options-list">
                 <h3>...Υπάλληλος Γραμματίας Τμήματος</h3>
                 <div class="option-list">
                     <a id="register_secr" class="option-item" href="php/register_page.php?userType=secretary">
                         <div class="option-title">Εγγραφή Γραμματείας</div>
                     </a>
-                    <a class="option-item" href="php/secretary_app.php">
+                    <a id="secretary_app" class="option-item" href="php/secretary_app.php">
                         <div class="option-title">Διαχείριση Μαθημάτων/Συγγραμμάτων</div>
                     </a>
                     <a id="secretary_info" class="option-item" href="php/secretary_info.php">
@@ -97,7 +97,7 @@
                     </a>
                 </div>
             </div>
-            <div id="distribution_point_options">
+            <div id="distribution_point_options" class="orange-options-list">
                 <h3>...Υπάλληλος Σημείου Διανομής</h3>
                 <div class="option-list">
                     <a id="register_dist" class="option-item" href="php/register_page.php?userType=distPoint">

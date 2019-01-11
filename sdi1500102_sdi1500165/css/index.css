@@ -22,15 +22,6 @@
     width: 20%; /* 1/5 */
     text-align: center;
     vertical-align: bottom;
-    /* Text-style */
-    color: whitesmoke;
-    font-size: 200%;
-    line-height: 110%;
-    text-shadow:
-   	    -1px -1px 0 #008ed3,
-  	    1px -1px 0 #008ed3,
-   	    -1px 1px 0 #008ed3,
-        1px 1px 0 #008ed3;
 }
 
 #student,  #publisher, #secretary, #distribution_point {
@@ -95,6 +86,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    background-color: white;
     cursor: pointer;
     font-size: auto;
     text-decoration: none;
@@ -106,78 +98,128 @@
     box-shadow: 0px 0px 3px #343a40;
 }
 
-.option-item:hover {
-    text-decoration: none;
-    color:white;
-    box-shadow: 0px 0px 3px 2px #acd7ff;
-}
-
 .option-title {
-    color: whitesmoke;
-    font-size: 125%;
-    text-shadow:
-   	    -1px -1px 0 #008ed3,
-  	    1px -1px 0 #008ed3,
-   	    -1px 1px 0 #008ed3,
-        1px 1px 0 #008ed3;
     cursor: pointer;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-#book_declaration {
-    background-image: url("/sdi1500102_sdi1500165/images/blue_book_stack.jpg");
+#book_declaration, #secretary_app {
+    background-image: url("/sdi1500102_sdi1500165/images/bookstack_blue.png");
 }
 
 #book_exchange {
-    background-image: url("/sdi1500102_sdi1500165/images/exchange.jpeg");
+    background-image: url("/sdi1500102_sdi1500165/images/booktrade_blue.png");
 }
 
 #previous_declarations {
-    background-image: url("/sdi1500102_sdi1500165/images/previous.jpg");
+    background-image: url("/sdi1500102_sdi1500165/images/previousclock_blue.png");
 }
 
-#student_info {
-    background-image: url("/sdi1500102_sdi1500165/images/user_info.jpg");
+#student_info, #secretary_info {
+    background-image: url("/sdi1500102_sdi1500165/images/info_blue.png");
 }
 
-#register_student {
-    background-image: url("/sdi1500102_sdi1500165/images/signupLightBlue.jpg");
+#publisher_info, #dist_point_info {
+    background-image: url("/sdi1500102_sdi1500165/images/info_orange.png");
 }
 
-#register_secr {
-    background-image: url("/sdi1500102_sdi1500165/images/signupBlue.jpg");
+#register_student, #register_secr  {
+    background-image: url("/sdi1500102_sdi1500165/images/register_blue.png");
 }
 
-#register_publisher {
-    background-image: url("/sdi1500102_sdi1500165/images/signupOrange.jpg");
-}
-
-#register_dist {
-    background-image: url("/sdi1500102_sdi1500165/images/signupLightBlue.jpg");
+#register_publisher, #register_dist {
+    background-image: url("/sdi1500102_sdi1500165/images/register_orange.png");
 }
 
 #price {
-    background-image: url("/sdi1500102_sdi1500165/images/price.jpg");
+    background-image: url("/sdi1500102_sdi1500165/images/cost_orange.png");
 }
 
-#book_delivery {
-    background-image: url("/sdi1500102_sdi1500165/images/bluebook.jpg");
+#book_delivery , #publisher_app {
+    background-image: url("/sdi1500102_sdi1500165/images/bookstack_orange.png");
 }
 
 #back_button {
     display: inline-block;  /* hidden at start */
     margin: 20px;
-    color: whitesmoke;
-    font-size: 200%;
-    line-height: 110%;
-    text-shadow:
-   	    -1px -1px 0 #008ed3,
-  	    1px -1px 0 #008ed3,
-   	    -1px 1px 0 #008ed3,
-           1px 1px 0 #008ed3;
     cursor: pointer;
 }
 
-#back_button:hover {
+ /* Text-style */
+.navbar-specific-item {
+    font-size: 200%;
+    line-height: 110%;
     color: white;
+    text-shadow:
+   	    -1px -1px 0 black,
+  	    1px -1px 0 black,
+   	    -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+/*TODO: keep this or not? (do not delete class either way) */
+.add_bg_dark {
+    display: inline-block;
+    background-color: rgba(241, 241, 241, 0.192);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #343a40;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #343a40;
+    padding-bottom: 8px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+
+.navbar-specific-item:hover > .add_bg_dark {
+    color: rgb(236, 172, 54);
+}
+
+
+.option-title {
+    font-size: 125%;
+    color: #343a40;
+    font-weight: 600;
+    text-shadow:
+   	    -1px -1px 1px white,
+  	    1px -1px 1px white,
+   	    -1px 1px 1px white,
+        1px 1px 1px white;
+}
+
+.orange-options-list .option-item:hover {
+    text-decoration: none;
+    box-shadow: 0px 0px 5px 3px rgb(255, 193, 112);
+}
+
+.blue-options-list .option-item:hover {
+    text-decoration: none;
+    box-shadow: 0px 0px 5px 3px rgb(155, 207, 255);
+}
+
+/* TODO: change something to text when hover or too much?
+.orange-options-list .option-item:hover > .option-title {
+    color: rgb(255, 216, 144);
+}
+
+.blue-options-list .option-item:hover > .option-title {
+    color: #8fc9ff;
+}
+*/
+
+#back_button {
+    font-size: 200%;
+    line-height: 110%;
+    color: white;
+    text-shadow:
+   	    -1px -1px 0 black,
+  	    1px -1px 0 black,
+   	    -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+#back_button:hover {
+    color: rgb(236, 172, 54);
 }
