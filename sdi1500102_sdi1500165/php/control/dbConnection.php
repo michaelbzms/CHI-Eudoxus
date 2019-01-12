@@ -35,6 +35,15 @@ function getByID($mysqli, $item, $itemId) {
     return $result->fetch_assoc();
 }
 
+function getSecId($mysqli, $uni, $dpt) : int {
+    if ( mysqli_connect_errno() ){
+        echo "Warning: connection not established at getSecId()!";
+        return -1;
+    }
+    $result = $mysqli->query("SELECT idUser FROM SECRETARIES WHERE university='$uni' AND department='$dpt';");
+    return ( $result->num_rows > 0 ) ? $result->fetch_assoc()['idUser'] : -1;
+}
+
 function getDptNumberOfSemesters($mysqli, $university, $department) : int {
     if ( mysqli_connect_errno() ){
         echo "Warning: connection not established at getDptNumberOfSemesters()!";
