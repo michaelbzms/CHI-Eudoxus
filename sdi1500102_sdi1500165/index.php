@@ -62,7 +62,7 @@
                         <div class="option-title">Προηγούμενες Δηλώσεις</div>
                     </a>
                     <a id="student_info" class="option-item" href="php/student_info.php">
-                        <div class="option-title">Επισκόπιση Στοιχείων Φοιτητή</div>
+                        <div class="option-title">Επισκόπηση Στοιχείων Φοιτητή</div>
                     </a>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                         <div class="option-title">Κοστολόγιση</div>
                     </a>
                     <a id="publisher_info" class="option-item" href="php/notimplemented.php">
-                        <div class="option-title">Επισκόπιση Στοιχείων Εκδότη</div>
+                        <div class="option-title">Επισκόπηση Στοιχείων Εκδότη</div>
                     </a>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                         <div class="option-title">Διαχείριση Μαθημάτων/Συγγραμμάτων</div>
                     </a>
                     <a id="secretary_info" class="option-item" href="php/secretary_info.php">
-                        <div class="option-title">Επισκόπιση Στοιχείων Γραμματείας</div>
+                        <div class="option-title">Επισκόπηση Στοιχείων Γραμματείας</div>
                     </a>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                         <div class="option-title">Παράδοση Συγγραμμάτων</div>
                     </a>
                     <a id="dist_point_info" class="option-item" href="php/notimplemented.php">
-                        <div class="option-title">Επισκόπιση Στοιχείων Σημείου Διανομής</div>
+                        <div class="option-title">Επισκόπηση Στοιχείων Σημείου Διανομής</div>
                     </a>
                 </div>
             </div>

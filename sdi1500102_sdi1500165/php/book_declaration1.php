@@ -58,7 +58,8 @@
                                 <?php
                                     $i = 0;
                                     foreach ($Unis as $uni) {
-                                        echo "<select class=\"form-control d-inline-block department_select\" id=\"dpts_uni{$i}\" name=\"dptSelected\" style=\"display: none!important;\" required>";
+                                        echo "<select class=\"form-control d-inline-block department_select\" id=\"dpts_uni{$i}\" name=\"dptSelected\" style=\"display: none!important;\">";
+                                        echo "<option value=\"\" disabled selected hidden></option>";
                                         foreach ($Departments[$i] as $dpt) {
                                             echo "<option value=\"$dpt\">$dpt</option>";
                                         }
@@ -91,8 +92,6 @@
                             $_SESSION['bookDeclBooksArr'] = [];
                             ?>
                             <script> 
-                                showDptDropdown();
-                                console.log($("#unis :selected").data("myindex"));
                                 $("#unis").val(<?php echo '"' . $_SESSION['bookDeclUni'] . '"'; ?>); 
                                 $("[name=dptSelected]").val(<?php echo '"' . $_SESSION['bookDeclDpt'] . '"'; ?>);
                             </script>

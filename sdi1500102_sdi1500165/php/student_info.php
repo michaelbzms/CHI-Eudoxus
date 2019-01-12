@@ -20,7 +20,7 @@
         <nav class="my_breadcrump">
             <a class="breadcrump_item" href="/sdi1500102_sdi1500165/index.php">Αρχική Σελίδα</a> > 
             <p class="breadcrump_item">Φοιτητές</p> > 
-            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/student_info.php">Επισκόπιση Στοιχείων Φοιτητή</a>
+            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/student_info.php">Επισκόπηση Στοιχείων Φοιτητή</a>
         </nav>
         <?php
             $conn = connectToDB();
