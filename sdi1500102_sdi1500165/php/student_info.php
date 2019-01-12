@@ -1,4 +1,4 @@
-<?php include("control/sessionManager.php") ?>
+<?php $loginFailed = include("control/sessionManager.php"); ?>
 <!DOCTYPE html>
 <?php $active_page = "StudentInfo"; ?>
 <html>
@@ -119,5 +119,6 @@
         ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/user_info.js"></script>
+    <?php include("control/loginFailureHandler.php"); ?>
 </body>
 </html>

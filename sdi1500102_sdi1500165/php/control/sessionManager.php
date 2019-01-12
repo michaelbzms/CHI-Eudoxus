@@ -1,10 +1,10 @@
 <?php
+    // returns true if login fails
 	session_start(); 
 	$dbConnectionPath = $_SERVER['DOCUMENT_ROOT'];
 	$dbConnectionPath .= "/sdi1500102_sdi1500165/php/control/dbConnection.php";
 	include_once($dbConnectionPath);
     if ( isset($_POST['loginSubmit']) ) {
-    	// TODO: better connection management per page?
         $conn = connectToDB();
         if ( $conn->connect_errno ) {
             die("Database connection failed: " . $conn->connect_errno());
@@ -16,8 +16,7 @@
 	        if ($result->num_rows == 0) {
 	    		$sqlStmt->close();
         		$conn->close();
-	        	// TODO: redirect to error page
-	            die("Wrong credentials");
+	            return true;
 	        }
 	    	$userRow = $result->fetch_assoc();
 	        $_SESSION['userID'] = $userRow['idUser'];
@@ -50,4 +49,5 @@
         session_unset();
         session_destroy();
     }
+    return false;
 ?>

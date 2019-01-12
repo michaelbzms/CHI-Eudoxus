@@ -1,4 +1,4 @@
-<?php include("control/sessionManager.php") ?>
+<?php $loginFailed = include("control/sessionManager.php"); ?>
 <!DOCTYPE html>
 <?php $active_page = "BookDeclaration"; ?>
 <html>
@@ -107,5 +107,6 @@
         ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/student.js"></script>
+    <?php include("control/loginFailureHandler.php"); ?>
 </body>
 </html>

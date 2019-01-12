@@ -1,4 +1,4 @@
-<?php include("control/sessionManager.php") ?>
+<?php $loginFailed = include("control/sessionManager.php"); ?>
 <!DOCTYPE html>
 <?php $active_page = "FAQ"; ?>
 <html>
@@ -323,5 +323,6 @@
         <br>
         <?php include("../footer.html"); ?>
     </div>
+    <?php include("control/loginFailureHandler.php"); ?>
 </body>
 </html>

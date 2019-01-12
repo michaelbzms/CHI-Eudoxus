@@ -1,4 +1,10 @@
-<?php include("control/sessionManager.php") ?>
+<?php $loginFailed = include("control/sessionManager.php"); ?>
+<?php 
+    if ( isset($_POST['loginSubmit']) && isset($_SESSION['userType']) && $_SESSION['userType'] == "student" && $_SESSION['bookDeclClassesArr'] != [] && $_SESSION['bookDeclBooksArr'] != []) {
+        header("Location: /sdi1500102_sdi1500165/php/book_declaration3.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <?php $active_page = "BookDeclaration"; ?>
 <html>
@@ -239,5 +245,6 @@ EOT;
             return true;
         });
     </script>
+    <?php include("control/loginFailureHandler.php"); ?>
 </body>
 </html>

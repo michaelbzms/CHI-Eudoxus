@@ -1,4 +1,4 @@
-<?php include("control/sessionManager.php") ?>
+<?php $loginFailed = include("control/sessionManager.php"); ?>
 <!DOCTYPE html>
 <?php $active_page = "SecretaryApp"; ?>
 <html>

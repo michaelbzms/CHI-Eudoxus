@@ -1,4 +1,4 @@
-<?php include("php/control/sessionManager.php") ?>
+<?php $loginFailed = include("php/control/sessionManager.php"); ?>
 <!DOCTYPE html>
 <?php $active_page = "HomePage"; ?>
 <html>
@@ -116,5 +116,6 @@
         <?php include("footer.html"); ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/specific_navbar_control.js"></script>
+    <?php include("php/control/loginFailureHandler.php"); ?>
 </body>
 </html>
