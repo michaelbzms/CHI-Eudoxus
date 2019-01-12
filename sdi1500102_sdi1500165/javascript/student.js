@@ -1,3 +1,13 @@
+$(document).ready(function() {
+    $("#bookDeclFormPage1").on("submit", function(e){
+        if ( $("#bookDeclFormPage1 input:checkbox:checked").length == 0 ) {       // no books are checked
+            alert('Δεν έχετε επιλέξει κανένα σύγγραμμα!');
+            return false;
+        }
+        return true;
+    });
+});
+
 $("#submit_book_declaration_form").on("submit", function(e){
     if ( !confirm('Είστε σίγουροι ότι θέλετε να υποβάλετε αυτή τη Δήλωση Συγγραμμάτων;') ){
         e.preventDefault();

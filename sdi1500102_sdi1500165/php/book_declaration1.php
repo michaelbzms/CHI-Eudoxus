@@ -235,15 +235,6 @@ EOT;
                 }
             });
         <?php } ?>
-
-        $("#bookDeclFormPage1").on("submit", function(e){
-            if ( $("#bookDeclFormPage1 input:checkbox:checked").length == 0 ) {       // no books are checked
-                alert('Δεν έχετε επιλέξει κανένα σύγγραμμα!');
-                e.preventDefault();
-                return false;
-            }
-            return true;
-        });
     </script>
     <?php include("control/loginFailureHandler.php"); ?>
 </body>
