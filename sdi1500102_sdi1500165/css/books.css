@@ -42,3 +42,7 @@
 	color: #1b7ee7 !important;
 	font-weight: 600 !important;
 }
+
+.tooltip {
+	z-index: 1039 !important;
+}

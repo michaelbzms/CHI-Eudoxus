@@ -8,12 +8,12 @@ function printReceivingBookRow($conn, $bcTuple) {
     echo <<<EOT
     <div class="row border border-dark rounded mb-3 p-2">
         <div class="col-6 border-right border-dark">
-            <h3>{$class['title']}</h3>
+            <h3 class="mt-1 mb-2">{$class['title']}</h3>
             <div class="row mt-2">
                 <div class="col-3">
                     <img src="{$front_page_url}" alt="frontpage" class="frontpage frontpage-mini mb-2" data-toggle="modal" data-target="#book{$book['idBook']}"/>
                 </div>
-                <div class="col-9">
+                <div class="col-9 pl-4">
                     <span class="simpler_link bookModalSpan d-inline-block mt-3 mb-2" data-toggle="modal" data-target="#book{$book['idBook']}"><h5 style="font-weight: 600">{$book['title']}</h5></span><br>
                     <p>
                         $publisherName<br>
@@ -34,17 +34,17 @@ EOT;
         echo <<<EOT
                 <li>
                     <div>Παραλαβή από Σημείο Διανομής
-                        <div id="accordion{$book['idBook']}" class="mt-1">
+                        <div id="accordion{$class['idClass']}" class="mt-1">
 EOT;
         foreach ($bookDistPoints as $distPoint) {
             echo <<<EOT
                             <div class="card">
                                 <div class="card-header">
-                                    <a class="collapsed card-link" data-toggle="collapse" href="#collapse{$distPoint['idUser']}_{$book['idBook']}">
+                                    <a class="collapsed card-link" data-toggle="collapse" href="#collapse{$distPoint['idUser']}_{$class['idClass']}">
                                         <h6>{$distPoint['name']} (Διαθέσιμα: {$distPoint['count']})</h6>
                                     </a>
                                 </div>
-                                <div id="collapse{$distPoint['idUser']}_{$book['idBook']}" class="collapse" data-parent="#accordion{$book['idBook']}">
+                                <div id="collapse{$distPoint['idUser']}_{$class['idClass']}" class="collapse" data-parent="#accordion{$class['idClass']}">
                                     <div class="card-body text-justify p-0">
                                         <table class="table table-striped border">
                                             <tr>

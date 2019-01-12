@@ -84,7 +84,18 @@
                         </div>
                     </form>
                     <br>
-                    <?php   // After form handling:
+                    <?php   
+                        if ( !isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] != "http://localhost/sdi1500102_sdi1500165/php/book_declaration2.php") {
+                            unset($_SESSION['bookDeclUni']);
+                            unset($_SESSION['bookDeclDpt']);
+                        } else { ?>
+                            <script> 
+                                $("#unis").val(<?php echo '"' . $_SESSION['bookDeclUni'] . '"'; ?>); 
+                                $("[name=dptSelected]").val(<?php echo '"' . $_SESSION['bookDeclDpt'] . '"'; ?>);
+                            </script>
+                    <?php
+                        }
+                        // After form handling:
                         if ( isset($_POST['uniSelectSubmit']) ) {
                             $_SESSION['bookDeclUni'] = $_POST['uniSelected'];
                             $_SESSION['bookDeclDpt'] = $_POST['dptSelected'];
@@ -104,7 +115,7 @@
                 }
                 if ( isset($_SESSION['bookDeclUni']) && isset($_SESSION['bookDeclDpt']) ) {
             ?>
-                    <form action="/sdi1500102_sdi1500165/php/book_declaration2.php" method="POST">
+                    <form action="/sdi1500102_sdi1500165/php/book_declaration2.php" method="POST" id="bookDeclFormPage1" >
                         <div class="row">
                             <div class="col-2 pr-0">
                                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
@@ -182,7 +193,6 @@ EOT;
                         </div>
                         <br>
                         <div class="text-center m-3 mb-4">
-                            <!-- TODO: script that prevents this link if not selected any books! -->
                             <button type="submit" class="btn btn-dark hover_orange" name="bookDeclSubmit">Συνέχεια</button>
                         </div>         
                     </form>
@@ -215,11 +225,19 @@ EOT;
                 var declaredBooksArr = <?php echo json_encode($_SESSION['bookDeclBooksArr']); ?>;
                 for (i = 0; i < declaredClassesArr.length; i++) {
                     $("input[name=class" + declaredClassesArr[i] + "]").prop('checked', true);
-                    console.log("#book" + declaredClassesArr[i] + "_" + declaredBooksArr[i]);
                     $("#book" + declaredClassesArr[i] + "_" + declaredBooksArr[i]).prop('checked', true);
                 }
             });
         <?php } ?>
+
+        $("#bookDeclFormPage1").on("submit", function(e){
+            if ( $("#bookDeclFormPage1 input:checkbox:checked").length == 0 ) {       // no books are checked
+                alert('Δεν έχετε επιλέξει κανένα σύγγραμμα!');
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        });
     </script>
 </body>
 </html>

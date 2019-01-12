@@ -1,4 +1,10 @@
 <?php include("control/sessionManager.php") ?>
+<?php 
+    if ( isset($_POST['loginSubmit']) && $_SESSION['userType'] == "student" && $_SESSION['bookDeclClassesArr'] != [] && $_SESSION['bookDeclBooksArr'] != []) {
+        header("Location: /sdi1500102_sdi1500165/php/book_declaration3.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <?php $active_page = "BookDeclaration"; ?>
 <html>
@@ -80,11 +86,10 @@
                                 <button type="submit" class="btn btn-dark hover_orange ml-3 mr-5" name="bookDeclSubmitFinal">Υποβολή Δήλωσης</button>
                             </form>
                     <?php } else { ?>
-                            <button class="btn btn-dark ml-3 mr-5 disabled" data-toggle="tooltip" data-placement="right" title="Για να υποβάλετε τη δήλωση πρέπει πρώτα να συνδεθείτε ως φοιτητής.">Υποβολή Δήλωσης</button>
-                            <!-- TODO: Make this clickable so that it promts a login and after a successful one redirects to book_declaration3.php -->
+                            <button class="btn btn-dark ml-3 mr-5 disabled" data-toggle="tooltip" data-placement="right" data-html="true" title="Για να υποβάλετε τη δήλωση πρέπει πρώτα να <a class=&quot;linklike&quot; data-toggle=&quot;modal&quot; data-target=&quot;#loginModal&quot;>συνδεθείτε</a> ως φοιτητής." data-delay='{"hide":"5000"}'>Υποβολή Δήλωσης</button>
                             <script>
                                 $(document).ready(function(){
-                                    $('[data-toggle="tooltip"]').tooltip(); 
+                                    $('[data-toggle="tooltip"]').tooltip();
                                 });
                             </script>
                     <?php } ?>
