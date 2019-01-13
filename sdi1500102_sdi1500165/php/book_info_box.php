@@ -1,7 +1,7 @@
 <?php /* $book must be declared before including this with ALL of its fields (and string keys) */ 
     $front_page = ($book['front_page_url'] != null) ? $book['front_page_url'] : "/sdi1500102_sdi1500165/images/default_book_front_page.jpg";
 ?>
-<li class="mt-4 mb-3">
+<li class="pl-2 mt-4 mb-3">
     <div style="height: 5px;" class="row"></div>
     <div class="row">
         <div class="col-1">

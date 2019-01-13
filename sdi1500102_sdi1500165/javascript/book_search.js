@@ -1,12 +1,6 @@
 $("#book_search_form").on("submit", function(e){
     e.preventDefault();
-    var valid = 0;
-    $(this).find('input[type=text]').each(function(){
-        if($(this).val() != "") valid += 1;
-    });
-    if (!valid){
-        alert("Πρέπει να συμπληρώσετε τουλάχιστον ένα πεδίο της αναζήτησης.");
-    } else if ($("#id").val() !== "" && isNaN($("#id").val())) {
+    if ($("#id").val() !== "" && isNaN($("#id").val())) {
         alert("O κωδικός του βιβλίου στον Εύδοξο πρέπει να είναι αριθμός!");
     } else {
         formdata = {
