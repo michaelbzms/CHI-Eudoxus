@@ -54,7 +54,6 @@ INSERT INTO `eudoxusdb`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `aut
 INSERT INTO `eudoxusdb`.`UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) VALUES (default, 1, NULL, 'Πολτική Οικονομία', '67233', 'Χατζιδάκης Βενεδίκτος', 1, '');
 INSERT INTO `eudoxusdb`.`UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) VALUES (default, 1, NULL, 'Γενική Κοινωνιολογία', '87234', 'Someone Else', 1, '');
 
-ALTER TABLE distribution_points MODIFY COLUMN map_url VARCHAR(512);
 
 INSERT INTO `eudoxusdb`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `email`, `phone`, `working_hours`, `map_url`) VALUES (default, 'Κλειδάριθμος', 'Στουρνάρη 27β 10682 Αθήνα', 'info@klidarithmos.gr', '210 3832044', 'Δευτέρα - Παρασκευή: 09:30 - 17:30, Σάββατο & Κυριακή κλειστά', 'https://maps.google.com/maps?q=%CF%83%CF%84%CE%BF%CF%85%CF%81%CE%BD%CE%AC%CF%81%CE%B7%2027%CE%B2&t=&z=13&ie=UTF8&iwloc=&output=embed');
 INSERT INTO `eudoxusdb`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `email`, `phone`, `working_hours`, `map_url`) VALUES (default, 'Ο Νούφριος', 'Ιωαννίδου 45 15423 Αθήνα', 'info@noufrios.gr', '210 1234567', 'Κάθε μέρα 9:00 με 20:00', 'https://maps.google.com/maps?q=%CF%80%CE%BB%CE%B7%CF%81%CE%BF%CF%86%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%20%CE%BA%CE%B1%CE%B9%20%CF%84%CE%B7%CE%BB%CE%B5%CF%80%CE%B9%CE%BA%CE%BF%CE%B9%CE%BD%CF%89%CE%BD%CE%B9%CF%8E%CE%BD&t=&z=13&ie=UTF8&iwloc=&output=embed');
@@ -65,3 +64,9 @@ INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id
 INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES ('1', '3', '8');
 INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES ('1', '4', '4');
 INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES ('2', '4', '89');
+
+
+/* temp */
+ALTER TABLE distribution_points MODIFY COLUMN map_url VARCHAR(512);
+
+ALTER TABLE publishers ADD email varchar(256) DEFAULT "genericpublisheremail@gmail.com";

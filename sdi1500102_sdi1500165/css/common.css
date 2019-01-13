@@ -106,6 +106,10 @@ p.breadcrump_item {
     color: grey;
 }
 
+p.breadcrump_item:hover {
+    cursor: context-menu;
+}
+
 a:hover.breadcrump_item {
     color: rgb(231, 150, 0);
     cursor: pointer;
@@ -236,4 +240,9 @@ a:hover.breadcrump_item {
 .grey_link:hover {
     color: rgb(231, 150, 0);
     text-decoration: none !important;
+}
+
+.small_title {
+    color: #4099ff;
+    font-weight: 600;
 }

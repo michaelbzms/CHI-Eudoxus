@@ -68,11 +68,15 @@ function addClassIfActive($active_page, $page){
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Αναζήτηση Συγγραμμάτων
+                Αναζήτηση
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item <?php addClassIfActive($active_page, "BookSearch"); ?>" href="/sdi1500102_sdi1500165/php/book_search.php">Αναζήτηση Συγγραμμάτων</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Αναζήτηση Επιλεγμένων Συγγραμμάτων</a>
+                <div class="dropdown-divider border-secondary"></div>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "DistPointSearch"); ?>" href="/sdi1500102_sdi1500165/php/distribution_point_search.php">Αναζήτηση Σημείων Διανομής</a>
+                <div class="dropdown-divider border-secondary"></div>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "PublisherSearch"); ?>" href="/sdi1500102_sdi1500165/php/publisher_search.php">Αναζήτηση Εκδοτών</a>
             </div>
         </li>
         <li class="nav-item dropdown">

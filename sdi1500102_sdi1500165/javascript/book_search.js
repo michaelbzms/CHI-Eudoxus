@@ -23,10 +23,6 @@ $("#book_search_form").on("submit", function(e){
                 } else {
                     alert("Κάτι πήγε στραβά με την αναζήτηση!");
                 }
-                // clear data:
-                document.getElementById("add_class_form").reset();
-                $("#semester_param").val(formdata["semester"]);  // reset but save this
-                $("#add_class_form").find(".foreign_class_options").hide();
             }
         });
     }

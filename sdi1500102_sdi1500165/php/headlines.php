@@ -18,7 +18,7 @@
 					<a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Ρυθμίσεις Λογαριασμού</a>
 					<a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Βοήθεια</a>
 					<a class="dropdown-item" href="#" onClick="$('#logout_form').submit();">
-						<img class="pr-2 d-inline-block" src="/sdi1500102_sdi1500165/images/logout.png"/>Αποσύνδεση
+						<img class="pr-2 d-inline-block" src="/sdi1500102_sdi1500165/images/logout_white.png"/>Αποσύνδεση
 					</a>
 					<form id="logout_form" action="#" method="POST">
 						<input name="logoutSubmit" value="logoutSubmit" hidden/>
@@ -57,9 +57,9 @@
 	<!-- Global search bar -->
 	<div id="global_search_div">
 		<form id="global_search_form" action="/sdi1500102_sdi1500165/php/global_search.php" method="get">
-			<input class="form-control" type="text" name="global_search_str" placeholder="Αναζήτηση">
+			<input class="form-control" type="text" name="global_search_str" placeholder="Αναζήτηση Λειτουργίας">
 			<!-- submit with 'enter' -->
 		</form>
-		<img id="global_help" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="top" title="Αναζητήστε κάποια λειτουργία-σελίδα του Εύδοξου με κατάλληλες λέξεις-κλειδιά."/>
+		<img id="global_help" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="top" title="Αναζητήστε κάποια λειτουργία/σελίδα του Εύδοξου με κατάλληλες λέξεις κλειδιά."/>
 	</div>
 </div>
