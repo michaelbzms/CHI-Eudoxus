@@ -45,14 +45,15 @@ body {
 /* headlines.php style */
 #logo {
     float: left;
-    max-height: 250px;
-    max-width: 208px;
+    max-height: 225px;
+    max-width: 187px;
     margin-right: 20px;
 } 
 
 #title {
+    display: inline-block;
+    font-size: 250%;
     margin-top: 10px;
-    float: left;
     word-wrap: break-word;  /* <-- Doesn't work? TODO: make responsive */
 }
 
@@ -66,15 +67,21 @@ body {
     font-size: 125%;
 }
 
-#global_search_form {
+#global_search_div {
+    display: inline-block;
     float: right;
+    clear: both;
     margin-bottom: 10px;
 }
 
+#global_search_form {
+    display: inline-block;
+}
+
 #global_help {
-    margin: 5px 0px 0px 10px;
-    clear: left;
-    float: right;
+    display: inline-block;
+    margin-left: 10px;
+    padding-bottom: 5px;
     height: 25;
     width: 25;
     cursor: pointer;

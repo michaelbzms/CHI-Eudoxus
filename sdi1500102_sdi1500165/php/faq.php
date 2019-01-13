@@ -31,7 +31,7 @@
 	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
 	<script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="overflow-y: scroll;">
     <div class="main-container">
         <?php include("headlines.php") ?>
         <?php include("general_navbar.php"); ?>

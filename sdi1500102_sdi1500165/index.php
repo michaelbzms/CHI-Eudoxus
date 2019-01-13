@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/navbar.css"/>
 	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
 	<!-- JS -->
-	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
 	<script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
 </head>
 <body>

@@ -4,7 +4,13 @@
 	$dbConnectionPath = $_SERVER['DOCUMENT_ROOT'];
 	$dbConnectionPath .= "/sdi1500102_sdi1500165/php/control/dbConnection.php";
 	include_once($dbConnectionPath);
-    if ( isset($_POST['loginSubmit']) ) {
+	if ( isset($_POST['logoutSubmit']) ) {
+		unset($_POST['logoutSubmit']);
+        session_unset();
+		session_destroy();
+		echo "<script>window.location.replace('');</script>";
+    } else if ( isset($_POST['loginSubmit']) ) {
+		unset($_POST['loginSubmit']);
         $conn = connectToDB();
         if ( $conn->connect_errno ) {
             die("Database connection failed: " . $conn->connect_errno());
@@ -15,12 +21,14 @@
 	    	$result = $sqlStmt->get_result();
 	        if ($result->num_rows == 0) {
 	    		$sqlStmt->close();
-        		$conn->close();
+				$conn->close();
+				echo "<script>window.location.replace('');</script>";
 	            return true;
 	        }
 	    	$userRow = $result->fetch_assoc();
 	        $_SESSION['userID'] = $userRow['idUser'];
-	        $_SESSION['userType'] = $userRow['user_type'];
+			$_SESSION['userType'] = $userRow['user_type'];
+			$_SESSION['email'] = $_POST['email'];
 	    	$sqlStmt->close();
 	        if ($_SESSION['userType'] == "student") {
 	        	$result = $conn->query("SELECT sec.university, sec.department FROM SECRETARIES sec, STUDENTS st WHERE st.idUser={$_SESSION['userID']} AND st.SECRETARIES_id=sec.idUser;");
@@ -40,14 +48,12 @@
                     }
                 }
 	        }
-        	$conn->close();
+			$conn->close();
 	    } else {
         	$conn->close();
 	    	die("Could not prepare SQL statement");
-	    }
-    } else if ( isset($_POST['logoutSubmit']) ) {
-        session_unset();
-        session_destroy();
-    }
+		}
+		echo "<script>window.location.replace('');</script>";
+	}
     return false;
 ?>
