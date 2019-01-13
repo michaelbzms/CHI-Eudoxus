@@ -167,6 +167,10 @@ a:hover.breadcrump_item {
     color: rgb(231, 150, 0) !important;
 }
 
+#account_name {
+    color: #007bff;
+}
+
 /* login form CSS inspired from: https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=simple-login-form */
 .login-modal-content {
     pointer-events: auto;

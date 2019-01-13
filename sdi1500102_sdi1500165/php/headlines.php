@@ -11,8 +11,8 @@
 			<a id="register" href="/sdi1500102_sdi1500165/php/register_page.php?userType=student">Εγγραφή</a> <!-- Only ONE register page for all-->
 		<?php } else { ?>	
 			<div class="dropdown">
-				<div class="rounded border border-dark d-inline-block dropdown-toggle p-2 pr-0" style="cursor: pointer;" href="#" role="button" id="AccountDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<?php echo $_SESSION["email"] ?>
+				<div class="d-inline-block dropdown-toggle p-2 pr-0" style="cursor: pointer;" href="#" role="button" id="AccountDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span id="account_name"><?php echo $_SESSION["email"] ?></span>
 				</div>
 				<div class="dropdown-menu bg-secondary" aria-labelledby="AccountDropdownMenu">
 					<a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Ρυθμίσεις Λογαριασμού</a>
