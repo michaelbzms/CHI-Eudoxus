@@ -60,7 +60,6 @@
 			<input class="form-control" type="text" name="global_search_str" placeholder="Αναζήτηση">
 			<!-- submit with 'enter' -->
 		</form>
-		<!-- TODO: bootstrap tooltip not working -->
-		<img id="global_help" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="left" title="Αναζητήστε κάποια λειτουργία-σελίδα του Εύδοξου με κατάλληλες λέξεις-κλειδιά."/>
+		<img id="global_help" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="top" title="Αναζητήστε κάποια λειτουργία-σελίδα του Εύδοξου με κατάλληλες λέξεις-κλειδιά."/>
 	</div>
 </div>

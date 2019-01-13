@@ -29,7 +29,8 @@
     </style>
 	<!-- JS -->
 	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
-	<script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
+	<script src="/sdi1500102_sdi1500165/javascript/lib/popper.min.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
 </head>
 <body style="overflow-y: scroll;">
     <div class="main-container">
@@ -323,6 +324,8 @@
         <br>
         <?php include("../footer.html"); ?>
     </div>
+    <script src="/sdi1500102_sdi1500165/javascript/tooltipInit.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/formResubmissionPrevention.js"></script>
     <?php include("control/loginFailureHandler.php"); ?>
 </body>
 </html>

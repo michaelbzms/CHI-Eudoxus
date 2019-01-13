@@ -20,7 +20,7 @@
 	<!-- JS -->
 	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
     <script src="/sdi1500102_sdi1500165/javascript/lib/popper.min.js"></script>
-	<script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="main-container">
@@ -86,12 +86,7 @@
                                 <button type="submit" class="btn btn-dark hover_orange ml-3 mr-5" name="bookDeclSubmitFinal">Υποβολή Δήλωσης</button>
                             </form>
                     <?php } else { ?>
-                            <button class="btn btn-dark ml-3 mr-5 disabled" data-toggle="tooltip" data-placement="right" data-html="true" title="Για να υποβάλετε τη δήλωση πρέπει πρώτα να <a class=&quot;linklike&quot; data-toggle=&quot;modal&quot; data-target=&quot;#loginModal&quot;>συνδεθείτε</a> ως φοιτητής." data-delay='{"hide":"5000"}'>Υποβολή Δήλωσης</button>
-                            <script>
-                                $(document).ready(function(){
-                                    $('[data-toggle="tooltip"]').tooltip();
-                                });
-                            </script>
+                            <button class="btn btn-dark ml-3 mr-5 disabled" data-toggle="tooltip" data-placement="right" data-html="true" title="Για να υποβάλετε τη δήλωση πρέπει πρώτα να <a class=&quot;linklike&quot; data-toggle=&quot;modal&quot; data-target=&quot;#loginModal&quot;>συνδεθείτε</a> ως φοιτητής." data-offset="10" data-delay='{"hide":"5000"}'>Υποβολή Δήλωσης</button>
                     <?php } ?>
                 </div>  
                 <br>
@@ -110,6 +105,8 @@
         ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/student.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/tooltipInit.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/formResubmissionPrevention.js"></script>
     <?php include("control/loginFailureHandler.php"); ?>
 </body>
 </html>

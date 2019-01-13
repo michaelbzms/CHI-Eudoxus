@@ -11,7 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
 	<!-- JS -->
 	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
-	<script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
+	<script src="/sdi1500102_sdi1500165/javascript/lib/popper.min.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
     <style>
         strong {
             font-weight: 600;
@@ -148,6 +149,8 @@
         ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/user_info.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/tooltipInit.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/formResubmissionPrevention.js"></script>
     <?php include("control/loginFailureHandler.php"); ?>
 </body>
 </html>

@@ -8,7 +8,6 @@
 		unset($_POST['logoutSubmit']);
         session_unset();
 		session_destroy();
-		echo "<script>window.location.replace('');</script>";
     } else if ( isset($_POST['loginSubmit']) ) {
 		unset($_POST['loginSubmit']);
         $conn = connectToDB();
@@ -22,7 +21,6 @@
 	        if ($result->num_rows == 0) {
 	    		$sqlStmt->close();
 				$conn->close();
-				echo "<script>window.location.replace('');</script>";
 	            return true;
 	        }
 	    	$userRow = $result->fetch_assoc();
@@ -53,7 +51,6 @@
         	$conn->close();
 	    	die("Could not prepare SQL statement");
 		}
-		echo "<script>window.location.replace('');</script>";
 	}
     return false;
 ?>
