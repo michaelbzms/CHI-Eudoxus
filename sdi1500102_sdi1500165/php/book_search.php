@@ -15,7 +15,7 @@
     <script src="/sdi1500102_sdi1500165/javascript/lib/popper.min.js"></script>
     <script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="overflow-y: scroll">
     <div class="main-container">
         <?php include("headlines.php"); ?>
         <?php include("general_navbar.php"); ?>
@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-4 mb-2">Τίτλος:</div>
                     <div class="col-8 mb-2">
-                        <input id="title" class="form-control" type="text" name="title"/>
+                        <input id="title_param" class="form-control" type="text" name="title"/>
                     </div>
                     <div class="col-4 mb-2">Συγγραφέας/ες:</div>
                     <div class="col-8 mb-2">
@@ -45,7 +45,7 @@
                     </div> 
                     <div class="col-4 mb-2">Λέξεις Κλειδιά:</div>
                     <div class="col-8 mb-2">
-                        <textarea id="keywords" class="form-control" type="text" name="keywords"></textarea>
+                        <input id="keywords" class="form-control" type="text" name="keywords"/>
                     </div>
                     <div class="col-4"></div>
                     <div class="col-8">
@@ -64,8 +64,6 @@
         <?php include("../footer.html"); ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/book_search.js"></script>
-    <script src="/sdi1500102_sdi1500165/javascript/tooltipInit.js"></script>
-    <script src="/sdi1500102_sdi1500165/javascript/formResubmissionPrevention.js"></script>
     <?php include("control/loginFailureHandler.php"); ?>
 </body>
 </html>

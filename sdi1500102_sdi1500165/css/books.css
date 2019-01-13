@@ -31,6 +31,14 @@
 	width: auto;
 }
 
+.frontpage-extra-mini {
+	display: block;
+	max-height: 100px;
+	max-width: 90px;
+	height: auto;
+	width: auto;
+}
+
 .greenCheck {
 	height: 32px;
 	position: absolute;
@@ -45,4 +53,9 @@
 
 .tooltip {
 	z-index: 1039 !important;
+}
+
+.field_span {
+    display: inline-block;
+    width: 50%;
 }
