@@ -45,8 +45,15 @@
                     <form id="getUniAndDepForm" action="/sdi1500102_sdi1500165/php/book_declaration1.php" method="POST">
                         <div class="form-group text-center">
                             <div class="d-inline-block mr-1" style="width: 410px;">
-                                <p class="text-left text-secondary mb-1 ml-2">Σχολή</p>
+                                <p class="text-left text-secondary mb-1 ml-2">Πανεπιστήμιο</p>
                                 <select class="form-control d-inline-block" id="unis" name="uniSelected" required onchange="showDptDropdown()">
+                                    <option value="" disabled selected hidden>Επιλέξτε Πανεπιστήμιο
+                                        <script> 
+                                            $(this).on("change", function(){
+                                                $("#department_header").removeClass('d-none');
+                                            });
+                                        </script>
+                                    </option>
                                 <?php
                                     $Unis = getAllUnis($conn);
                                     $Departments = [];
@@ -60,12 +67,18 @@
                                 </select>
                             </div>
                             <div class="d-inline-block ml-1" style="width: 410px;">
-                                <p class="text-left text-secondary mb-1 ml-2">Τμήμα</p>
+                                <p id="department_header" class="text-left text-secondary mb-1 ml-2">Τμήμα</p>
+                                <script>
+                                    $(document).ready(function(){
+                                        var uniSelected = $("#unis :selected").val();
+                                        if (uniSelected === "") $("#department_header").addClass('d-none');
+                                    });
+                                </script>
                                 <?php
                                     $i = 0;
                                     foreach ($Unis as $uni) {
                                         echo "<select class=\"form-control d-inline-block department_select\" id=\"dpts_uni{$i}\" name=\"dptSelected\" style=\"display: none!important;\">";
-                                        echo "<option value=\"\" disabled selected hidden></option>";
+                                        echo "<option value=\"\" disabled selected hidden>Επιλέξτε Σχολή</option>";
                                         foreach ($Departments[$i] as $dpt) {
                                             echo "<option value=\"$dpt\">$dpt</option>";
                                         }

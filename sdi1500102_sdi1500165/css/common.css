@@ -52,8 +52,8 @@ body {
 
 #title {
     display: inline-block;
-    font-size: 250%;
-    margin-top: 10px;
+    font-size: 225%;
+    margin-top: 15px;
     word-wrap: break-word;  /* <-- Doesn't work? TODO: make responsive */
 }
 

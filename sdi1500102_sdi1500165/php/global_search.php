@@ -78,7 +78,7 @@
                 echo "Αποτελέσματα αναζήτησης γιά \"" . $_GET['global_search_str'] . "\":<br>";
                 echo "<div class=\"search_results_list\"><ul>";
                 while ($row = $results->fetch_assoc()){
-                    echo "<li><a href = " . $row['link'] . ">" . $row['title']  . "</a></li>";
+                    echo "<li><a class=\"simpler_link\" href = " . $row['link'] . ">" . $row['title']  . "</a></li>";
                 }
                 echo "</ul></div>";
             } else {
