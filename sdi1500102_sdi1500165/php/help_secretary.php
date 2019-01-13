@@ -1,0 +1,44 @@
+<?php $loginFailed = include("control/sessionManager.php"); ?>
+<!DOCTYPE html>
+<?php $active_page = "SecretaryHelp"; ?>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Eudoxus</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/navbar.css"/>
+	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
+	<!-- JS -->
+	<script src="/sdi1500102_sdi1500165/javascript/lib/jquery-3.3.1.min.js"></script>
+	<script src="/sdi1500102_sdi1500165/javascript/lib/popper.min.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/lib/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <?php include("headlines.php") ?>
+        <?php include("general_navbar.php"); ?>
+        <nav class="my_breadcrump">
+            <a class="breadcrump_item" href="/sdi1500102_sdi1500165/index.php">Αρχική Σελίδα</a> > 
+            <p class="breadcrump_item">Γραμματείες</p> > 
+            <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/help_secretary.php">Βοήθεια Γραμματείας</a>
+        </nav>
+        <div class="row justify-content-center">
+            <div class="col-10 m-2 text_div">
+                <h2>Βοήθεια Γραμματείας</h2>
+                <br>
+                <h3>Λειτουργία: Διαχείριση Μαθημάτων/Συγγραμμάτων</h3>       
+                <p> 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae lacus augue. Pellentesque eu ligula sed nisi hendrerit tempus nec a velit. Integer ac nunc eu est molestie auctor. Consectetur adipiscing elit. Suspendisse ullamcorper pretium luctus. Suspendisse potenti. Donec scelerisque augue nulla, eget venenatis leo lacinia eu. Sed vulputate quis ex fringilla vestibulum. Curabitur viverra lorem quis mi laoreet, id malesuada urna lobortis. Quisque facilisis tristique lacus, et posuere odio consectetur eget. Curabitur pulvinar molestie eros et pellentesque. <br>
+                    Pellentesque id justo id justo sagittis gravida non accumsan turpis. Integer a cursus enim, quis molestie enim. Sed hendrerit sem ut vehicula venenatis. Fusce eu nisi consectetur, congue neque sed, auctor lacus. Cras tempus semper suscipit. Vestibulum pellentesque laoreet eros, in aliquam nibh tempor ut. Aliquam erat volutpat. Nam neque mauris, rutrum sed turpis sit amet, laoreet euismod nisl. Morbi interdum diam et mauris ultrices laoreet. Suspendisse potenti. Vestibulum aliquam odio sed lorem sagittis, quis lacinia mi porta. Aliquam at nunc a neque sagittis tempor. Nulla ac vehicula nisi, vitae molestie mi. Nullam viverra augue ac porta facilisis. Duis ultricies neque lacinia, laoreet quam id, vehicula metus. 
+                </p>
+            </div>
+        </div>
+        <br>
+        <?php include("../footer.html"); ?>
+    </div>
+    <script src="/sdi1500102_sdi1500165/javascript/tooltipInit.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/formResubmissionPrevention.js"></script>
+    <?php include("control/loginFailureHandler.php"); ?>
+</body>
+</html>

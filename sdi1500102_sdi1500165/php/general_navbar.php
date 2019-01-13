@@ -2,7 +2,7 @@
 <?php 
 function addClassIfActive($active_page, $page){
     if ( $active_page == $page ){
-        print "my_active";
+        echo "my_active";
     }
 }
 ?>
@@ -33,6 +33,7 @@ function addClassIfActive($active_page, $page){
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Ανταλλαγή Συγγραμμάτων</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Προηγούμενες Δηλώσεις</a>
                 <a class="dropdown-item <?php addClassIfActive($active_page, "StudentInfo"); ?>" href="/sdi1500102_sdi1500165/php/student_info.php">Επισκόπηση Στοιχείων Φοιτητή</a>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "StudentHelp"); ?>" href="/sdi1500102_sdi1500165/php/help_student.php">Βοήθεια</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -44,6 +45,7 @@ function addClassIfActive($active_page, $page){
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Διαχείριση Συγγραμμάτων</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Κοστολόγιση</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Επισκόπηση Στοιχείων Εκδότη</a>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "PublisherHelp"); ?>" href="/sdi1500102_sdi1500165/php/help_publisher.php">Βοήθεια</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -54,6 +56,7 @@ function addClassIfActive($active_page, $page){
                 <a class="dropdown-item <?php addClassIfActive($active_page, "SecretaryRegister"); ?>" href="/sdi1500102_sdi1500165/php/register_page.php?userType=secretary">Εγγραφή Γραμματείας</a>
                 <a class="dropdown-item <?php addClassIfActive($active_page, "SecretaryApp"); ?>" href="/sdi1500102_sdi1500165/php/secretary_app.php">Διαχείριση Μαθημάτων/Συγγραμμάτων</a>
                 <a class="dropdown-item <?php addClassIfActive($active_page, "SecretaryInfo"); ?>" href="/sdi1500102_sdi1500165/php/secretary_info.php">Επισκόπηση Στοιχείων Γραμματείας</a>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "SecretaryHelp"); ?>" href="/sdi1500102_sdi1500165/php/help_secretary.php">Βοήθεια</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -64,6 +67,7 @@ function addClassIfActive($active_page, $page){
                 <a class="dropdown-item <?php addClassIfActive($active_page, "DistPointRegister"); ?>" href="/sdi1500102_sdi1500165/php/register_page.php?userType=distPoint">Εγγραφή Σημείου Διανομής</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Παράδοση Συγγραμμάτων</a>
                 <a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Επισκόπηση Στοιχείων Σημείου Διανομής</a>
+                <a class="dropdown-item <?php addClassIfActive($active_page, "DistPointHelp"); ?>" href="/sdi1500102_sdi1500165/php/help_distPoint.php">Βοήθεια</a>
             </div>
         </li>
         <li class="nav-item dropdown">

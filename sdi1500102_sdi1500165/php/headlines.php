@@ -16,7 +16,15 @@
 				</div>
 				<div class="dropdown-menu bg-secondary" aria-labelledby="AccountDropdownMenu">
 					<a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Ρυθμίσεις Λογαριασμού</a>
-					<a class="dropdown-item" href="/sdi1500102_sdi1500165/php/notimplemented.php">Βοήθεια</a>
+					<?php if ($_SESSION["userType"] == "student") { ?>
+                    	<a class="dropdown-item" href="/sdi1500102_sdi1500165/php/help_student.php">Βοήθεια</a>
+	                <?php } elseif ($_SESSION["userType"] == "publisher") { ?>
+                    	<a class="dropdown-item" href="/sdi1500102_sdi1500165/php/help_publisher.php">Βοήθεια</a>
+	                <?php } elseif ($_SESSION["userType"] == "secretary") { ?>
+                    	<a class="dropdown-item" href="/sdi1500102_sdi1500165/php/help_secretary.php">Βοήθεια</a>
+	                <?php } elseif ($_SESSION["userType"] == "distPoint") { ?>
+                    	<a class="dropdown-item" href="/sdi1500102_sdi1500165/php/help_distPoint.php">Βοήθεια</a>
+	                <?php } ?>
 					<a class="dropdown-item" href="#" onClick="$('#logout_form').submit();">
 						<img class="pr-2 d-inline-block" src="/sdi1500102_sdi1500165/images/logout_white.png"/>Αποσύνδεση
 					</a>

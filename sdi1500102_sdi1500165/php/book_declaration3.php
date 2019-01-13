@@ -77,7 +77,7 @@
                     <button type="submit" class="btn btn-secondary d-inline-block" onClick="alert('Το PIN που θα πρέπει να παρουσιάσετε κατά την παραλαβή των συγγραμμάτων σας είναι:  <?php echo $studentPIN; ?>');">Προβολή PIN</button>
                 </div> 
                 <div class="row justify-content-center">
-                    <div class="col-11 m-2 text_div">
+                    <div class="col-10 m-2 text_div">
                         <div class="row mb-2">
                             <div class="col-6 text-center">
                                 <h3 class="text-dark mb-2 d-inline-block">Συγγράμματα</h3>
