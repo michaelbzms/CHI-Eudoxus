@@ -1,5 +1,9 @@
 <?php $loginFailed = include("control/sessionManager.php"); ?>
 <?php 
+    if ( isset($_SESSION['tempBookDeclClassesArr']) ) {
+        header("Location: /sdi1500102_sdi1500165/php/book_declaration0.php");
+        exit();
+    }
     if ( isset($_POST['loginSubmit']) && isset($_SESSION['userType']) && $_SESSION['userType'] == "student" && $_SESSION['bookDeclClassesArr'] != [] && $_SESSION['bookDeclBooksArr'] != []) {
         header("Location: /sdi1500102_sdi1500165/php/book_declaration3.php");
         exit();

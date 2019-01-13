@@ -37,6 +37,14 @@
                 $result = $conn->query("SELECT * FROM BOOK_DECLARATION WHERE STUDENTS_id={$_SESSION['userID']} AND declaration_period='$declaration_period';");
                 $_SESSION['studentHasMadeBookDecl'] = ($result->num_rows > 0);
                 if ( $_SESSION['studentHasMadeBookDecl'] ) {
+                	if ( isset($_SESSION['bookDeclUni']) && $_SESSION['bookDeclUni'] == $_SESSION['studentUni'] && $_SESSION['bookDeclDpt'] == $_SESSION['studentDpt']  && isset($_SESSION['bookDeclClassesArr']) && $_SESSION['bookDeclClassesArr'] != [] ) {
+                		$_SESSION['tempBookDeclClassesArr'] = [];
+                		$_SESSION['tempBookDeclBooksArr'] = [];
+                		for ($i = 0; $i < count($_SESSION['bookDeclClassesArr']); $i++) {
+                			$_SESSION['tempBookDeclClassesArr'][] = $_SESSION['bookDeclClassesArr'][$i];
+                			$_SESSION['tempBookDeclBooksArr'][] = $_SESSION['bookDeclBooksArr'][$i];
+                		}
+                	}
                 	$_SESSION['bookDeclClassesArr'] = [];
                 	$_SESSION['bookDeclBooksArr'] = [];
                     $bookClassTuples = getBookDeclarationTuples($conn, "studentId", $_SESSION['userID']);

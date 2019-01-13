@@ -155,5 +155,8 @@ EOT;
     ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/secretary.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/tooltipInit.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/formResubmissionPrevention.js"></script>
+    <?php include("control/loginFailureHandler.php"); ?>
 <body>
 </head>

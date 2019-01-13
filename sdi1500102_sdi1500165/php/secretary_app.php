@@ -40,7 +40,7 @@
             <?php if  ( $alreadyUploadedPS ) {  ?>
                 <div class="text-center">
                     <p>
-                        Έχετε ήδη κάνει μία υποβολή για το νέο Πρόγραμμα Σπουδών του τρέχοντος ακαδημαϊκού έτους.
+                        Έχετε ήδη κάνει μία υποβολή για το νέο Πρόγραμμα Σπουδών του τρέχοντος ακαδημαϊκού έτους.<br>
                         Θέλετε να υποβάλετε νέα ή να τροποποιήσετε αυτήν;
                     </p>
                     <div class="mt-4">
@@ -83,5 +83,8 @@
         ?>
     </div>
     <script src="/sdi1500102_sdi1500165/javascript/secretary.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/tooltipInit.js"></script>
+    <script src="/sdi1500102_sdi1500165/javascript/formResubmissionPrevention.js"></script>
+    <?php include("control/loginFailureHandler.php"); ?>
 <body>
 </head>

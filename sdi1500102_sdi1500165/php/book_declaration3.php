@@ -1,4 +1,10 @@
 <?php $loginFailed = include("control/sessionManager.php"); ?>
+<?php
+    if ( isset($_SESSION['tempBookDeclClassesArr']) && isset($_SESSION['tempBookDeclClassesArr']) != 0 && !isset($_POST['tempBookDeclSubmitFinal']) && !isset($_POST['bookDeclKeepOld'])) {
+        header("Location: /sdi1500102_sdi1500165/php/book_declaration0.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <?php $active_page = "BookDeclaration"; ?>
 <html>
@@ -35,7 +41,11 @@
             $hasSession = isset($_SESSION['userID']);
             if ( $hasSession && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student' ) {
                 $declaration_period = "2018-09";
-                if ( isset($_POST['bookDeclSubmitFinal']) ) {
+                if ( isset($_POST['tempBookDeclSubmitFinal']) ) {
+                    $_SESSION['bookDeclClassesArr'] = $_SESSION['tempBookDeclClassesArr'];
+                    $_SESSION['bookDeclBooksArr'] = $_SESSION['tempBookDeclBooksArr'];
+                }
+                if ( isset($_POST['bookDeclSubmitFinal']) || isset($_POST['tempBookDeclSubmitFinal']) ) {
                     // delete previous book declaration
                     if ( ! $conn->query("DELETE FROM BOOK_DECLARATION WHERE STUDENTS_id={$_SESSION['userID']};") ) {
                         die("Failed to delete previous book declaration from database: {$conn->error}");
@@ -51,7 +61,10 @@
                             die("Failed to insert book_class_tuple to database: {$conn->error}");
                         }
                     } 
-                }
+                } 
+                if (isset($_SESSION['tempBookDeclClassesArr'])) unset($_SESSION['tempBookDeclClassesArr']);
+                if (isset($_SESSION['tempBookDeclBooksArr'])) unset($_SESSION['tempBookDeclBooksArr']);
+
                 $result = $conn->query("SELECT * FROM BOOK_DECLARATION WHERE STUDENTS_id={$_SESSION['userID']} AND declaration_period='$declaration_period';");
                 if ($result->num_rows == 0) {
                     die("Could not fetch book declaration from DB");

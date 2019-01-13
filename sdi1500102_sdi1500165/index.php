@@ -43,7 +43,11 @@
                     <a id="register_student" class="option-item" href="php/register_page.php?userType=student">
                         <div class="option-title">Εγγραφή Φοιτητή</div>
                     </a>
-                    <?php if ( isset($_SESSION['studentHasMadeBookDecl']) && $_SESSION['studentHasMadeBookDecl'] ) { ?>
+                    <?php if ( isset($_SESSION['tempBookDeclClassesArr']) && isset($_SESSION['tempBookDeclClassesArr']) != 0 ) { ?>
+                        <a id="book_declaration" class="option-item" href="php/book_declaration0.php">
+                            <div class="option-title">Δήλωση Συγγραμμάτων</div>
+                        </a>
+                    <?php } elseif ( isset($_SESSION['studentHasMadeBookDecl']) && $_SESSION['studentHasMadeBookDecl'] ) { ?>
                         <a id="book_declaration" class="option-item" href="php/book_declaration3.php">
                             <div class="option-title">Δήλωση Συγγραμμάτων</div>
                         </a>

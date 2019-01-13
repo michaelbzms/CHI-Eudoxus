@@ -21,7 +21,9 @@ function addClassIfActive($active_page, $page){
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item <?php addClassIfActive($active_page, "StudentRegister"); ?>" href="/sdi1500102_sdi1500165/php/register_page.php?userType=student">Εγγραφή Φοιτητή</a>
-                <?php if ( isset($_SESSION['studentHasMadeBookDecl']) && $_SESSION['studentHasMadeBookDecl'] ) { ?>
+                <?php if ( isset($_SESSION['tempBookDeclClassesArr']) && isset($_SESSION['tempBookDeclClassesArr']) != 0 ) { ?>
+                    <a class="dropdown-item <?php addClassIfActive($active_page, "BookDeclaration"); ?>" href="/sdi1500102_sdi1500165/php/book_declaration0.php">Δήλωση Συγγραμμάτων</a>
+                <?php } elseif ( isset($_SESSION['studentHasMadeBookDecl']) && $_SESSION['studentHasMadeBookDecl'] ) { ?>
                     <a class="dropdown-item <?php addClassIfActive($active_page, "BookDeclaration"); ?>" href="/sdi1500102_sdi1500165/php/book_declaration3.php">Δήλωση Συγγραμμάτων</a>
                 <?php } elseif ( isset($_SESSION['bookDeclBooksArr']) && $_SESSION['bookDeclBooksArr'] != [] ) { ?>
                     <a class="dropdown-item <?php addClassIfActive($active_page, "BookDeclaration"); ?>" href="/sdi1500102_sdi1500165/php/book_declaration2.php">Δήλωση Συγγραμμάτων</a>
