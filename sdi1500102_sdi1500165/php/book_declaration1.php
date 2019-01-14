@@ -51,7 +51,7 @@
             <?php
                 $isLoggedInStudent = isset($_SESSION['userID']) && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student';
                 if (! $isLoggedInStudent) { ?>
-                    <form id="getUniAndDepForm" action="/sdi1500102_sdi1500165/php/book_declaration1.php" method="POST">
+                    <form id="getUniAndDepForm" action="/sdi1500102_sdi1500165/php/book_declaration1.php" method="POST" name="getUniAndDepForm">
                         <div class="form-group text-center">
                             <div class="d-inline-block mr-1" style="width: 410px;">
                                 <p class="text-left text-secondary mb-1 ml-2">Πανεπιστήμιο</p>
@@ -87,7 +87,7 @@
                                     $i = 0;
                                     foreach ($Unis as $uni) {
                                         echo "<select class=\"form-control d-inline-block department_select\" id=\"dpts_uni{$i}\" name=\"dptSelected\" style=\"display: none!important;\">";
-                                        echo "<option value=\"\" disabled selected hidden>Επιλέξτε Σχολή</option>";
+                                        echo "<option value=\"\" disabled selected hidden>Επιλέξτε Τμήμα</option>";
                                         foreach ($Departments[$i] as $dpt) {
                                             echo "<option value=\"$dpt\">$dpt</option>";
                                         }
@@ -106,7 +106,10 @@
                                 });
 
                                 $("#unis").on("change", function(){
-                                    //TODO: Hide previously selected content till user selects a department?
+                                    <?php if (! isset($_POST['getUniAndDepForm']) ) { ?>
+                                        $("#bookDeclFormPage1").addClass('d-none');
+                                        document.getElementById("#bookDeclFormPage1").reset();
+                                    <?php } ?>
                                 });
                             </script>
                         </div>
