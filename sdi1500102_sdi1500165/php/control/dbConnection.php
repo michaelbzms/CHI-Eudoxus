@@ -3,7 +3,7 @@ function connectToDB() {
 	$host = 'localhost';
     $user = 'root';
     $password = '';
-    $db ='eudoxusdb';
+    $db = 'sdi1500102';
 
     $mysqli = new mysqli($host, $user, $password, $db);
     if (! mysqli_connect_errno()) $mysqli->set_charset('utf8');		// allow greek characters

@@ -21,7 +21,7 @@
             if ( $results2->num_rows == 0 ){  // does not already exist on list
                 
                 // add new class-book association to db
-                $sqlStmt3 = $conn->prepare("INSERT INTO eudoxusdb.UNIVERSITY_CLASSES_has_BOOKS (`UNIVERSITY_CLASSES_id`, `BOOKS_id`) VALUES (?, ?)"); 
+                $sqlStmt3 = $conn->prepare("INSERT INTO UNIVERSITY_CLASSES_has_BOOKS (`UNIVERSITY_CLASSES_id`, `BOOKS_id`) VALUES (?, ?)"); 
                 $sqlStmt3->bind_param("ss", $_POST['idClass'], $_POST['idBook']);
                 $sqlStmt3->execute();
                 $sqlStmt3->close();

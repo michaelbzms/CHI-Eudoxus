@@ -19,8 +19,8 @@
             $sqlStmt->close();
         } else {
             // add new class to db
-            // template: INSERT INTO `eudoxusdb`.`UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) VALUES (...);
-            $sqlStmt = $conn->prepare("INSERT INTO eudoxusdb.UNIVERSITY_CLASSES VALUES (default, $secretary_id, ?, ?, ?, ?, ?, ?)"); 
+            // template: INSERT INTO `UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) VALUES (...);
+            $sqlStmt = $conn->prepare("INSERT INTO UNIVERSITY_CLASSES VALUES (default, $secretary_id, ?, ?, ?, ?, ?, ?)"); 
             $foreignDepartment = ($_POST["isForeign"] == "true") ? $_POST["foreignDepartment"] : null;
             $sqlStmt->bind_param("ssssss", $foreignDepartment, $_POST['title'], $_POST['id'], $_POST['professors'], $_POST['semester'], $_POST['comments']);
             $sqlStmt->execute();
