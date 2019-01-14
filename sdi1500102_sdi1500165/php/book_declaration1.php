@@ -105,8 +105,8 @@
                                     $("#submit_btn").trigger("click");
                                 });
 
-                                $(".unis").on("change", function(){
-                                    $("#submit_btn").trigger("click");
+                                $("#unis").on("change", function(){
+                                    //TODO: Hide previously selected content till user selects a department?
                                 });
                             </script>
                         </div>

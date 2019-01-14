@@ -42,7 +42,7 @@
             case "secretaries":
                 echo "Γραμματείες";
                 break;
-            case "distribution_points":
+            case "dist_points":
                 echo "Σημεία Διανομής";
                 break;
             default:

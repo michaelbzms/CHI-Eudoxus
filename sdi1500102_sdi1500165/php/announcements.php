@@ -41,7 +41,7 @@
                         <option value="students" <?php if ($category == "students") echo "selected" ?>>Φοιτητές</option>
                         <option value="publishers" <?php if ($category == "publishers") echo "selected" ?>>Εκδότες</option>
                         <option value="secretaries" <?php if ($category == "secretaries") echo "selected" ?>>Γραμματείες</option>
-                        <option value="distribution_points" <?php if ($category == "distribution_points") echo "selected" ?>>Σημεία Διανομής</option>
+                        <option value="dist_points" <?php if ($category == "dist_points") echo "selected" ?>>Σημεία Διανομής</option>
                     </select>
                     <script>
                         $("#pick_category").on('change', function(){
