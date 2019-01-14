@@ -8,6 +8,7 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/secretary.css"/>
+    <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/books.css"/>
     <link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/navbar.css"/>
 	<link rel="stylesheet" type="text/css" href="/sdi1500102_sdi1500165/css/lib/bootstrap.min.css"/>
 	<!-- JS -->
@@ -38,6 +39,7 @@
                 $sqlQuery1 = "SELECT idClass, code, title, professors, semester, FREE_CLASS_SECRETARIES_id FROM UNIVERSITY_CLASSES WHERE SECRETARIES_id = $secretary_id ORDER BY semester;";
                 $result1 = $conn->query($sqlQuery1);
                 $classes = [];
+                $allbooksinthispage = [];
                 if ($result1->num_rows > 0){
                     while ($row = $result1->fetch_assoc()){
                         $classes[$row['idClass']] = [$row['code'], $row['title'], $row['professors'], $row['semester'], ($row['FREE_CLASS_SECRETARIES_id'] != NULL ) ? true : false, ($row['FREE_CLASS_SECRETARIES_id'] != NULL ) ? $row['FREE_CLASS_SECRETARIES_id'] : -1];
@@ -81,7 +83,7 @@ EOT;
                             <p>Επιλέξτε ένα μάθημα από την λίστα αριστερά για να προσθέσετε τα συγγράμματά του.</p>
                         </div>
                         <?php
-                            $sqlStmt = $conn->prepare("SELECT a.idBook, a.title, a.authors, a.ISBN, a.published_year, a.front_page_url FROM BOOKS a, UNIVERSITY_CLASSES_has_BOOKS b WHERE a.idBook = b.BOOKS_id AND b.UNIVERSITY_CLASSES_id = ?;");
+                            $sqlStmt = $conn->prepare("SELECT a.* FROM BOOKS a, UNIVERSITY_CLASSES_has_BOOKS b WHERE a.idBook = b.BOOKS_id AND b.UNIVERSITY_CLASSES_id = ?;");
                             $idClass = -1;
                             $sqlStmt->bind_param("s", $idClass);
                             $i = 0;
@@ -93,7 +95,9 @@ EOT;
                                 $books = [];
                                 if ( $results2->num_rows > 0 ){
                                     while ($row = $results2->fetch_assoc()){
-                                        $books[$row['idBook']] = [$row['title'], $row['authors'], $row['published_year'], $row['ISBN'], ($row['front_page_url'] != null) ? $row['front_page_url'] : "/sdi1500102_sdi1500165/images/default_book_front_page.jpg"];
+                                        $books[$row['idBook']] = $row;  //old way: [$row['title'], $row['authors'], $row['published_year'], $row['ISBN'], ($row['front_page_url'] != null) ? $row['front_page_url'] : "/sdi1500102_sdi1500165/images/default_book_front_page.jpg"];
+                                        $books[$row['idBook']]['front_page_url'] = ($row['front_page_url'] != null) ? $row['front_page_url'] : "/sdi1500102_sdi1500165/images/default_book_front_page.jpg";
+                                        $allbooksinthispage[$row['idBook']] = $books[$row['idBook']];
                                     }
                                 }
                                 echo <<<EOT
@@ -109,11 +113,11 @@ EOT;
                                                 echo <<<EOT
                                                 <li book_id="$book_id">
                                                     <div class="row">
-                                                        <div class="col-2"><img class="book_cover_icon" src="$book[4]"/></div>
+                                                        <div class="col-2"><img data-toggle="modal" data-target="#book{$book_id}" class="book_cover_icon" style="cursor: pointer" src="{$book['front_page_url']}"/></div>
                                                         <div class="col-10">
-                                                            <h3>$book[0]</h3><img class="delete_book_box" src="/sdi1500102_sdi1500165/images/red_cross_box.png"/><br>
-                                                            <span class="field_span"><label>Συγγραφέας/ες:</label> $book[1]</span><span class="field_span"><label>Έτος:</label> $book[2]</span><br>
-                                                            <label>ISBN:</label> $book[3]<br>
+                                                            <h3><span class="hover_orange" data-toggle="modal" data-target="#book{$book_id}">{$book['title']}</span></h3><img class="delete_book_box" src="/sdi1500102_sdi1500165/images/red_cross_box.png"/><br>
+                                                            <span class="field_span"><label>Συγγραφέας/ες:</label> {$book['authors']}</span><span class="field_span"><label>Έτος:</label> {$book['published_year']}</span><br>
+                                                            <label>ISBN:</label> {$book['ISBN']}<br>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -149,6 +153,14 @@ EOT;
             </div>
             <div class="text-center">
                 <button id="finish_PS" class="btn btn-dark hover_orange m-4"><img src="/sdi1500102_sdi1500165/images/checkGreen.png" style="width:20px; height:20px; margin-right: 10px;"/>Ολοκλήρωση Υποβολής Συγγραμμάτων</button>
+            </div>
+            <div id="book_modals_div">
+                <?php
+                    include("bookModal.php");
+                    foreach ($allbooksinthispage as $book) {
+                        bookModal($conn, $book);
+                    }
+                ?>
             </div>
     <?php 
         } else if (!$hasSession){

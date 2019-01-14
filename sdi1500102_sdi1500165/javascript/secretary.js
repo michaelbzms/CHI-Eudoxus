@@ -176,9 +176,10 @@ $(".add_book_form").on("submit", function(e){
     e.preventDefault();
     var class_id = $(this).closest("li").attr("class_id");
     var class_num = $(this).closest("li").attr("class_num");
+    var book_id = $(this).find(".book_id_input").val()
     var formdata = { 
         idClass : class_id,
-        idBook : $(this).find(".book_id_input").val()
+        idBook : book_id
     };
     if (checkValid(formdata["idBook"])) {
         $.ajax({
@@ -188,6 +189,27 @@ $(".add_book_form").on("submit", function(e){
             success: function(response){
                 if (response !== "" && response !== "FAIL" && response !== "NOT_EXISTS" && response !== "ALREADY_EXISTS" && response !== "NO_SESSION") {
                     $("#ajax_target_div" + class_id).append(response);
+                    // if this book's modal does not exist then do an ajax call to append it
+                    if( $("#book" + book_id).length == 0){
+                        $.ajax({
+                            url: "/sdi1500102_sdi1500165/php/AJAX/secretary_load_bookModal.php",
+                            type: "post",
+                            data: { book_id : book_id },
+                            success: function(response){
+                                if (response !== "" && response !== "NOT_EXISTS" && response !== "NO_PARAMETERS" && response !== "NO_SESSION") {
+                                    $("#book_modals_div").append(response);  // might already be there but that's ok  
+                                } else if ( response === "NO_PARAMETERS"){
+                                    alert("Ελλειπείς παράμτεροι. Δεν γίνεται να φορτωθεί το book modal.");
+                                } else if ( response === "NOT_EXISTS") {
+                                    alert("Δεν υπάρχει σύγγραμμα με αυτόν τον κωδικό στον Εύδοξο.")
+                                } else if ( response === "NO_SESSION"){
+                                    alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
+                                } else {
+                                    alert("Unknown error");   // should not happen
+                                }
+                            }
+                        });
+                    }
                 } else if ( response === "ALREADY_EXISTS") {
                     alert("Το σύγγραμμα αυτό υπάρχει ήδη.")
                 } else if ( response === "NOT_EXISTS") {

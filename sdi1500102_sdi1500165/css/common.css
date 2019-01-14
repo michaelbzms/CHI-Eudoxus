@@ -186,6 +186,7 @@ a:hover.breadcrump_item {
 
 .hover_orange:hover {
     color: rgb(231, 150, 0) !important;
+    cursor: pointer;
 }
 
 #account_name {
