@@ -13,11 +13,11 @@ INSERT INTO `sdi1500102`.`SECRETARIES` (`idUser`, `university`, `department`, `n
     
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (13, 'secret@econ.opa.gr', 'secretecon', 'secretary');
 INSERT INTO `sdi1500102`.`SECRETARIES` (`idUser`, `university`, `department`, `number_of_semesters`, `phone`, `address`, `TK`, `county`, `city`) 
-	VALUES (13, 'Οικονομικό Πανεπιστήμιο Αθηνών', 'Τμήμα Οικονομίκών', 8, '6982395019', 'Ομμόνοιας 42, Ομμόνοια', '10253', 'Νομός Αττικής', 'Αθήνα');
+	VALUES (13, 'Οικονομικό Πανεπιστήμιο Αθηνών', 'Τμήμα Οικονομικών', 8, '6982395019', 'Ομόνοιας 42, Ομόνοια', '10253', 'Νομός Αττικής', 'Αθήνα');
 
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (14, 'secret@it.opa.gr', 'secretit', 'secretary');
 INSERT INTO `sdi1500102`.`SECRETARIES` (`idUser`, `university`, `department`, `number_of_semesters`, `phone`, `address`, `TK`, `county`, `city`) 
-	VALUES (14, 'Οικονομικό Πανεπιστήμιο Αθηνών', 'Τμήμα Πληροφορικής', 8, '6950130023', 'Ομμόνοιας 43, Ομμόνοια', '10253', 'Νομός Αττικής', 'Αθήνα');
+	VALUES (14, 'Οικονομικό Πανεπιστήμιο Αθηνών', 'Τμήμα Πληροφορικής', 8, '6950130023', 'Ομόνοιας 43, Ομόνοια', '10253', 'Νομός Αττικής', 'Αθήνα');
 
 
 /* USERS: STUDENTS */
@@ -25,7 +25,7 @@ INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VA
 INSERT INTO `sdi1500102`.`STUDENTS` (`idUser`, `SECRETARIES_id`, `AM`, `firstname`, `lastname`, `current_semester`, `phone`) VALUES (2, 1, '1112201700186', 'Ελπινίκη', 'Παπαδοπούλου', 1, '6947234223');
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (16, 'anaksimandros@it.opa.gr', 'anaks', 'student');
 INSERT INTO `sdi1500102`.`STUDENTS` (`idUser`, `SECRETARIES_id`, `AM`, `firstname`, `lastname`, `current_semester`, `phone`) VALUES (16, 14, '458920', 'Αναξίμανδρος', 'Αναξιμάνδρου', 5, '6985236487');
-INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (17, 'jonsnow@law.uoa.gr', 'winter', 'student');
+INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (17, 'jonsnow@phil.uoa.gr', 'winter', 'student');
 INSERT INTO `sdi1500102`.`STUDENTS` (`idUser`, `SECRETARIES_id`, `AM`, `firstname`, `lastname`, `current_semester`, `phone`) VALUES (17, 4, '1111222233333', 'Γιάννης', 'Χιόνης', 7, '6945671239');
 
 
@@ -70,16 +70,14 @@ INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `au
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (7, 'info@klidarithmos.gr', 'klidarithmos', 'distPoint');
 INSERT INTO `sdi1500102`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `email`, `phone`, `working_hours`, `map_url`) 
 	VALUES (7, 'Κλειδάριθμος', 'Στουρνάρη 27β 10682 Αθήνα', 'info@klidarithmos.gr', '210 3832044', 'Δευτέρα - Παρασκευή: 09:30 - 17:30, Σάββατο & Κυριακή κλειστά', 'https://maps.google.com/maps?q=%CF%83%CF%84%CE%BF%CF%85%CF%81%CE%BD%CE%AC%CF%81%CE%B7%2027%CE%B2&t=&z=13&ie=UTF8&iwloc=&output=embed');
-INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES (7, 1, 5);
-INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES (7, 2, 2);
-INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES (7, 3, 8);
-INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES (7, 4, 4);
+INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES 
+	(7, 2, 62), (7, 3, 18), (7, 4, 44), (7, 9, 83);
 
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (8, 'info@noufrios.gr', 'noufrios', 'distPoint');
 INSERT INTO `sdi1500102`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `email`, `phone`, `working_hours`, `map_url`) 
 	VALUES (8, 'Ο Νούφριος', 'Ιωαννίδου 45 15423 Αθήνα', 'info@noufrios.gr', '210 1234567', 'Κάθε μέρα 9:00 με 20:00', 'https://maps.google.com/maps?q=%CF%80%CE%BB%CE%B7%CF%81%CE%BF%CF%86%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%20%CE%BA%CE%B1%CE%B9%20%CF%84%CE%B7%CE%BB%CE%B5%CF%80%CE%B9%CE%BA%CE%BF%CE%B9%CE%BD%CF%89%CE%BD%CE%B9%CF%8E%CE%BD&t=&z=13&ie=UTF8&iwloc=&output=embed');
-INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES (8, 1, 27);
-INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES (8, 4, 89);
+INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES 
+	(8, 5, 54), (8, 1, 72), (8, 6, 56), (8, 10, 13);
 
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (9, 'info@ianos.gr', 'ianos', 'distPoint');
 INSERT INTO `sdi1500102`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `email`, `phone`, `working_hours`, `map_url`) 
@@ -88,6 +86,8 @@ INSERT INTO `sdi1500102`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `em
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (10, 'epikoinonia@politeianet', 'politeia', 'distPoint');
 INSERT INTO `sdi1500102`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `email`, `phone`, `working_hours`, `map_url`) 
 	VALUES (10, 'Πολιτεία', 'Ασκληπιού 1-3 & Ακαδημίας Αθήνα, 10679 Αθήνα', 'epikoinonia@politeianet.gr', '210-3600235', 'Καθημερινά 09:00-21:00, Σάββατο 09:00-18:00', 'https://maps.google.com/maps?q=%CE%91%CF%83%CE%BA%CE%BB%CE%B7%CF%80%CE%B9%CE%BF%CF%8D%201-3%20%26%20%CE%91%CE%BA%CE%B1%CE%B4%CE%B7%CE%BC%CE%AF%CE%B1%CF%82%20%CE%91%CE%B8%CE%AE%CE%BD%CE%B1%2C%2010679%20%CE%91%CE%B8%CE%AE%CE%BD%CE%B1&t=&z=13&ie=UTF8&iwloc=&output=embed');
+INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES 
+	(10, 5, 14), (10, 2, 63), (10, 6, 12), (10, 10, 33), (10, 9, 15);
 
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (11, 'info@evripidis', 'evripidis', 'distPoint');
 INSERT INTO `sdi1500102`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `email`, `phone`, `working_hours`, `map_url`) 
@@ -96,6 +96,8 @@ INSERT INTO `sdi1500102`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `em
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (12, 'info@savalas.gr', 'savalas', 'distPoint');
 INSERT INTO `sdi1500102`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `email`, `phone`, `working_hours`, `map_url`) 
 	VALUES (12, 'Σαββάλας', 'Ζ. Πηγής 18 106 81 Αθήνα', 'info@savalas.gr', '210 3301251', 'Δευτέρα και Τετάρτη: 09:00 – 17:00, Τρίτη, Πέμπτη και Παρασκευή: 09:00 – 20:00, Σάββατο: 09:00 – 16:00', 'https://maps.google.com/maps?q=%CE%96.%20%CE%A0%CE%B7%CE%B3%CE%AE%CF%82%2018%20106%2081%20%CE%91%CE%B8%CE%AE%CE%BD%CE%B1&t=&z=13&ie=UTF8&iwloc=&output=embed');
+INSERT INTO `distribution_points_has_books` (`DISTRIBUTION_POINTS_id`, `BOOKS_id`, `count`) VALUES 
+	(12, 2, 34), (12, 3, 63), (12, 7, 67), (12, 8, 43);
 
 
 /* ANNOUNCEMENTS */
@@ -163,17 +165,22 @@ INSERT INTO `sdi1500102`.`GLOBAL_SEARCH` (`idSearchItem`, `link`, `keywords`, `t
 
 /* UNIVERSITY_CLASSES */
 INSERT INTO `sdi1500102`.`UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) 
-	VALUES (1, 1, 3, 'Τεχνητή Νοημοσύνη', '45678', 'Σταματόπουλος Τάκης', 3, 'Ελεύθερο Μάθημα');
-INSERT INTO `sdi1500102`.`UNIVERSITY_CLASSES_has_BOOKS` (`UNIVERSITY_CLASSES_id`, `BOOKS_id`) VALUES (1, 4);
+	VALUES (1, 1, 3, 'Τεχνητή Νοημοσύνη', '45678', 'Σταματόπουλος Τάκης', 7, 'Ελεύθερο Μάθημα στο Μαθηματικό αλλά από καθηγητή Πληροφορικής');
 
 INSERT INTO `sdi1500102`.`UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) 
 	VALUES (2, 1, NULL, 'Πολτική Οικονομία', '67233', 'Χατζιδάκης Βενεδίκτος', 1, '');
 
 INSERT INTO `sdi1500102`.`UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) 
-	VALUES (3, 1, NULL, 'Γενική Κοινωνιολογία', '87234', 'Γενίκιος Κενόβιος', 1, '');
+	VALUES (3, 1, 4, 'Γενική Φιλοσοφία', '87234', 'Γενίκιος Φιλοσόβιος', 1, '');
 
 INSERT INTO `sdi1500102`.`UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) 
-	VALUES (4, 1, NULL, 'Αστικό Δίκαιο', '17232', 'Χατζιδάκης Βενεδίκτος', 3, '');
+	VALUES (4, 1, NULL, 'Αστικό Δίκαιο', '17232', 'Βασίλης Σαϊνης', 3, '');
 	
 INSERT INTO `sdi1500102`.`UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) 
-	VALUES (5, 1, 3, 'Μαθηματικό Δίκαιο', '12512', 'Παπαδάτος Γεώργιος', 7, 'Ελεύθερο Μάθημα');
+	VALUES (5, 1, 3, 'Μαθηματικό Δίκαιο', '12512', 'Παπαδάτος Γεώργιος', 3, '');
+
+INSERT INTO `sdi1500102`.`UNIVERSITY_CLASSES` (`idClass`, `SECRETARIES_id`, `FREE_CLASS_SECRETARIES_id`, `title`, `code`, `professors`, `semester`, `comments`) 
+	VALUES (6, 1, NULL, 'Εκπαιδευτικές Πολιτικές', '17402', 'Κάρολος Μάγνος και Ιάσονας Φρόιντ', 7, '');
+
+INSERT INTO `sdi1500102`.`UNIVERSITY_CLASSES_has_BOOKS` (`UNIVERSITY_CLASSES_id`, `BOOKS_id`) VALUES 
+	(1, 4), (2, 3), (2, 10), (3, 9), (4, 2), (4, 7), (4, 8), (5, 5), (6, 4) , (6, 8);

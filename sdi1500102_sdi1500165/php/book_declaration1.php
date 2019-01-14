@@ -238,7 +238,7 @@ EOT;
                                 bookModal($conn, $book);
                             }
                         }
-                        $i++;
+                        $i+=2;
                     }
                 } ?>
                 </div>
