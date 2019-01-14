@@ -44,7 +44,11 @@
                     }
                 }
         ?>
-            <h2 class="orange_header mb-4">Υποβολή Συγγραμμάτων Μαθημάτων του ΠΣ</h2>
+            <h2 class="orange_header mb-4">Υποβολή Συγγραμμάτων Μαθημάτων του ΠΣ
+                <a href="/sdi1500102_sdi1500165/php/help_secretary.php" target="_blank">
+                    <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για γραμματείες."/>
+                </a>
+            </h2>
             <div>
                 <div class="row">
                     <div class="col-4 pr-0">
@@ -96,7 +100,9 @@ EOT;
                                     <div id="content_$i" class="content" style="display: none">
                                         <span class="id_span">[$class[0]]</span><h2>$class[1]</h2> $freeclassstr<br>
                                         $class[2], $class[3]ο Εξάμηνο<br><br>
-                                        <p class="mb-0">Προσθήκη / Αφαίρεση συγγραμμάτων:</p><br>
+                                        <p class="mb-0">Προσθήκη / Αφαίρεση συγγραμμάτων:
+                                            <img class="help_tooltip_mini" style="cursor: context-menu" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Η λίστα των συγγραμμάτων ενημερώνεται σε πραγματικό χρόνο καθώς προσθέτετε και αφαιρείτε συγγράμματα."/>
+                                        </p><br>
                                         <ol class="book_list">
 EOT;
                                             foreach ($books as $book_id => $book) {

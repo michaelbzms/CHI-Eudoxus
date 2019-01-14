@@ -60,7 +60,11 @@
             }
             if ( isset($_SESSION['bookDeclBooksArr']) && $_SESSION['bookDeclBooksArr'] != [] ) {
         ?>
-                <h2 class="orange_header mt-3 mb-4">Επισκόπηση Δήλωσης Συγγραμμάτων</h2>
+                <h2 class="orange_header mt-3 mb-4">Επισκόπηση Δήλωσης Συγγραμμάτων
+                    <a href="/sdi1500102_sdi1500165/php/help_student.php" target="_blank">
+                        <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για φοιτητές."/>
+                    </a>
+                </h2>
                 <?php include("bookModal.php") ?>
                 <?php
                     $classesInOrder = getDeclaredInOrder($conn, "classes", $_SESSION['bookDeclClassesArr']);

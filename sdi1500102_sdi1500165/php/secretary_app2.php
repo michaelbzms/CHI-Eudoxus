@@ -36,10 +36,16 @@
                 $num_of_semesters = getNumberOfSemesters($conn, $secretary_id);
                 $affiliated_departments = getAllDepartementsForUniExceptGiven($conn, getUniForSecretary($conn, $secretary_id), $secretary_id);
         ?>
-            <h2 class="orange_header mb-4">Υποβολή Μαθημάτων Προγράμματος Σπουδών</h2>
+            <h2 class="orange_header mb-4">Υποβολή Μαθημάτων Προγράμματος Σπουδών
+                <a href="/sdi1500102_sdi1500165/php/help_secretary.php" target="_blank">
+                    <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για γραμματείες."/>
+                </a>
+            </h2>
             <div id="classes_list">
                 <div class="mb-4">
-                    <p class="d-inline">Προσθήκη / Αφαίρεση / Επεξεργασία Μαθημάτων στο Πρόγραμμα Σπουδών:</p>
+                    <p class="d-inline">Προσθήκη / Αφαίρεση / Επεξεργασία Μαθημάτων στο Πρόγραμμα Σπουδών:
+                        <img class="help_tooltip_mini" style="cursor: context-menu" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Η λίστα των μαθημάτων ενημερώνεται σε πραγματικό χρόνο καθώς προσθέτετε, αφαιρείτε και τροποποιείτε μαθήματα."/>
+                    </p>
                     <button id="delete_all_classes" class="d-inline-block float-right btn btn-outline-danger">Διαγραφή όλων</button>
                 </div>
                 <ol>

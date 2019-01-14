@@ -28,7 +28,11 @@
             <p class="breadcrump_item">Φοιτητές</p> > 
             <a class="breadcrump_item last_item" href="/sdi1500102_sdi1500165/php/book_declaration0.php">Δήλωση Συγγραμμάτων </a>
         </nav>
-        <h2 class="orange_header mb-4">Δήλωση Συγγραμμάτων</h2>
+        <h2 class="orange_header mb-4">Δήλωση Συγγραμμάτων
+            <a href="/sdi1500102_sdi1500165/php/help_student.php" target="_blank">
+                <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για φοιτητές."/>
+            </a>
+        </h2>
         <div class="text-center">
             <p>
                 Έχετε ήδη υποβάλει δήλωση συγγραμμάτων για το τρέχον εξάμηνο. Η υποβολή αυτής που έχετε ξεκινήσει θα διαγράψει την παλιά σας.<br>

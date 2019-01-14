@@ -36,7 +36,11 @@
                 $result = $conn->query($sqlQuery);
                 $alreadyUploadedPS  = $result->num_rows > 0;
         ?>
-            <h2 class="orange_header mb-4">Διαχείριση Μαθημάτων/Συγγραμμάτων</h2>
+            <h2 class="orange_header mb-4">Διαχείριση Μαθημάτων/Συγγραμμάτων
+                <a href="/sdi1500102_sdi1500165/php/help_secretary.php" target="_blank">
+                    <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για γραμματείες."/>
+                </a>
+            </h2>
             <?php if  ( $alreadyUploadedPS ) {  ?>
                 <div class="text-center">
                     <p>
@@ -52,7 +56,11 @@
                 <div class="text-center">
                     <p>Θέλω να υποβάλω το νέο Πρόγραμμα Σπουδών...</p><br>
                     <div class="option_size d-inline-block border border-dark p-3">
-                        <p>Ανεβάζοντας κατάλληλο .xml αρχείο:</p>
+                        <p>Ανεβάζοντας κατάλληλο .xml αρχείο: 
+                            <a href="/sdi1500102_sdi1500165/php/notimplemented.php" target="_blank">
+                                <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την απαιτούμενη μορφή του .xml αρχείου."/>
+                            </a>
+                        </p>
                         <form id="PS_xml_input_form" method="post" action="/sdi1500102_sdi1500165/php/notimplemented.php">
                             <div class="d-flex justify-content-between mt-1">
                                 <div class="custom-file d-inline-block">

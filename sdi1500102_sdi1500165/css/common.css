@@ -82,8 +82,25 @@ body {
     display: inline-block;
     margin-left: 10px;
     padding-bottom: 5px;
-    height: 25;
-    width: 25;
+    height: 30px;   /* 25 + 5 padding = 30px */
+    width: 25px;
+    cursor: context-menu;
+}
+
+.help_tooltip {
+    display: inline-block;
+    margin-left: 10px;
+    padding-bottom: 5px;
+    height: 30px;   /* 25 + 5 padding = 30px */
+    width: 25px;
+    cursor: pointer;
+}
+
+.help_tooltip_mini {
+    display: inline-block;
+    margin-left: 10px;
+    height: 20px;
+    width: 20px;
     cursor: pointer;
 }
 

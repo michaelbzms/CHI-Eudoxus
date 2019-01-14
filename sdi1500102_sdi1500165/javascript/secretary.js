@@ -32,6 +32,8 @@ $("#delete_all_classes").on("click", function(){
         success: function(response){
             if ( response === "NO_SESSION"){
                 alert("Η συνεδρία σας έχει τελειώσει. Παρακαλώ συνδεθείτε ξανά.");
+            } else {
+                window.location.replace("/sdi1500102_sdi1500165/php/secretary_app2.php");
             }
         }
     });
@@ -123,7 +125,9 @@ $("#submit_PS").on("click", function(){
 });
 
 $("#finish_PS").on("click", function(){
-    window.location.href = "/sdi1500102_sdi1500165/index.php";
+    if (confirm("Τα συγγράμματα έχουν υποβληθεί επιτυχώς. Θέλετε να επιστρέψετε στην αρχική σελίδα;")){
+        window.location.href = "/sdi1500102_sdi1500165/index.php";
+    }
 });
 
 $(document).on('click','.edit_box', function(e){

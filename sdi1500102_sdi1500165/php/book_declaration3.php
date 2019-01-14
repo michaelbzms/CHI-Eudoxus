@@ -72,7 +72,11 @@
                 $bookDeclaration = $result->fetch_assoc();
                 $studentPIN = $bookDeclaration['PIN'];
         ?>
-                <h2 class="orange_header mt-3 mb-4">Παραλαβή Συγγραμμάτων</h2>
+                <h2 class="orange_header mt-3 mb-4">Παραλαβή Συγγραμμάτων
+                    <a href="/sdi1500102_sdi1500165/php/help_student.php" target="_blank">
+                        <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για φοιτητές."/>
+                    </a>
+                </h2>
                 <div class="text-center">
                     <button type="submit" class="btn btn-secondary d-inline-block" onClick="alert('Το PIN που θα πρέπει να παρουσιάσετε κατά την παραλαβή των συγγραμμάτων σας είναι:  <?php echo $studentPIN; ?>');">Προβολή PIN</button>
                 </div> 

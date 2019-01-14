@@ -38,7 +38,11 @@
                 <div class="icon_title add_bg_dark">Υπάλληλος<br>Σημείου<br>Διανομής</div>
             </div>
             <div id="student_options" class="blue-options-list">
-                <h3>...Φοιτητής</h3>
+                <h3>...Φοιτητής
+                    <a href="/sdi1500102_sdi1500165/php/help_student.php" target="_blank">
+                        <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για φοιτητές."/>
+                    </a>
+                </h3>
                 <div class="option-list">
                     <a id="register_student" class="option-item" href="php/register_page.php?userType=student">
                         <div class="option-title">Εγγραφή Φοιτητή</div>
@@ -72,7 +76,11 @@
                 </div>
             </div>
             <div id="publisher_options" class="orange-options-list">
-                <h3>...Εκδότης</h3>
+                <h3>...Εκδότης
+                    <a href="/sdi1500102_sdi1500165/php/help_publisher.php" target="_blank">
+                        <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για εκδότες."/>
+                    </a>
+                </h3>
                 <div class="option-list">
                     <a id="register_publisher" class="option-item" href="php/register_page.php?userType=publisher">
                         <div class="option-title">Εγγραφή Εκδότη</div>
@@ -89,7 +97,11 @@
                 </div>
             </div>
             <div id="secretary_options" class="blue-options-list">
-                <h3>...Υπάλληλος Γραμματίας Τμήματος</h3>
+                <h3>...Υπάλληλος Γραμματίας Τμήματος
+                    <a href="/sdi1500102_sdi1500165/php/help_secretary.php" target="_blank">
+                        <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για γραμματείες."/>
+                    </a>
+                </h3>
                 <div class="option-list">
                     <a id="register_secr" class="option-item" href="php/register_page.php?userType=secretary">
                         <div class="option-title">Εγγραφή Γραμματείας</div>
@@ -103,7 +115,11 @@
                 </div>
             </div>
             <div id="distribution_point_options" class="orange-options-list">
-                <h3>...Υπάλληλος Σημείου Διανομής</h3>
+                <h3>...Υπάλληλος Σημείου Διανομής
+                    <a href="/sdi1500102_sdi1500165/php/help_distPoint.php" target="_blank">
+                        <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για σημεία διανομής."/>
+                    </a>
+                </h3>
                 <div class="option-list">
                     <a id="register_dist" class="option-item" href="php/register_page.php?userType=distPoint">
                         <div class="option-title">Εγγραφή Σημείου Διανομής</div>

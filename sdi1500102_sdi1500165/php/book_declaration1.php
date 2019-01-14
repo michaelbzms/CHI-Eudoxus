@@ -42,8 +42,12 @@
                 die("Database connection failed: " . $conn->connect_error);
             }
         ?>
-            <h2 class="orange_header mt-3 mb-4">Δήλωση Συγγραμμάτων</h2>
-                <div class="container">
+            <h2 class="orange_header mt-3 mb-4">Δήλωση Συγγραμμάτων
+                <a href="/sdi1500102_sdi1500165/php/help_student.php" target="_blank">
+                    <img class="help_tooltip" src="/sdi1500102_sdi1500165/images/help_icon.png" data-toggle="tooltip" data-placement="right" title="Δείτε την σελίδα βοήθειας για φοιτητές."/>
+                </a>
+            </h2>
+            <div class="container">
             <?php
                 $isLoggedInStudent = isset($_SESSION['userID']) && isset($_SESSION['userType']) && $_SESSION['userType'] == 'student';
                 if (! $isLoggedInStudent) { ?>
