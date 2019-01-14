@@ -19,7 +19,7 @@
             }
             echo "<div class=\"container mb-2\">To βιβλίο με κωδικό " . $_POST['id']  . " είναι το εξής:</div>";
         } else {
-            echo "<div class=\"container mb-2\">Δεν υπάρχει βιβλίο με κωδικό " . $_POST['id'] . " στον Εύδοξο.</div>";
+            echo "<div class=\"text-center mb-2\">Δεν υπάρχει βιβλίο με κωδικό " . $_POST['id'] . " στον Εύδοξο.</div>";
         }
         $sqlStmt->close();
     } else {   // search will use all of the other fields
@@ -54,7 +54,7 @@
             }
             echo "<div class=\"container mb-2\">Βρέθηκαν " . $results->num_rows . " βιβλία σύμφωνα με τα κριτήρια αναζήτησης:</div>";
         } else {
-            echo "<div class=\"container mb-2\">Δεν βρέθηκαν βιβλία σύμφωνα με τα κριτήρια αναζήτησης.</div>";
+            echo "<div class=\"text-center mb-2\">Δεν βρέθηκαν βιβλία σύμφωνα με τα κριτήρια αναζήτησης.</div>";
         }
         $sqlStmt->close();
     }

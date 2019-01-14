@@ -19,7 +19,7 @@
         }
         echo "<div class=\"container mb-2\">Βρέθηκαν " . $results->num_rows . " σημεία διανομής σύμφωνα με τα κριτήρια αναζήτησης:</div>";
     } else {
-        echo "<div class=\"container mb-2\">Δεν βρέθηκαν σημεία διανομής σύμφωνα με τα κριτήρια αναζήτησης.</div>";
+        echo "<div class=\"text-center mb-2\">Δεν βρέθηκαν σημεία διανομής σύμφωνα με τα κριτήρια αναζήτησης.</div>";
     }
     $sqlStmt->close();
 ?>

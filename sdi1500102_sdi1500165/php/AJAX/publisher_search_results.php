@@ -20,7 +20,7 @@
         }
         echo "<div class=\"container mb-2\">Βρέθηκαν " . $results->num_rows . " εκδότες σύμφωνα με τα κριτήρια αναζήτησης:</div>";
     } else {
-        echo "<div class=\"container mb-2\">Δεν βρέθηκαν εκδότες σύμφωνα με τα κριτήρια αναζήτησης.</div>";
+        echo "<div class=\"text-center mb-2\">Δεν βρέθηκαν εκδότες σύμφωνα με τα κριτήρια αναζήτησης.</div>";
     }
     $sqlStmt->close();
 ?>
