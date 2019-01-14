@@ -88,7 +88,7 @@
                     <a id="publisher_app" class="option-item" href="php/notimplemented.php">
                         <div class="option-title">Διαχείριση Συγγραμμάτων</div>
                     </a>
-                    <a id="price"class="option-item" href="php/notimpkemented.php">
+                    <a id="price"class="option-item" href="php/notimplemented.php">
                         <div class="option-title">Κοστολόγιση</div>
                     </a>
                     <a id="publisher_info" class="option-item" href="php/notimplemented.php">

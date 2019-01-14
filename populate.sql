@@ -23,34 +23,49 @@ INSERT INTO `sdi1500102`.`SECRETARIES` (`idUser`, `university`, `department`, `n
 /* USERS: STUDENTS */
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (2, 'elpiniki@law.uoa.gr', 'lawyered', 'student');
 INSERT INTO `sdi1500102`.`STUDENTS` (`idUser`, `SECRETARIES_id`, `AM`, `firstname`, `lastname`, `current_semester`, `phone`) VALUES (2, 1, '1112201700186', 'Ελπινίκη', 'Παπαδοπούλου', 1, '6947234223');
+INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (16, 'anaksimandros@it.opa.gr', 'anaks', 'student');
+INSERT INTO `sdi1500102`.`STUDENTS` (`idUser`, `SECRETARIES_id`, `AM`, `firstname`, `lastname`, `current_semester`, `phone`) VALUES (16, 14, '458920', 'Αναξίμανδρος', 'Αναξιμάνδρου', 5, '6985236487');
+INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (17, 'jonsnow@law.uoa.gr', 'winter', 'student');
+INSERT INTO `sdi1500102`.`STUDENTS` (`idUser`, `SECRETARIES_id`, `AM`, `firstname`, `lastname`, `current_semester`, `phone`) VALUES (17, 4, '1111222233333', 'Γιάννης', 'Χιόνης', 7, '6945671239');
 
 
 /* USERS: PUBLISHERS */
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (5, 'tziolas@pub.gr', 'tziolas', 'publisher');
 INSERT INTO `sdi1500102`.`PUBLISHERS` (`idUser`, `AFM`, `firstname`, `lastname`, `phone`, `address`, `email`) 
-	VALUES (5, '6730125-258034', 'Αλέξανδρος', 'Τζιόλας', '691241232', 'Κολοκοτρώνη 59Β, Στοά Κουρτάκη, Αθήνα, 10560', 'tziolas@pub.gr');
+	VALUES (5, '6730125258', 'Αλέξανδρος', 'Τζιόλας', '691241232', 'Κολοκοτρώνη 59Β, Στοά Κουρτάκη, Αθήνα, 10560', 'tziolas@pub.gr');
 
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (6, 'benedict@pub.gr', 'cucubmerbatch', 'publisher');
 INSERT INTO `sdi1500102`.`PUBLISHERS` (`idUser`, `AFM`, `firstname`, `lastname`, `phone`, `address`, `email`) 
-	VALUES (6, '51820001842441', 'Βενεδίκτος', 'Αγκουροπακέτος', '6942965968', 'Μηλιώνη 8, Αθήνα, 10673', 'cucumberbatch@pub.gr');
+	VALUES (6, '5182000184', 'Βενεδίκτος', 'Αγκουροπακέτος', '6942965968', 'Μηλιώνη 8, Αθήνα, 10673', 'cucumberbatch@pub.gr');
 
-INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (15, 'benedict@pub.gr', 'cucubmerbatch', 'publisher');
+INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (15, 'george@pub.gr', 'patak', 'publisher');
 INSERT INTO `sdi1500102`.`PUBLISHERS` (`idUser`, `AFM`, `firstname`, `lastname`, `phone`, `address`, `email`) 
-	VALUES (15, '13142892393723', 'Γιώργος', 'Πατάκης', '6942415234', 'Μεγάλου Αλεξάνδρου 13, Καλλιθέα, Αθήνα, 15373', 'ekdoseispataki@pub.gr');
+	VALUES (15, '1314289239', 'Γιώργος', 'Πατάκης', '6942415234', 'Μεγάλου Αλεξάνδρου 13, Καλλιθέα, Αθήνα, 15373', 'ekdoseispataki@pub.gr');
 
 
 /* BOOKS (must be inserted after publishers and before dist points) */
 INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
 	VALUES (1, 6, 'ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ: ΜΙΑ ΣΥΓΧΡΟΝΗ ΠΡΟΣΕΓΓΙΣΗ', '960-209-873-2', 'STUART RUSSELL, PETER NORVIG', 2005, 1200, 'ΕΜΠΕΙΡΑ ΣΥΣΤΗΜΑΤΑ, ΕΥΦΥΗ ΣΥΣΤΗΜΑΤΑ, ΘΕΩΡΙΑ ΛΗΨΗΣ ΑΠΟΦΑΣΕΩΝ, ΛΟΓΙΚΟΣ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ, ΜΗΧΑΝΙΚΗ ΓΝΩΣΗΣ, ΠΡΑΚΤΟΡΕΣ, ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ', '2η', 'https://static.eudoxus.gr/books/preview/09/cover-13909.jpg', 'https://static.eudoxus.gr/books/preview/09/backcover-13909.jpg', 'https://www.klidarithmos.gr/texnhth-nohmosynh-2h-ekdosh', 'https://static.eudoxus.gr/books/09/toc-13909.pdf', 'https://static.eudoxus.gr/books/09/chapter-13909.pdf', '[21 x 29]', 'Σκληρό Εξώφυλλο');
 INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
-	VALUES (2, 5, 'Εισαγωγή στην Νομική', '1248-1428-2141-1232', 'Πατάπιος Ι. και Μέγας Αλέξανδρος', 2007, 673, 'εισαγωγή νομική νόμος', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	VALUES (2, 5, 'ΕΙΣΑΓΩΓΗ ΣΤΟ ΑΣΤΙΚΟ ΔΙΚΑΙΟ', '978-960-562-549-8', 'ΚΩΝΣΤΑΝΤΙΝΟΣ ΠΑΝΑΓΟΠΟΥΛΟΣ', 2016, 264, 'εισαγωγή νομική νόμος', '1η', 'https://static.eudoxus.gr/books/02/cover-59395802.jpg', 'https://static.eudoxus.gr/books/preview/https://static.eudoxus.gr/books/02/backcover-59395802.jpg', NULL, NULL, NULL, '17x24', 'Μαλακό Εξώφυλλο');
 INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
-	VALUES (3, 5, 'Ιατρικό Δίκαιο', '1678-1523-2871-3454', 'Ιπποκράτης', 2009,  932, 'ιατρικό δίκαιο γιατρός γιατροί νομική νόμος δικαιοσύνη', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	VALUES (3, 5, 'Νομική υπόσταση του τραύματος', '978-960-6650-37-6', 'Λίτης Δημήτριος Φ.', 2009,  158, 'ιατρικό δίκαιο γιατρός γιατροί νομική νόμος δικαιοσύνη', '1η', 'https://static.eudoxus.gr/books/preview/65/cover-23965.jpg', 'https://static.eudoxus.gr/books/preview/65/backcover-23965.jpg', NULL, NULL, NULL, '[14 x 21]', 'Σκληρό Εξώφυλλο');
 INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
-	VALUES (4, 6, 'Πώς να εκπαιδεύσετε τον δράκο σας', '7475-5647-4544-4754', 'Daennerys Targeryen', 2012, 423, 'δράκο εκπαιδεύσετε εκπαίδευση δράκου πώς', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-/* TODO: more books? */
+	VALUES (4, 6, 'Εισαγωγή στην εκπαιδευτική αξιολόγηση', '978-960-602-225-8', 'ΒΕΝΤΟΥΡΗΣ ΑΝΤΩΝΗΣ', 2018, 120, 'αξιολόγηση εκπαιδεύσετε εκπαίδευση πώς', '1η', 'https://static.eudoxus.gr/books/39/cover-77120639.jpg', 'https://static.eudoxus.gr/books/preview/39/backcover-77120639.png', NULL, NULL, NULL, '[14 x 21]', 'Μαλακό Εξώφυλλο');
+INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
+	VALUES (5, 15, 'ΦΥΣΙΚΗ ΓΙΑ ΕΠΙΣΤΗΜΟΝΕΣ ΚΑΙ ΜΗΧΑΝΙΚΟΥΣ', '978-960-461-509-4', 'RAYMOND A. SERWAY, JOHN W. JEWETT', 2013, 1048, 'ΗΛΕΚΤΡΙΣΜΟΣ ΚΑΙ ΜΑΓΝΗΤΙΣΜΟΣ, ΗΛΕΚΤΡΟΜΑΓΝΗΤΙΣΜΟΣ, ΟΠΤΙΚΗ, ΣΥΓΧΡΟΝΗ ΦΥΣΙΚΗ, ΦΥΣΙΚΗ', '8η', 'https://static.eudoxus.gr/books/preview/12/cover-22750112.jpg', 'https://static.eudoxus.gr/books/preview/12/backcover-22750112.jpg', NULL, 'https://static.eudoxus.gr/books/12/toc-22750112.pdf', 'https://static.eudoxus.gr/books/12/chapter-22750112.pdf', '[21 x 29]', 'Σκληρό Εξώφυλλο');
+INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
+	VALUES (6, 15, 'ΕΙΣΑΓΩΓΗ ΣΤΗΝ ΑΛΛΗΛΕΠΙΔΡΑΣΗ ΑΝΘΡΩΠΟΥ-ΥΠΟΛΟΓΙΣΤΗ', '978-960-530-165-1', 'ΝΙΚΟΛΑΟΣ ΑΒΟΥΡΗΣ, ΧΡΗΣΤΟΣ ΚΑΤΣΑΝΟΣ, ΝΙΚΟΛΑΟΣ ΤΣΕΛΙΟΣ, ΚΩΝΣΤΑΝΤΙΝΟΣ ΜΟΥΣΤΑΚΑΣ', 2016, 530, 'ΕΑΜ αλληλεπίδραση άνθρωπος μηχανή υπολογιστής', '1η', 'https://static.eudoxus.gr/books/preview/72/cover-59366672.jpg', 'https://static.eudoxus.gr/books/preview/72/backcover-59366672.jpg', NULL, 'https://static.eudoxus.gr/books/72/toc-59366672.pdf', 'https://static.eudoxus.gr/books/72/chapter-59366672.pdf', '[17 x 24]', 'Μαλακό Εξώφυλλο');
+INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
+	VALUES (7, 6, 'Το Σύνταγμα και ο νομικός ρεαλισμός', '978-960-02-3381-0', 'Troper M.', 2018, 174, 'ΝΟΜΙΚΟΣ ΡΕΑΛΙΣΜΟΣ, συνταγματικό δίκαιο', '1η', 'https://static.eudoxus.gr/books/57/cover-77111557.jpg', 'https://static.eudoxus.gr/books/57/backcover-77111557.jpg', NULL, NULL, NULL, '[14 x 21]', 'Μαλακό Εξώφυλλο');
+INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
+	VALUES (8, 6, 'Στοιχεία Δικαίου και Τεχνική Νομοθεσία', '978-960-418-227-5', 'Μαρχαβίλας Π.', 2010, 380, 'Αστικό Δίκαιο, Δίκαιο, Δημόσια Έργα, Εκδόσεις Τζιόλα, Μαρχαβίλας, Νομική, Στοιχεία Δικαίου', '1η', 'https://static.eudoxus.gr/books/preview/14/cover-18549014.jpg', 'https://static.eudoxus.gr/books/14/backcover-18549014.jpg', NULL, NULL, NULL, '[17 x 24]', 'Σκληρό Εξώφυλλο');
+INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
+	VALUES (9, 15, 'ΣΤΟΙΧΕΙΑ ΕΙΣΑΓΩΓΗΣ ΣΤΗ ΦΙΛΟΣΟΦΙΑ', '978-960-6835-96-4', 'ΤΕΡΕΖΗΣ ΑΘ. ΧΡΗΣΤΟΣ', 2018, 888, 'ΑΛΗΘΕΙΑ, ΑΝΤΙΚΕΙΜΕΝΙΚΟΤΗΤΑ, ΑΡΙΣΤΟΤΕΛΗΣ , ΒΗΣΣΑΡΙΩΝ, ΒΥΖΑΝΤΙΟ, ΓΛΩΣΣΑ, ΓΝΩΣΗ', '1η', 'https://static.eudoxus.gr/books/06/cover-77120106.jpg', 'https://static.eudoxus.gr/books/06/backcover-77120106.jpg', NULL, NULL, NULL, '[14 x 21]', 'Σκληρό Εξώφυλλο');
+INSERT INTO `sdi1500102`.`BOOKS` (`idBook`, `published_by`, `title`, `ISBN`, `authors`, `published_year`, `pagecount`, `keywords`, `version`, `front_page_url`, `back_page_url`, `webpage_url`, `contents_url`, `excerpt_url`, `dimensions`, `Tie`) 
+	VALUES (10, 6, 'Ανάλυση Μηχανολογικών Καταστροφών', '978-960-85-334-3-1', 'Stein Kira, Μακρής Παναγιώτης', 2003, 284, 'αναλυση μηχανολογοι καταστροφες', '2η', 'https://static.eudoxus.gr/books/49/cover-77119649.jpg', 'https://static.eudoxus.gr/books/49/backcover-77119649.jpg', NULL, NULL, NULL, '[17 x 24]', 'Μαλακό Εξώφυλλο');
 
-
+	
 /* USERS: DISTRIBUTION POINTS */
 INSERT INTO `sdi1500102`.`USERS` (`idUser`, `email`, `password`, `user_type`) VALUES (7, 'info@klidarithmos.gr', 'klidarithmos', 'distPoint');
 INSERT INTO `sdi1500102`.`DISTRIBUTION_POINTS` (`idUser`, `name`, `address`, `email`, `phone`, `working_hours`, `map_url`) 
